@@ -10,11 +10,27 @@
 		5D44C51019DA1F6000DDA8CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C50F19DA1F6000DDA8CA /* main.m */; };
 		5D44C51319DA1F6000DDA8CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C51219DA1F6000DDA8CA /* AppDelegate.m */; };
 		5D44C51619DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C51419DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld */; };
-		5D44C51919DA1F6000DDA8CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C51819DA1F6000DDA8CA /* ViewController.m */; };
 		5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C51A19DA1F6000DDA8CA /* Main.storyboard */; };
 		5D44C51E19DA1F6000DDA8CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C51D19DA1F6000DDA8CA /* Images.xcassets */; };
 		5D44C52119DA1F6000DDA8CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C51F19DA1F6000DDA8CA /* LaunchScreen.xib */; };
 		5D44C52D19DA1F6000DDA8CA /* Simulado_PMPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C52C19DA1F6000DDA8CA /* Simulado_PMPTests.m */; };
+		5D44C53A19DA2FB500DDA8CA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C53919DA2FB500DDA8CA /* MenuViewController.m */; };
+		5D44C54019DA31B500DDA8CA /* TiposQuestoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C53F19DA31B500DDA8CA /* TiposQuestoesViewController.m */; };
+		5D44C54319DA321600DDA8CA /* ResumoQuestoesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C54219DA321600DDA8CA /* ResumoQuestoesTableViewController.m */; };
+		5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C54919DA3D0900DDA8CA /* InfoPlist.strings */; };
+		5D44C56919DA3D0900DDA8CA /* XlsReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C54D19DA3D0900DDA8CA /* XlsReader.cpp */; };
+		5D44C56A19DA3D0900DDA8CA /* endian.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C55A19DA3D0900DDA8CA /* endian.c */; };
+		5D44C56B19DA3D0900DDA8CA /* ole.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C55B19DA3D0900DDA8CA /* ole.c */; };
+		5D44C56C19DA3D0900DDA8CA /* xls.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C55C19DA3D0900DDA8CA /* xls.c */; };
+		5D44C56D19DA3D0900DDA8CA /* xlstool.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C55D19DA3D0900DDA8CA /* xlstool.c */; };
+		5D44C56E19DA3D0900DDA8CA /* Licenses in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C55E19DA3D0900DDA8CA /* Licenses */; };
+		5D44C56F19DA3D0900DDA8CA /* QZCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C56019DA3D0900DDA8CA /* QZCell.m */; };
+		5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C56219DA3D0900DDA8CA /* QZWorkbook.m */; };
+		5D44C57119DA3D0900DDA8CA /* QZWorkSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C56419DA3D0900DDA8CA /* QZWorkSheet.m */; };
+		5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C56519DA3D0900DDA8CA /* QZXLSReader-Info.plist */; };
+		5D44C57819DA3DF300DDA8CA /* Utilidades.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C57719DA3DF300DDA8CA /* Utilidades.m */; };
+		5D44C57A19DA3EA400DDA8CA /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */; };
+		5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +50,48 @@
 		5D44C51119DA1F6000DDA8CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5D44C51219DA1F6000DDA8CA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5D44C51519DA1F6000DDA8CA /* Simulado_PMP.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simulado_PMP.xcdatamodel; sourceTree = "<group>"; };
-		5D44C51719DA1F6000DDA8CA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5D44C51819DA1F6000DDA8CA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5D44C51B19DA1F6000DDA8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D44C51D19DA1F6000DDA8CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5D44C52019DA1F6000DDA8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5D44C52619DA1F6000DDA8CA /* Simulado PMPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simulado PMPTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D44C52B19DA1F6000DDA8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D44C52C19DA1F6000DDA8CA /* Simulado_PMPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simulado_PMPTests.m; sourceTree = "<group>"; };
+		5D44C53819DA2FB500DDA8CA /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		5D44C53919DA2FB500DDA8CA /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		5D44C53E19DA31B500DDA8CA /* TiposQuestoesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiposQuestoesViewController.h; sourceTree = "<group>"; };
+		5D44C53F19DA31B500DDA8CA /* TiposQuestoesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiposQuestoesViewController.m; sourceTree = "<group>"; };
+		5D44C54119DA321600DDA8CA /* ResumoQuestoesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResumoQuestoesTableViewController.h; sourceTree = "<group>"; };
+		5D44C54219DA321600DDA8CA /* ResumoQuestoesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResumoQuestoesTableViewController.m; sourceTree = "<group>"; };
+		5D44C54A19DA3D0900DDA8CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D44C54D19DA3D0900DDA8CA /* XlsReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XlsReader.cpp; sourceTree = "<group>"; };
+		5D44C54E19DA3D0900DDA8CA /* XlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XlsReader.h; sourceTree = "<group>"; };
+		5D44C54F19DA3D0900DDA8CA /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		5D44C55119DA3D0900DDA8CA /* brdb.c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.c.h; sourceTree = "<group>"; };
+		5D44C55219DA3D0900DDA8CA /* brdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brdb.h; sourceTree = "<group>"; };
+		5D44C55319DA3D0900DDA8CA /* endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endian.h; sourceTree = "<group>"; };
+		5D44C55419DA3D0900DDA8CA /* ole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ole.h; sourceTree = "<group>"; };
+		5D44C55519DA3D0900DDA8CA /* xls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xls.h; sourceTree = "<group>"; };
+		5D44C55619DA3D0900DDA8CA /* xlsstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlsstruct.h; sourceTree = "<group>"; };
+		5D44C55719DA3D0900DDA8CA /* xlstool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstool.h; sourceTree = "<group>"; };
+		5D44C55819DA3D0900DDA8CA /* xlstypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstypes.h; sourceTree = "<group>"; };
+		5D44C55A19DA3D0900DDA8CA /* endian.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = endian.c; sourceTree = "<group>"; };
+		5D44C55B19DA3D0900DDA8CA /* ole.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ole.c; sourceTree = "<group>"; };
+		5D44C55C19DA3D0900DDA8CA /* xls.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xls.c; sourceTree = "<group>"; };
+		5D44C55D19DA3D0900DDA8CA /* xlstool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xlstool.c; sourceTree = "<group>"; };
+		5D44C55E19DA3D0900DDA8CA /* Licenses */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Licenses; sourceTree = "<group>"; };
+		5D44C55F19DA3D0900DDA8CA /* QZCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZCell.h; sourceTree = "<group>"; };
+		5D44C56019DA3D0900DDA8CA /* QZCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZCell.m; sourceTree = "<group>"; };
+		5D44C56119DA3D0900DDA8CA /* QZWorkbook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZWorkbook.h; sourceTree = "<group>"; };
+		5D44C56219DA3D0900DDA8CA /* QZWorkbook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZWorkbook.m; sourceTree = "<group>"; };
+		5D44C56319DA3D0900DDA8CA /* QZWorkSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZWorkSheet.h; sourceTree = "<group>"; };
+		5D44C56419DA3D0900DDA8CA /* QZWorkSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QZWorkSheet.m; sourceTree = "<group>"; };
+		5D44C56519DA3D0900DDA8CA /* QZXLSReader-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QZXLSReader-Info.plist"; sourceTree = "<group>"; };
+		5D44C56619DA3D0900DDA8CA /* QZXLSReader-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QZXLSReader-Prefix.pch"; sourceTree = "<group>"; };
+		5D44C56719DA3D0900DDA8CA /* QZXLSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZXLSReader.h; sourceTree = "<group>"; };
+		5D44C57619DA3DF300DDA8CA /* Utilidades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilidades.h; sourceTree = "<group>"; };
+		5D44C57719DA3DF300DDA8CA /* Utilidades.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilidades.m; sourceTree = "<group>"; };
+		5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
+		5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImportITIL.xls; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D44C57A19DA3EA400DDA8CA /* libiconv.2.4.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +116,8 @@
 		5D44C50119DA1F6000DDA8CA = {
 			isa = PBXGroup;
 			children = (
+				5D44C57B19DA3EC900DDA8CA /* Externos */,
+				5D44C54819DA3D0900DDA8CA /* QZXLSReader */,
 				5D44C50C19DA1F6000DDA8CA /* Simulado PMP */,
 				5D44C52919DA1F6000DDA8CA /* Simulado PMPTests */,
 				5D44C50B19DA1F6000DDA8CA /* Products */,
@@ -83,10 +136,11 @@
 		5D44C50C19DA1F6000DDA8CA /* Simulado PMP */ = {
 			isa = PBXGroup;
 			children = (
+				5D44C57319DA3D8800DDA8CA /* Util */,
+				5D44C53719DA2F9800DDA8CA /* Views */,
+				5D44C53619DA2F9300DDA8CA /* Imagens */,
 				5D44C51119DA1F6000DDA8CA /* AppDelegate.h */,
 				5D44C51219DA1F6000DDA8CA /* AppDelegate.m */,
-				5D44C51719DA1F6000DDA8CA /* ViewController.h */,
-				5D44C51819DA1F6000DDA8CA /* ViewController.m */,
 				5D44C51A19DA1F6000DDA8CA /* Main.storyboard */,
 				5D44C51D19DA1F6000DDA8CA /* Images.xcassets */,
 				5D44C51F19DA1F6000DDA8CA /* LaunchScreen.xib */,
@@ -99,6 +153,7 @@
 		5D44C50D19DA1F6000DDA8CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */,
 				5D44C50E19DA1F6000DDA8CA /* Info.plist */,
 				5D44C50F19DA1F6000DDA8CA /* main.m */,
 			);
@@ -120,6 +175,108 @@
 				5D44C52B19DA1F6000DDA8CA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D44C53619DA2F9300DDA8CA /* Imagens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Imagens;
+			sourceTree = "<group>";
+		};
+		5D44C53719DA2F9800DDA8CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C53819DA2FB500DDA8CA /* MenuViewController.h */,
+				5D44C53919DA2FB500DDA8CA /* MenuViewController.m */,
+				5D44C53E19DA31B500DDA8CA /* TiposQuestoesViewController.h */,
+				5D44C53F19DA31B500DDA8CA /* TiposQuestoesViewController.m */,
+				5D44C54119DA321600DDA8CA /* ResumoQuestoesTableViewController.h */,
+				5D44C54219DA321600DDA8CA /* ResumoQuestoesTableViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5D44C54819DA3D0900DDA8CA /* QZXLSReader */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C54919DA3D0900DDA8CA /* InfoPlist.strings */,
+				5D44C54B19DA3D0900DDA8CA /* libxls */,
+				5D44C55E19DA3D0900DDA8CA /* Licenses */,
+				5D44C55F19DA3D0900DDA8CA /* QZCell.h */,
+				5D44C56019DA3D0900DDA8CA /* QZCell.m */,
+				5D44C56119DA3D0900DDA8CA /* QZWorkbook.h */,
+				5D44C56219DA3D0900DDA8CA /* QZWorkbook.m */,
+				5D44C56319DA3D0900DDA8CA /* QZWorkSheet.h */,
+				5D44C56419DA3D0900DDA8CA /* QZWorkSheet.m */,
+				5D44C56519DA3D0900DDA8CA /* QZXLSReader-Info.plist */,
+				5D44C56619DA3D0900DDA8CA /* QZXLSReader-Prefix.pch */,
+				5D44C56719DA3D0900DDA8CA /* QZXLSReader.h */,
+			);
+			path = QZXLSReader;
+			sourceTree = "<group>";
+		};
+		5D44C54B19DA3D0900DDA8CA /* libxls */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C54C19DA3D0900DDA8CA /* C++ */,
+				5D44C54F19DA3D0900DDA8CA /* config.h */,
+				5D44C55019DA3D0900DDA8CA /* include */,
+				5D44C55919DA3D0900DDA8CA /* src */,
+			);
+			path = libxls;
+			sourceTree = "<group>";
+		};
+		5D44C54C19DA3D0900DDA8CA /* C++ */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C54D19DA3D0900DDA8CA /* XlsReader.cpp */,
+				5D44C54E19DA3D0900DDA8CA /* XlsReader.h */,
+			);
+			path = "C++";
+			sourceTree = "<group>";
+		};
+		5D44C55019DA3D0900DDA8CA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C55119DA3D0900DDA8CA /* brdb.c.h */,
+				5D44C55219DA3D0900DDA8CA /* brdb.h */,
+				5D44C55319DA3D0900DDA8CA /* endian.h */,
+				5D44C55419DA3D0900DDA8CA /* ole.h */,
+				5D44C55519DA3D0900DDA8CA /* xls.h */,
+				5D44C55619DA3D0900DDA8CA /* xlsstruct.h */,
+				5D44C55719DA3D0900DDA8CA /* xlstool.h */,
+				5D44C55819DA3D0900DDA8CA /* xlstypes.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		5D44C55919DA3D0900DDA8CA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C55A19DA3D0900DDA8CA /* endian.c */,
+				5D44C55B19DA3D0900DDA8CA /* ole.c */,
+				5D44C55C19DA3D0900DDA8CA /* xls.c */,
+				5D44C55D19DA3D0900DDA8CA /* xlstool.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		5D44C57319DA3D8800DDA8CA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C57619DA3DF300DDA8CA /* Utilidades.h */,
+				5D44C57719DA3DF300DDA8CA /* Utilidades.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		5D44C57B19DA3EC900DDA8CA /* Externos */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */,
+			);
+			name = Externos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,8 +359,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */,
+				5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */,
 				5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */,
+				5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */,
 				5D44C52119DA1F6000DDA8CA /* LaunchScreen.xib in Resources */,
+				5D44C56E19DA3D0900DDA8CA /* Licenses in Resources */,
 				5D44C51E19DA1F6000DDA8CA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,10 +383,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D44C56A19DA3D0900DDA8CA /* endian.c in Sources */,
+				5D44C56D19DA3D0900DDA8CA /* xlstool.c in Sources */,
+				5D44C56F19DA3D0900DDA8CA /* QZCell.m in Sources */,
 				5D44C51619DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld in Sources */,
+				5D44C54019DA31B500DDA8CA /* TiposQuestoesViewController.m in Sources */,
 				5D44C51319DA1F6000DDA8CA /* AppDelegate.m in Sources */,
-				5D44C51919DA1F6000DDA8CA /* ViewController.m in Sources */,
 				5D44C51019DA1F6000DDA8CA /* main.m in Sources */,
+				5D44C56C19DA3D0900DDA8CA /* xls.c in Sources */,
+				5D44C53A19DA2FB500DDA8CA /* MenuViewController.m in Sources */,
+				5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */,
+				5D44C56B19DA3D0900DDA8CA /* ole.c in Sources */,
+				5D44C54319DA321600DDA8CA /* ResumoQuestoesTableViewController.m in Sources */,
+				5D44C57819DA3DF300DDA8CA /* Utilidades.m in Sources */,
+				5D44C56919DA3D0900DDA8CA /* XlsReader.cpp in Sources */,
+				5D44C57119DA3D0900DDA8CA /* QZWorkSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +434,14 @@
 				5D44C52019DA1F6000DDA8CA /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		5D44C54919DA3D0900DDA8CA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D44C54A19DA3D0900DDA8CA /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -416,6 +596,7 @@
 				5D44C53219DA1F6000DDA8CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D44C53319DA1F6000DDA8CA /* Build configuration list for PBXNativeTarget "Simulado PMPTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +605,7 @@
 				5D44C53519DA1F6000DDA8CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
