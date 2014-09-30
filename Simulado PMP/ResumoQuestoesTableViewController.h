@@ -12,5 +12,6 @@
 @interface ResumoQuestoesTableViewController : UITableViewController
 
 @property (strong,nonatomic) NSMutableArray* listaQuestoes;
+@property (strong,nonatomic) NSDictionary* questaoSelecionada;
 
 @end

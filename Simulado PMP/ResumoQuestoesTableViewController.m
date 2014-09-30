@@ -7,6 +7,7 @@
 //
 
 #import "ResumoQuestoesTableViewController.h"
+#import "QuestoesViewController.h"
 
 @interface ResumoQuestoesTableViewController ()
 @end
@@ -40,7 +41,7 @@
     
     for (int i=0; i<20; i++) {
     NSInteger numRandom = 1;
-    while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){
+    while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){ // 620 eh da questao 32 q ta bugada
         numRandom = arc4random()%(firstWorkSheet.rows.count);
     }
         
@@ -48,15 +49,21 @@
     
     localizacao.row = numRandom+1; // de 20 em 20
     
-    localizacao.column = 0; // coluna que fica o numero questao
+    localizacao.column = 0; // coluna que fica o numero da questao
 
-    NSString* numQuestao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue]; // a linha 32 tem um \n
-    localizacao.column = 2; // descricao questao
+    NSString* numQuestao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue];
+        if([numQuestao length] == 1){
+            numQuestao = [@"0" stringByAppendingString:numQuestao]; // para ordenar certo
+        }
+    localizacao.column = 2; // coluna que fica a descricao da questao
     NSString* descricao = [[firstWorkSheet cellAtPoint:localizacao]content];
         
     dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO", nil];
     [self.listaQuestoes addObject:dic];
     }
+    NSSortDescriptor* brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"NUMEROQUESTAO" ascending:YES]; // ordena pelo numero da questao
+    NSArray* sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
+    self.listaQuestoes = [self.listaQuestoes sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +88,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questao" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RESUMOS" forIndexPath:indexPath];
     
     // Configure the cell...
     cell.textLabel.text = [[[[self.listaQuestoes objectAtIndex:indexPath.row]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self.listaQuestoes objectAtIndex:indexPath.row]objectForKey:@"DESCRICAO"]];
@@ -89,15 +96,14 @@
     return cell;
 }
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Questao Selecionada" message:[NSString stringWithFormat:@"Pergunta: %@",[self.listaQuestoes objectAtIndex:indexPath.row]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     
-    [alertView show];
-    
-}
+     [alertView show];
+}*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -140,7 +146,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    segue = [segue destinationViewController];
+    if([[segue identifier] isEqualToString:@"QUESTOES"]){
+        QuestoesViewController* controler = [segue destinationViewController];
+        controler.questaoSelecionada = [self.listaQuestoes objectAtIndex:[self.tableView indexPathForCell:sender].row];
+        controler.listaQuestoes = self.listaQuestoes;
+    }
 }
 
 
