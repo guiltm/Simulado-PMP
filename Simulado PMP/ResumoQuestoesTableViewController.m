@@ -9,20 +9,54 @@
 #import "ResumoQuestoesTableViewController.h"
 
 @interface ResumoQuestoesTableViewController ()
-
 @end
 
 @implementation ResumoQuestoesTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.listaQuestoes = [[NSMutableArray alloc]init];
+    [self carregarValores];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+}
+
+- (void)carregarValores {
+    NSURL* url = [NSURL fileURLWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ImportITIL.xls"]];
+    QZWorkbook *excelReader = [[QZWorkbook alloc] initWithContentsOfXLS:url];
+    QZWorkSheet *firstWorkSheet = excelReader.workSheets.firstObject;
+    [firstWorkSheet open];
     
+    //NSLog(@"%@",[firstWorkSheet rows]);
+    struct QZLocation localizacao;
+    NSMutableDictionary* dic;
+    //melhorar isso
+    NSMutableArray* numeros = [[NSMutableArray alloc]init];
+    
+    for (int i=0; i<20; i++) {
+    NSInteger numRandom = 1;
+    while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){
+        numRandom = arc4random()%(firstWorkSheet.rows.count);
+    }
+        
+    [numeros addObject:[NSNumber numberWithInteger:numRandom]];
+    
+    localizacao.row = numRandom+1; // de 20 em 20
+    
+    localizacao.column = 0; // coluna que fica o numero questao
+
+    NSString* numQuestao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue]; // a linha 32 tem um \n
+    localizacao.column = 2; // descricao questao
+    NSString* descricao = [[firstWorkSheet cellAtPoint:localizacao]content];
+        
+    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO", nil];
+    [self.listaQuestoes addObject:dic];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,19 +75,29 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 20;
+    return [self.listaQuestoes count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questao" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = @"teste";
+    cell.textLabel.text = [[[[self.listaQuestoes objectAtIndex:indexPath.row]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self.listaQuestoes objectAtIndex:indexPath.row]objectForKey:@"DESCRICAO"]];
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Questao Selecionada" message:[NSString stringWithFormat:@"Pergunta: %@",[self.listaQuestoes objectAtIndex:indexPath.row]] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    
+    [alertView show];
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

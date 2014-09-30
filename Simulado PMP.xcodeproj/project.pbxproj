@@ -28,9 +28,9 @@
 		5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C56219DA3D0900DDA8CA /* QZWorkbook.m */; };
 		5D44C57119DA3D0900DDA8CA /* QZWorkSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C56419DA3D0900DDA8CA /* QZWorkSheet.m */; };
 		5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C56519DA3D0900DDA8CA /* QZXLSReader-Info.plist */; };
-		5D44C57819DA3DF300DDA8CA /* Utilidades.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C57719DA3DF300DDA8CA /* Utilidades.m */; };
 		5D44C57A19DA3EA400DDA8CA /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */; };
 		5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */; };
+		5D44C58119DA40FF00DDA8CA /* Questao.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C58019DA40FF00DDA8CA /* Questao.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,10 +88,10 @@
 		5D44C56519DA3D0900DDA8CA /* QZXLSReader-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "QZXLSReader-Info.plist"; sourceTree = "<group>"; };
 		5D44C56619DA3D0900DDA8CA /* QZXLSReader-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QZXLSReader-Prefix.pch"; sourceTree = "<group>"; };
 		5D44C56719DA3D0900DDA8CA /* QZXLSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZXLSReader.h; sourceTree = "<group>"; };
-		5D44C57619DA3DF300DDA8CA /* Utilidades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilidades.h; sourceTree = "<group>"; };
-		5D44C57719DA3DF300DDA8CA /* Utilidades.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilidades.m; sourceTree = "<group>"; };
 		5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
 		5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImportITIL.xls; sourceTree = "<group>"; };
+		5D44C57F19DA40FF00DDA8CA /* Questao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questao.h; sourceTree = "<group>"; };
+		5D44C58019DA40FF00DDA8CA /* Questao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questao.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 		5D44C50C19DA1F6000DDA8CA /* Simulado PMP */ = {
 			isa = PBXGroup;
 			children = (
-				5D44C57319DA3D8800DDA8CA /* Util */,
+				5D44C57E19DA40DE00DDA8CA /* Entidades */,
 				5D44C53719DA2F9800DDA8CA /* Views */,
 				5D44C53619DA2F9300DDA8CA /* Imagens */,
 				5D44C51119DA1F6000DDA8CA /* AppDelegate.h */,
@@ -262,21 +262,21 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		5D44C57319DA3D8800DDA8CA /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				5D44C57619DA3DF300DDA8CA /* Utilidades.h */,
-				5D44C57719DA3DF300DDA8CA /* Utilidades.m */,
-			);
-			name = Util;
-			sourceTree = "<group>";
-		};
 		5D44C57B19DA3EC900DDA8CA /* Externos */ = {
 			isa = PBXGroup;
 			children = (
 				5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */,
 			);
 			name = Externos;
+			sourceTree = "<group>";
+		};
+		5D44C57E19DA40DE00DDA8CA /* Entidades */ = {
+			isa = PBXGroup;
+			children = (
+				5D44C57F19DA40FF00DDA8CA /* Questao.h */,
+				5D44C58019DA40FF00DDA8CA /* Questao.m */,
+			);
+			name = Entidades;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,13 +389,13 @@
 				5D44C51619DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld in Sources */,
 				5D44C54019DA31B500DDA8CA /* TiposQuestoesViewController.m in Sources */,
 				5D44C51319DA1F6000DDA8CA /* AppDelegate.m in Sources */,
+				5D44C58119DA40FF00DDA8CA /* Questao.m in Sources */,
 				5D44C51019DA1F6000DDA8CA /* main.m in Sources */,
 				5D44C56C19DA3D0900DDA8CA /* xls.c in Sources */,
 				5D44C53A19DA2FB500DDA8CA /* MenuViewController.m in Sources */,
 				5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */,
 				5D44C56B19DA3D0900DDA8CA /* ole.c in Sources */,
 				5D44C54319DA321600DDA8CA /* ResumoQuestoesTableViewController.m in Sources */,
-				5D44C57819DA3DF300DDA8CA /* Utilidades.m in Sources */,
 				5D44C56919DA3D0900DDA8CA /* XlsReader.cpp in Sources */,
 				5D44C57119DA3D0900DDA8CA /* QZWorkSheet.m in Sources */,
 			);
