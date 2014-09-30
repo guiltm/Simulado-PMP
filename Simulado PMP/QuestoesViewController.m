@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //testes
     int a = [self.listaQuestoes count];
     NSDictionary* dic = [self questaoSelecionada];
 }
