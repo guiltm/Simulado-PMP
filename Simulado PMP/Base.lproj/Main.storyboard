@@ -192,12 +192,136 @@
                         <viewControllerLayoutGuide type="bottom" id="bXe-Lh-sZS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Y1v-P4-APG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1h3-i5-1Aa">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VD-mT-jgP">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="8" y="15" width="370" height="124"/>
+                                        </variation>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item A" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaU-7S-jPh">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="16" y="147" width="362" height="75"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item B" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAx-ve-GFe">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="16" y="230" width="362" height="75"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item C" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mja-hg-v7W">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="16" y="313" width="362" height="75"/>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item D" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d2-gR-UpH">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="16" y="396" width="362" height="75"/>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOb-80-whg">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="btmA">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="19" y="162" width="362" height="46"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btmAClick:" destination="0VM-rZ-se2" eventType="touchUpInside" id="P5s-6E-U6P"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrV-De-sou">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="btmB">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="19" y="244" width="362" height="46"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btmBClick:" destination="0VM-rZ-se2" eventType="touchUpInside" id="xCy-7v-JuZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFE-mM-dLB">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="btmC">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="19" y="328" width="362" height="46"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btmCClick:" destination="0VM-rZ-se2" eventType="touchUpInside" id="Hly-sU-u5V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO3-jg-Ble">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="btmD">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="19" y="411" width="362" height="46"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="btmDClick:" destination="0VM-rZ-se2" eventType="touchUpInside" id="2nq-gR-cQP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="1VD-mT-jgP"/>
+                                        <exclude reference="TaU-7S-jPh"/>
+                                        <exclude reference="XAx-ve-GFe"/>
+                                        <exclude reference="mja-hg-v7W"/>
+                                        <exclude reference="8d2-gR-UpH"/>
+                                        <exclude reference="TOb-80-whg"/>
+                                        <exclude reference="UrV-De-sou"/>
+                                        <exclude reference="FFE-mM-dLB"/>
+                                        <exclude reference="mO3-jg-Ble"/>
+                                    </mask>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="64" width="400" height="487"/>
+                                    <mask key="subviews">
+                                        <include reference="1VD-mT-jgP"/>
+                                        <include reference="TaU-7S-jPh"/>
+                                        <include reference="XAx-ve-GFe"/>
+                                        <include reference="mja-hg-v7W"/>
+                                        <include reference="8d2-gR-UpH"/>
+                                        <include reference="TOb-80-whg"/>
+                                        <include reference="UrV-De-sou"/>
+                                        <include reference="FFE-mM-dLB"/>
+                                        <include reference="mO3-jg-Ble"/>
+                                    </mask>
                                 </variation>
                             </scrollView>
                         </subviews>
@@ -214,6 +338,17 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Questões" id="1gO-BJ-rOQ"/>
+                    <connections>
+                        <outlet property="btmA" destination="TOb-80-whg" id="qex-dp-lrw"/>
+                        <outlet property="btmB" destination="UrV-De-sou" id="T0G-Yl-cbo"/>
+                        <outlet property="btmC" destination="FFE-mM-dLB" id="qnS-6i-6y7"/>
+                        <outlet property="btmD" destination="mO3-jg-Ble" id="zaa-7I-awp"/>
+                        <outlet property="lblItemA" destination="TaU-7S-jPh" id="cgg-4C-KDb"/>
+                        <outlet property="lblItemB" destination="XAx-ve-GFe" id="040-hf-gKk"/>
+                        <outlet property="lblItemC" destination="mja-hg-v7W" id="Lph-FI-w9p"/>
+                        <outlet property="lblItemD" destination="8d2-gR-UpH" id="SFM-Jz-mEU"/>
+                        <outlet property="txtConteudo" destination="1VD-mT-jgP" id="gfx-la-gsR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdo-ru-Omk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

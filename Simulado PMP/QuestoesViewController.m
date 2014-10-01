@@ -19,8 +19,18 @@
     // Do any additional setup after loading the view.
     
     //testes
-    int a = [self.listaQuestoes count];
-    NSDictionary* dic = [self questaoSelecionada];
+    [[self txtConteudo]sizeToFit];
+    
+    [self carregarValores];
+}
+
+- (void) carregarValores {
+    self.txtConteudo.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
+    self.lblItemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
+    self.lblItemB.text = [[self questaoSelecionada]objectForKey:@"ITEMB"];
+    self.lblItemC.text = [[self questaoSelecionada]objectForKey:@"ITEMC"];
+    self.lblItemD.text = [[self questaoSelecionada]objectForKey:@"ITEMD"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,4 +49,48 @@
 }
 
 
+- (IBAction)btmAClick:(id)sender {
+    if(![[self marcarCorreto] isEqualToString:@"a"]){
+        self.lblItemA.textColor = [UIColor redColor];
+    }
+}
+
+- (IBAction)btmBClick:(id)sender {
+    if(![[self marcarCorreto] isEqualToString:@"b"]){
+        self.lblItemB.textColor = [UIColor redColor];
+    }
+}
+- (IBAction)btmCClick:(id)sender {
+    if(![[self marcarCorreto] isEqualToString:@"c"]){
+        self.lblItemC.textColor = [UIColor redColor];
+    }
+}
+
+- (IBAction)btmDClick:(id)sender {
+    if(![[self marcarCorreto] isEqualToString:@"d"]){
+        self.lblItemD.textColor = [UIColor redColor];
+    }
+}
+
+- (NSString*)marcarCorreto{ // marca a opcao correta
+    NSString*correto = [[self questaoSelecionada]objectForKey:@"CORRETO"];
+    if([correto  isEqualToString: @"a"]){
+        self.lblItemA.textColor = [UIColor greenColor];
+    }else if([correto isEqualToString:@"b"]){
+        self.lblItemB.textColor = [UIColor greenColor];
+    }else if([correto isEqualToString:@"c"]){
+        self.lblItemC.textColor = [UIColor greenColor];
+    }else if([correto isEqualToString:@"d"]){
+        self.lblItemD.textColor = [UIColor greenColor];
+    }
+    [self desabilitar]; // desabilita os botoes
+    return correto;
+}
+
+- (void) desabilitar {
+    self.btmA.enabled = false;
+    self.btmB.enabled = false;
+    self.btmC.enabled = false;
+    self.btmD.enabled = false;
+}
 @end

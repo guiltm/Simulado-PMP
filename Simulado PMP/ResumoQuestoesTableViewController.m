@@ -8,6 +8,7 @@
 
 #import "ResumoQuestoesTableViewController.h"
 #import "QuestoesViewController.h"
+#import "Questao.h"
 
 @interface ResumoQuestoesTableViewController ()
 @end
@@ -28,38 +29,81 @@
 }
 
 - (void)carregarValores {
-    NSURL* url = [NSURL fileURLWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ImportITIL.xls"]];
-    QZWorkbook *excelReader = [[QZWorkbook alloc] initWithContentsOfXLS:url];
-    QZWorkSheet *firstWorkSheet = excelReader.workSheets.firstObject;
+    NSURL* url = [NSURL fileURLWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ImportITIL.xls"]]; // caminho do xls
+    QZWorkbook *excelReader = [[QZWorkbook alloc] initWithContentsOfXLS:url]; // pega o workbook
+    QZWorkSheet *firstWorkSheet = excelReader.workSheets.firstObject; // pega a primeira worksheet daquele workbook
     [firstWorkSheet open];
     
     //NSLog(@"%@",[firstWorkSheet rows]);
     struct QZLocation localizacao;
     NSMutableDictionary* dic;
+    
     //melhorar isso
-    NSMutableArray* numeros = [[NSMutableArray alloc]init];
+    NSMutableArray* numeros = [[NSMutableArray alloc]init]; // numeros que ja sairam
     
     for (int i=0; i<20; i++) {
     NSInteger numRandom = 1;
-    while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){ // 620 eh da questao 32 q ta bugada
+    while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){ // %20 pois questoes sao de 20/20 linhas,e testa se ja saiu
         numRandom = arc4random()%(firstWorkSheet.rows.count);
     }
         
     [numeros addObject:[NSNumber numberWithInteger:numRandom]];
     
-    localizacao.row = numRandom+1; // de 20 em 20
+    localizacao.row = numRandom+1; // de 20 em 20, começando na linha 1
     
     localizacao.column = 0; // coluna que fica o numero da questao
 
     NSString* numQuestao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue];
+        if([numQuestao isEqualToString:@"12"]){ // questao 12 nao tem item marcado como correto
+            int x = 2;
+        }
         if([numQuestao length] == 1){
             numQuestao = [@"0" stringByAppendingString:numQuestao]; // para ordenar certo
         }
+        
     localizacao.column = 2; // coluna que fica a descricao da questao
     NSString* descricao = [[firstWorkSheet cellAtPoint:localizacao]content];
         
-    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO", nil];
+        //prrenchendo valores
+        
+    NSString* correto;
+        
+        localizacao.row ++; // linha item A
+        localizacao.column=2;
+        if([[firstWorkSheet cellAtPoint:localizacao] content] != nil){correto = @"a";} // verifica o correto
+        localizacao.column=3; // coluna dos itens
+        
+    NSString* itemA = [[firstWorkSheet cellAtPoint:localizacao]content];
+        
+        localizacao.row+=2; // linha item B
+        if(correto==nil || [correto  isEqual:@""]){
+            localizacao.column=2;
+            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"b";} // verifica o correto
+            localizacao.column=3;
+        }
+    NSString* itemB = [[firstWorkSheet cellAtPoint:localizacao]content];
+        localizacao.row+=2; // linha item C
+        if(correto==nil || [correto isEqualToString:@""]){
+            localizacao.column=2;
+            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"c";} // verifica o correto
+            localizacao.column=3;
+        }
+        
+    NSString* itemC = [[firstWorkSheet cellAtPoint:localizacao]content];
+        localizacao.row+=2; // linha item D
+        if(correto==nil || [correto isEqualToString:@""]){
+            localizacao.column=2;
+            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"d";} // verifica o correto
+            localizacao.column=3;
+        }
+        
+    NSString* itemD = [[firstWorkSheet cellAtPoint:localizacao]content];
+ 
+            //
+        
+    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO", nil];
     [self.listaQuestoes addObject:dic];
+        
     }
     NSSortDescriptor* brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"NUMEROQUESTAO" ascending:YES]; // ordena pelo numero da questao
     NSArray* sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
@@ -151,6 +195,7 @@
         controler.questaoSelecionada = [self.listaQuestoes objectAtIndex:[self.tableView indexPathForCell:sender].row];
         controler.listaQuestoes = self.listaQuestoes;
     }
+
 }
 
 
