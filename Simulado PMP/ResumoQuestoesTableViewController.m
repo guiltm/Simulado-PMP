@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.listaQuestoes = [[NSMutableArray alloc]init];
+    //[self.tableView sizeToFit]; //para caber todas, tem q deixar lines para 0
     [self carregarValores];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

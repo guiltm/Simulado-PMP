@@ -18,8 +18,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //testes
-    [[self txtConteudo]sizeToFit];
     
     [self carregarValores];
 }
