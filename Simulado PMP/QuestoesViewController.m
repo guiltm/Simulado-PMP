@@ -26,6 +26,8 @@
 }
 
 -(void)organizarItens{
+    //
+    float sangria = 20.0f;
     // conteudo
     CGSize sizeContent = [self getSize:self.lblConteudo];
     self.lblConteudo.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
@@ -33,21 +35,21 @@
     
     //a
     CGSize sizeA = [self getSize:self.lblItemA];
-    self.lblItemA.frame = CGRectMake(self.lblItemA.frame.origin.x, self.lblConteudo.frame.origin.y + sizeContent.height+5, sizeA.width, sizeA.height);
+    self.lblItemA.frame = CGRectMake(self.lblItemA.frame.origin.x, self.lblConteudo.frame.origin.y + sizeContent.height + sangria, sizeA.width, sizeA.height);
     self.btmA.frame = self.lblItemA.frame;
     
     //b
     CGSize sizeB = [self getSize:self.lblItemB];
-    self.lblItemB.frame = CGRectMake(self.lblItemB.frame.origin.x, self.lblItemA.frame.origin.y + sizeA.height+5, sizeB.width, sizeB.height);
+    self.lblItemB.frame = CGRectMake(self.lblItemB.frame.origin.x, self.lblItemA.frame.origin.y + sizeA.height + sangria, sizeB.width, sizeB.height);
     self.btmB.frame = self.lblItemB.frame;
     //c
     CGSize sizeC = [self getSize:self.lblItemC];
-    self.lblItemC.frame = CGRectMake(self.lblItemC.frame.origin.x, self.lblItemB.frame.origin.y + sizeB.height+5, sizeC.width, sizeC.height);
+    self.lblItemC.frame = CGRectMake(self.lblItemC.frame.origin.x, self.lblItemB.frame.origin.y + sizeB.height + sangria, sizeC.width, sizeC.height);
     self.btmC.frame = self.lblItemC.frame;
     
     //d
     CGSize sizeD = [self getSize:self.lblItemD];
-    self.lblItemD.frame = CGRectMake(self.lblItemD.frame.origin.x, self.lblItemC.frame.origin.y + sizeC.height+5, sizeD.width, sizeD.height);
+    self.lblItemD.frame = CGRectMake(self.lblItemD.frame.origin.x, self.lblItemC.frame.origin.y + sizeC.height + sangria, sizeD.width, sizeD.height);
     self.btmD.frame = self.lblItemD.frame;
     
 }

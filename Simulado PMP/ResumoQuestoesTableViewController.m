@@ -100,7 +100,15 @@
         
     NSString* itemD = [[firstWorkSheet cellAtPoint:localizacao]content];
  
-            //
+        // para tirar quebra de linha, ta atrapalhando na visualização
+        
+        descricao = [descricao stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        itemA = [itemA stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        itemB = [itemB stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        itemC = [itemC stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        itemD = [itemD stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        
+        //
         
     dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO", nil];
     [self.listaQuestoes addObject:dic];
