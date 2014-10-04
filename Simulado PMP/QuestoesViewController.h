@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuestoesViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UITextView *txtConteudo;
+@interface QuestoesViewController : UIViewController{
+    IBOutlet UIScrollView* scroller;
+}
+@property (strong, nonatomic) IBOutlet UILabel *lblConteudo;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemA;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemB;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemC;
@@ -19,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *btmB;
 @property (strong, nonatomic) IBOutlet UIButton *btmC;
 @property (strong, nonatomic) IBOutlet UIButton *btmD;
+
 
 - (IBAction)btmAClick:(id)sender;
 

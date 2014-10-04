@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Simulado PMP/ResumoQuestoesTableViewController.m"
-            timestampString = "433907281.031013"
+            timestampString = "434091576.244058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "@implementation ResumoQuestoesTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Simulado PMP/ResumoQuestoesTableViewController.m"
-            timestampString = "433907281.031013"
+            filePath = "Simulado PMP/QuestoesViewController.m"
+            timestampString = "434100825.569655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-carregarValores"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-organizarItens"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

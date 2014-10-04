@@ -14,16 +14,67 @@
 
 @implementation QuestoesViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+    [scroller setScrollEnabled:YES];
+    [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     
     [self carregarValores];
+    [self organizarItens];
+    
 }
 
+-(void)organizarItens{
+    // conteudo
+    CGSize sizeContent = [self getSize:self.lblConteudo];
+    self.lblConteudo.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
+    self.btmA.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
+    
+    //a
+    CGSize sizeA = [self getSize:self.lblItemA];
+    self.lblItemA.frame = CGRectMake(self.lblItemA.frame.origin.x, self.lblConteudo.frame.origin.y + sizeContent.height+5, sizeA.width, sizeA.height);
+    self.btmA.frame = self.lblItemA.frame;
+    
+    //b
+    CGSize sizeB = [self getSize:self.lblItemB];
+    self.lblItemB.frame = CGRectMake(self.lblItemB.frame.origin.x, self.lblItemA.frame.origin.y + sizeA.height+5, sizeB.width, sizeB.height);
+    self.btmB.frame = self.lblItemB.frame;
+    //c
+    CGSize sizeC = [self getSize:self.lblItemC];
+    self.lblItemC.frame = CGRectMake(self.lblItemC.frame.origin.x, self.lblItemB.frame.origin.y + sizeB.height+5, sizeC.width, sizeC.height);
+    self.btmC.frame = self.lblItemC.frame;
+    
+    //d
+    CGSize sizeD = [self getSize:self.lblItemD];
+    self.lblItemD.frame = CGRectMake(self.lblItemD.frame.origin.x, self.lblItemC.frame.origin.y + sizeC.height+5, sizeD.width, sizeD.height);
+    self.btmD.frame = self.lblItemD.frame;
+    
+}
+
+-(CGSize)getSize:(id)sender{
+    
+    UILabel* umLabel = sender;
+    NSDictionary *attributesDictionary;
+    if(umLabel.tag == 1){ // Conteudo da descricao da questao que possui boldSystemFontOfSize para diferenciar
+        attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                              [UIFont boldSystemFontOfSize:umLabel.font.pointSize], NSFontAttributeName,
+                                              nil];
+    }else{
+        attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          [UIFont systemFontOfSize:umLabel.font.pointSize], NSFontAttributeName,
+                                          nil];
+    }
+    
+    CGRect frame = [umLabel.text boundingRectWithSize:CGSizeMake(umLabel.frame.size.width, MAXFLOAT)
+                                            options:NSStringDrawingUsesLineFragmentOrigin
+                                         attributes:attributesDictionary
+                                            context:nil];
+    
+    return frame.size;
+}
 - (void) carregarValores {
-    self.txtConteudo.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
+    self.lblConteudo.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
     self.lblItemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
     self.lblItemB.text = [[self questaoSelecionada]objectForKey:@"ITEMB"];
     self.lblItemC.text = [[self questaoSelecionada]objectForKey:@"ITEMC"];
