@@ -55,9 +55,7 @@
     localizacao.column = 0; // coluna que fica o numero da questao
 
     NSString* numQuestao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue];
-        if([numQuestao isEqualToString:@"12"]){ // questao 12 nao tem item marcado como correto
-            int x = 2;
-        }
+        
         if([numQuestao length] == 1){
             numQuestao = [@"0" stringByAppendingString:numQuestao]; // para ordenar certo
         }

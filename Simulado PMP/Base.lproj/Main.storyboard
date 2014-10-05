@@ -4,28 +4,27 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="Fk5-79-dba">
             <objects>
-                <navigationController toolbarHidden="NO" hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="nCh-Ci-xoq" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QrS-uh-cho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="nCh-Ci-xoq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="P4x-kj-f3B"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9IA-Hb-D8t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="KfA-KQ-ZMu">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="iQH-Wb-2io" kind="relationship" relationship="rootViewController" id="jWd-th-nTu"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QrS-uh-cho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="194.66666666666666" y="-209.21333333333334"/>
         </scene>
         <!--Gestão e Capacitação-->
         <scene sceneID="m52-nf-yoN">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1G-in-0I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="iQH-Wb-2io" customClass="MenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i10-8G-99T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -45,15 +44,15 @@
                         <color key="backgroundColor" red="0.81568627450980391" green="0.83921568627450982" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Gestão e Capacitação" id="54h-Pm-LX2"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h1G-in-0I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589.60000000000002" y="-209.21333333333334"/>
         </scene>
         <!--Tipos Questoes-->
         <scene sceneID="xC5-52-EWi">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVV-YZ-wgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="pGu-cl-ri4" customClass="TiposQuestoesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtq-dh-BnT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -74,7 +73,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tipos Questoes" id="nAG-Ro-6Q0"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NVV-YZ-wgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="-209.21333333333334"/>
         </scene>
@@ -139,6 +137,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descricao" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bf8-v3-Vja">
+                                        <rect key="frame" x="24" y="8" width="270" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLZ-Wd-pfr">
                                         <rect key="frame" x="24" y="62" width="270" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -182,13 +187,6 @@
                                             <action selector="btmCClick:" destination="2Pb-36-sgF" eventType="touchUpInside" id="wFG-ad-jHr"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mFW-Cb-g08">
-                                        <rect key="frame" x="24" y="33" width="270" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DcB-FD-zhu">
                                         <rect key="frame" x="24" y="263" width="270" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -211,10 +209,10 @@
                                             <action selector="btmBClick:" destination="2Pb-36-sgF" eventType="touchUpInside" id="Hbm-ex-OHX"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descricao" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bf8-v3-Vja">
-                                        <rect key="frame" x="24" y="8" width="270" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mFW-Cb-g08">
+                                        <rect key="frame" x="24" y="33" width="270" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -223,7 +221,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Questões" id="M5G-V6-bOV"/>
                     <connections>
                         <outlet property="btmA" destination="x9f-4B-jN6" id="Pux-9A-OWZ"/>
@@ -240,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awx-mg-hDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1759" y="-204"/>
+            <point key="canvasLocation" x="1764" y="-210"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
