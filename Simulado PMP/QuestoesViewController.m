@@ -22,8 +22,58 @@
     
     [self carregarValores];
     [self organizarItens];
+    [self setarTempo:@"50"]; // esse valor sera passado de uma tela anterior]
     
 }
+
+-(void)setarTempo:(NSString*)tempo{
+    if([tempo isEqualToString:@"50"]){ // 1 hora
+        horas = 0;
+    }else if([tempo isEqualToString:@"100"]){ // 2 horas
+        horas = 1;
+    }else if([tempo isEqualToString:@"200"]){ // 4 horas
+        horas = 3;
+    }
+    minutos = 0; // 59
+    segundos = 10; // 60
+    [self startTime];
+}
+
+-(void)startTime {
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+}
+
+-(void)countDown { // fazer ainda alguns testes
+    if(segundos > 0){
+        segundos--;
+    }else if(minutos > 0 ){
+        minutos --;
+        segundos = 59;
+    }else if(horas > 0){
+        horas--;
+        minutos=59;
+        segundos=59;
+    }else{
+        [timer invalidate]; // para tudo!
+        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"ACABOOOU!" message:@"Acabou o tempo patito!" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"OK", nil];
+        [alert show];// tomar alguma ação
+    }
+    if(horas == 0 && minutos < 10){
+        self.cronometro.textColor = [UIColor redColor];
+    }
+    
+    // formatando
+    
+    NSString*h = [NSString stringWithFormat:@"%d",horas];
+    if(h.length==1) h = [@"0" stringByAppendingString:h];
+    NSString*m = [NSString stringWithFormat:@"%d",minutos];
+    if(m.length==1) m = [@"0" stringByAppendingString:m];
+    NSString*s = [NSString stringWithFormat:@"%d",segundos];
+    if(s.length==1) s = [@"0" stringByAppendingString:s];
+    
+    self.cronometro.text = [NSString stringWithFormat:@"%@:%@:%@" ,h ,m ,s];
+}
+
 
 -(void)organizarItens{
     //
@@ -31,7 +81,7 @@
     // conteudo
     CGSize sizeContent = [self getSize:self.lblConteudo];
     self.lblConteudo.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
-    self.btmA.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
+    //self.btmA.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
     
     //a
     CGSize sizeA = [self getSize:self.lblItemA];

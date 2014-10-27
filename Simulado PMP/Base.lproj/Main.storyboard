@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nCh-Ci-xoq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="nCh-Ci-xoq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Item-->
         <scene sceneID="Fk5-79-dba">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QrS-uh-cho" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="nCh-Ci-xoq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="P4x-kj-f3B"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9IA-Hb-D8t">
@@ -18,13 +17,13 @@
                         <segue destination="iQH-Wb-2io" kind="relationship" relationship="rootViewController" id="jWd-th-nTu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QrS-uh-cho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="194.66666666666666" y="-209.21333333333334"/>
         </scene>
         <!--Gestão e Capacitação-->
         <scene sceneID="m52-nf-yoN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h1G-in-0I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="iQH-Wb-2io" customClass="MenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i10-8G-99T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -46,13 +45,13 @@
                     <navigationItem key="navigationItem" title="Gestão e Capacitação" id="54h-Pm-LX2"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h1G-in-0I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589.60000000000002" y="-209.21333333333334"/>
         </scene>
         <!--Tipos Questoes-->
         <scene sceneID="xC5-52-EWi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NVV-YZ-wgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="pGu-cl-ri4" customClass="TiposQuestoesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtq-dh-BnT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -73,6 +72,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tipos Questoes" id="nAG-Ro-6Q0"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVV-YZ-wgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="-209.21333333333334"/>
         </scene>
@@ -216,6 +216,13 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Timer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2DT-zl-hUW">
+                                        <rect key="frame" x="77" y="407" width="148" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -228,6 +235,7 @@
                         <outlet property="btmB" destination="4YR-Og-yhr" id="4Zc-YL-8vO"/>
                         <outlet property="btmC" destination="KS2-70-6c5" id="asT-Dp-lWD"/>
                         <outlet property="btmD" destination="DcB-FD-zhu" id="ORz-Ce-j2R"/>
+                        <outlet property="cronometro" destination="2DT-zl-hUW" id="9r5-nR-zTt"/>
                         <outlet property="lblConteudo" destination="Bf8-v3-Vja" id="64B-3m-Ba2"/>
                         <outlet property="lblItemA" destination="mFW-Cb-g08" id="evr-97-ghQ"/>
                         <outlet property="lblItemB" destination="zLZ-Wd-pfr" id="B63-1f-La3"/>

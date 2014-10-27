@@ -10,12 +10,17 @@
 
 @interface QuestoesViewController : UIViewController{
     IBOutlet UIScrollView* scroller;
+    NSTimer* timer;
+    int horas;
+    int minutos;
+    int segundos;
 }
 @property (strong, nonatomic) IBOutlet UILabel *lblConteudo;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemA;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemB;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemC;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemD;
+@property (strong, nonatomic) IBOutlet UILabel *cronometro;
 
 @property (strong, nonatomic) IBOutlet UIButton *btmA;
 @property (strong, nonatomic) IBOutlet UIButton *btmB;
@@ -31,7 +36,7 @@
 
 - (IBAction)btmDClick:(id)sender;
 
-@property (strong,nonatomic)NSMutableArray* listaQuestoes;
-@property (strong,nonatomic)NSDictionary* questaoSelecionada;
+@property (strong,nonatomic)NSMutableArray* listaQuestoes; // todas questoes
+@property (strong,nonatomic)NSDictionary* questaoSelecionada; // questao selecionada
 
 @end

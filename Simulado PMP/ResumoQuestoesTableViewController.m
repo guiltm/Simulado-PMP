@@ -42,7 +42,7 @@
     //melhorar isso
     NSMutableArray* numeros = [[NSMutableArray alloc]init]; // numeros que ja sairam
     
-    for (int i=0; i<20; i++) {
+    for (int i=0; i<20; i++) { // apenas 20 questões
     NSInteger numRandom = 1;
     while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){ // %20 pois questoes sao de 20/20 linhas,e testa se ja saiu
         numRandom = arc4random()%(firstWorkSheet.rows.count);
