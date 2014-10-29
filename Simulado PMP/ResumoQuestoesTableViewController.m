@@ -105,16 +105,22 @@
         itemB = [itemB stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         itemC = [itemC stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         itemD = [itemD stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        
+        NSString*index = [[NSString alloc]init]; // ver se isso eh realmente preciso
         //
         
-    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO", nil];
+    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",index,@"INDEX", nil];
     [self.listaQuestoes addObject:dic];
         
     }
     NSSortDescriptor* brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"NUMEROQUESTAO" ascending:YES]; // ordena pelo numero da questao
     NSArray* sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
     self.listaQuestoes = [self.listaQuestoes sortedArrayUsingDescriptors:sortDescriptors];
+    
+    // nao se se isso e preciso, ver isso DEPOIS !!! **************************
+    for (int i=0; i<self.listaQuestoes.count; i++) {
+        NSString*index = [[NSString alloc]initWithFormat:@"%d",i+1];
+        [[[self listaQuestoes]objectAtIndex:i]setValue:index forKey:@"INDEX"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

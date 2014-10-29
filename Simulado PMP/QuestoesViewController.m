@@ -17,11 +17,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [scroller setScrollEnabled:YES];
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    [scroller setScrollEnabled:YES];
     
     [self carregarValores];
     [self organizarItens];
+    if(![timer isValid])
     [self setarTempo:@"50"]; // esse valor sera passado de uma tela anterior]
     
 }
@@ -34,13 +35,13 @@
     }else if([tempo isEqualToString:@"200"]){ // 4 horas
         horas = 3;
     }
-    minutos = 0; // 59
-    segundos = 10; // 60
+    minutos = 0; // 59 (Alterar depois dos testes)
+    segundos = 30; // 60
     [self startTime];
 }
 
 -(void)startTime {
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES]; // tick
 }
 
 -(void)countDown { // fazer ainda alguns testes
@@ -56,7 +57,8 @@
     }else{
         [timer invalidate]; // para tudo!
         UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"ACABOOOU!" message:@"Acabou o tempo patito!" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"OK", nil];
-        [alert show];// tomar alguma ação
+        [self desabilitar];
+        [alert show];// tomar alguma ação quando acabar!
     }
     if(horas == 0 && minutos < 10){
         self.cronometro.textColor = [UIColor redColor];
@@ -74,14 +76,12 @@
     self.cronometro.text = [NSString stringWithFormat:@"%@:%@:%@" ,h ,m ,s];
 }
 
-
 -(void)organizarItens{
     //
     float sangria = 20.0f;
     // conteudo
     CGSize sizeContent = [self getSize:self.lblConteudo];
     self.lblConteudo.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
-    //self.btmA.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
     
     //a
     CGSize sizeA = [self getSize:self.lblItemA];
@@ -101,6 +101,11 @@
     CGSize sizeD = [self getSize:self.lblItemD];
     self.lblItemD.frame = CGRectMake(self.lblItemD.frame.origin.x, self.lblItemC.frame.origin.y + sizeC.height + sangria, sizeD.width, sizeD.height);
     self.btmD.frame = self.lblItemD.frame;
+    
+    
+    
+    // temporario, tirar isso daqui depois
+    //self.cronometro.frame = CGRectMake(self.cronometro.frame.origin.x, self.lblItemD.frame.origin.y + sizeD.height + sangria, self.cronometro.frame.size.width, self.cronometro.frame.size.height);
     
 }
 
@@ -125,7 +130,11 @@
     
     return frame.size;
 }
+
 - (void) carregarValores {
+    // nao sei se isso e preciso
+    self.indiceQuestoes.text = [NSString stringWithFormat:@"%@/%lu",[[self questaoSelecionada]objectForKey:@"INDEX"],(unsigned long)self.listaQuestoes.count];
+    
     self.lblConteudo.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
     self.lblItemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
     self.lblItemB.text = [[self questaoSelecionada]objectForKey:@"ITEMB"];
@@ -161,6 +170,7 @@
         self.lblItemB.textColor = [UIColor redColor];
     }
 }
+
 - (IBAction)btmCClick:(id)sender {
     if(![[self marcarCorreto] isEqualToString:@"c"]){
         self.lblItemC.textColor = [UIColor redColor];
@@ -170,6 +180,23 @@
 - (IBAction)btmDClick:(id)sender {
     if(![[self marcarCorreto] isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor redColor];
+    }
+}
+
+- (IBAction)proximo:(id)sender {
+    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
+    if(index < [[self listaQuestoes] count]){
+    self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo, pois a order comeca com um a mais no listaquestoes devido ao uso do 0
+    [self viewDidLoad];
+    }
+}
+
+- (IBAction)anterior:(id)sender {
+    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
+    index = index-2;
+    if(index < [[self listaQuestoes] count]){
+        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
+        [self viewDidLoad];
     }
 }
 
