@@ -102,11 +102,6 @@
     self.lblItemD.frame = CGRectMake(self.lblItemD.frame.origin.x, self.lblItemC.frame.origin.y + sizeC.height + sangria, sizeD.width, sizeD.height);
     self.btmD.frame = self.lblItemD.frame;
     
-    
-    
-    // temporario, tirar isso daqui depois
-    //self.cronometro.frame = CGRectMake(self.cronometro.frame.origin.x, self.lblItemD.frame.origin.y + sizeD.height + sangria, self.cronometro.frame.size.width, self.cronometro.frame.size.height);
-    
 }
 
 -(CGSize)getSize:(id)sender{
@@ -133,7 +128,8 @@
 
 - (void) carregarValores {
     // nao sei se isso e preciso
-    self.indiceQuestoes.text = [NSString stringWithFormat:@"%@/%lu",[[self questaoSelecionada]objectForKey:@"INDEX"],(unsigned long)self.listaQuestoes.count];
+    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]longLongValue];
+    self.indiceQuestoes.text = [NSString stringWithFormat:@"%ld/%lu",++index,(unsigned long)self.listaQuestoes.count];
     
     self.lblConteudo.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
     self.lblItemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
@@ -185,17 +181,17 @@
 
 - (IBAction)proximo:(id)sender {
     long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
+    index++;
     if(index < [[self listaQuestoes] count]){
-    self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo, pois a order comeca com um a mais no listaquestoes devido ao uso do 0
-    [self viewDidLoad];
+        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo
+        [self viewDidLoad];
     }
 }
 
 - (IBAction)anterior:(id)sender {
     long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
-    index = index-2;
-    if(index < [[self listaQuestoes] count]){
-        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
+    if(index > 0){
+        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
         [self viewDidLoad];
     }
 }

@@ -8,7 +8,6 @@
 
 #import "ResumoQuestoesTableViewController.h"
 #import "QuestoesViewController.h"
-#import "Questao.h"
 
 @interface ResumoQuestoesTableViewController ()
 @end
@@ -61,7 +60,7 @@
         }
         
     localizacao.column = 2; // coluna que fica a descricao da questao
-    NSString* descricao = [[firstWorkSheet cellAtPoint:localizacao]content];
+    NSString* descricao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         
         //prrenchendo valores
         
@@ -72,7 +71,7 @@
         if([[firstWorkSheet cellAtPoint:localizacao] content] != nil){correto = @"a";} // verifica o correto
         localizacao.column=3; // coluna dos itens
         
-    NSString* itemA = [[firstWorkSheet cellAtPoint:localizacao]content];
+    NSString* itemA = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];//tirar quebra linha
         
         localizacao.row+=2; // linha item B
         if(correto==nil || [correto  isEqual:@""]){
@@ -80,7 +79,7 @@
             if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"b";} // verifica o correto
             localizacao.column=3;
         }
-    NSString* itemB = [[firstWorkSheet cellAtPoint:localizacao]content];
+    NSString* itemB = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         localizacao.row+=2; // linha item C
         if(correto==nil || [correto isEqualToString:@""]){
             localizacao.column=2;
@@ -88,7 +87,7 @@
             localizacao.column=3;
         }
         
-    NSString* itemC = [[firstWorkSheet cellAtPoint:localizacao]content];
+    NSString* itemC = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         localizacao.row+=2; // linha item D
         if(correto==nil || [correto isEqualToString:@""]){
             localizacao.column=2;
@@ -96,16 +95,9 @@
             localizacao.column=3;
         }
         
-    NSString* itemD = [[firstWorkSheet cellAtPoint:localizacao]content];
+    NSString* itemD = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
  
-        // para tirar quebra de linha, ta atrapalhando na visualização
-        
-        descricao = [descricao stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        itemA = [itemA stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        itemB = [itemB stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        itemC = [itemC stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        itemD = [itemD stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        NSString*index = [[NSString alloc]init]; // ver se isso eh realmente preciso
+    NSString*index = [[NSString alloc]init]; // ver se isso eh realmente preciso
         //
         
     dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",index,@"INDEX", nil];
@@ -118,8 +110,8 @@
     
     // nao se se isso e preciso, ver isso DEPOIS !!! **************************
     for (int i=0; i<self.listaQuestoes.count; i++) {
-        NSString*index = [[NSString alloc]initWithFormat:@"%d",i+1];
-        [[[self listaQuestoes]objectAtIndex:i]setValue:index forKey:@"INDEX"];
+        NSString*index = [[NSString alloc]initWithFormat:@"%d",i];
+        [[[self listaQuestoes]objectAtIndex:i]setValue:index forKey:@"INDEX"]; 
     }
 }
 
