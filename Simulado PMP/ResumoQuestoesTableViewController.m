@@ -86,7 +86,6 @@
             if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"c";} // verifica o correto
             localizacao.column=3;
         }
-        
     NSString* itemC = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         localizacao.row+=2; // linha item D
         if(correto==nil || [correto isEqualToString:@""]){
@@ -96,11 +95,13 @@
         }
         
     NSString* itemD = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
- 
-    NSString*index = [[NSString alloc]init]; // ver se isso eh realmente preciso
+        
+    NSString*index = @""; // ver se isso eh realmente preciso
+    NSString*respondido=@"";
+
         //
         
-    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",index,@"INDEX", nil];
+    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",respondido,@"RESPONDIDO",index,@"INDEX", nil];
     [self.listaQuestoes addObject:dic];
         
     }
@@ -111,7 +112,7 @@
     // nao se se isso e preciso, ver isso DEPOIS !!! **************************
     for (int i=0; i<self.listaQuestoes.count; i++) {
         NSString*index = [[NSString alloc]initWithFormat:@"%d",i];
-        [[[self listaQuestoes]objectAtIndex:i]setValue:index forKey:@"INDEX"]; 
+        [[[self listaQuestoes]objectAtIndex:i]setValue:index forKey:@"INDEX"];
     }
 }
 

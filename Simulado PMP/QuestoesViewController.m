@@ -19,12 +19,25 @@
     [super viewDidLoad];
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
+    [self carregarInfoIniciais];
+}
+
+-(void)carregarInfoIniciais{
+    /*for (int i=0; i<self.listaQuestoes.count; i++) {
+        if([[[[self listaQuestoes]objectAtIndex:i]valueForKey:@"CORRETO"]isEqualToString:[[[self listaQuestoes]objectAtIndex:i]valueForKey:@"RESPONDIDO"]]){
+            NSLog(@"certo vetim");
+        }
+    }*/
+    
+    if([[[self questaoSelecionada]objectForKey:@"RESPONDIDO"]isEqualToString:@""])
+        [self habilitar];
+    else
+        [self desabilitar];
     
     [self carregarValores];
     [self organizarItens];
     if(![timer isValid])
     [self setarTempo:@"50"]; // esse valor sera passado de uma tela anterior]
-    
 }
 
 -(void)setarTempo:(NSString*)tempo{
@@ -118,7 +131,7 @@
                                           nil];
     }
     
-    CGRect frame = [umLabel.text boundingRectWithSize:CGSizeMake(umLabel.frame.size.width, MAXFLOAT)
+    CGRect frame = [umLabel.text boundingRectWithSize:CGSizeMake(270, MAXFLOAT)//umLabel.frame.size.width
                                             options:NSStringDrawingUsesLineFragmentOrigin
                                          attributes:attributesDictionary
                                             context:nil];
@@ -156,24 +169,28 @@
 
 
 - (IBAction)btmAClick:(id)sender {
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"a" forKey:@"RESPONDIDO"];
     if(![[self marcarCorreto] isEqualToString:@"a"]){
         self.lblItemA.textColor = [UIColor redColor];
     }
 }
 
 - (IBAction)btmBClick:(id)sender {
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"b" forKey:@"RESPONDIDO"];
     if(![[self marcarCorreto] isEqualToString:@"b"]){
         self.lblItemB.textColor = [UIColor redColor];
     }
 }
 
 - (IBAction)btmCClick:(id)sender {
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"c" forKey:@"RESPONDIDO"];
     if(![[self marcarCorreto] isEqualToString:@"c"]){
         self.lblItemC.textColor = [UIColor redColor];
     }
 }
 
 - (IBAction)btmDClick:(id)sender {
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"d" forKey:@"RESPONDIDO"];
     if(![[self marcarCorreto] isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor redColor];
     }
@@ -184,7 +201,7 @@
     index++;
     if(index < [[self listaQuestoes] count]){
         self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo
-        [self viewDidLoad];
+        [self carregarInfoIniciais];
     }
 }
 
@@ -192,7 +209,7 @@
     long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
     if(index > 0){
         self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
-        [self viewDidLoad];
+        [self carregarInfoIniciais];
     }
 }
 
@@ -216,5 +233,12 @@
     self.btmB.enabled = false;
     self.btmC.enabled = false;
     self.btmD.enabled = false;
+}
+
+- (void) habilitar {
+    self.btmA.enabled = true;
+    self.btmB.enabled = true;
+    self.btmC.enabled = true;
+    self.btmD.enabled = true;
 }
 @end
