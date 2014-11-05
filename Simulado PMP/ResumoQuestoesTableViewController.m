@@ -101,7 +101,7 @@
 
         //
         
-    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",respondido,@"RESPONDIDO",index,@"INDEX", nil];
+    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",respondido,@"RESPONDIDO", nil];
     [self.listaQuestoes addObject:dic];
         
     }
@@ -195,9 +195,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"QUESTOES"]){
+
         QuestoesViewController* controler = [segue destinationViewController];
         controler.questaoSelecionada = [self.listaQuestoes objectAtIndex:[self.tableView indexPathForCell:sender].row];
         controler.listaQuestoes = self.listaQuestoes;
+        
     }
 
 }

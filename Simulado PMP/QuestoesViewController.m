@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
     [self carregarInfoIniciais];
@@ -166,7 +167,22 @@
     // Pass the selected object to the new view controller.
     
 }
+- (IBAction)proximo:(id)sender {
+    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
+    index++;
+    if(index < [[self listaQuestoes] count]){
+        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo
+        [self carregarInfoIniciais];
+    }
+}
 
+- (IBAction)anterior:(id)sender {
+    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
+    if(index > 0){
+        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
+        [self carregarInfoIniciais];
+    }
+}
 
 - (IBAction)btmAClick:(id)sender {
     [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"a" forKey:@"RESPONDIDO"];
@@ -193,23 +209,6 @@
     [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"d" forKey:@"RESPONDIDO"];
     if(![[self marcarCorreto] isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor redColor];
-    }
-}
-
-- (IBAction)proximo:(id)sender {
-    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
-    index++;
-    if(index < [[self listaQuestoes] count]){
-        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo
-        [self carregarInfoIniciais];
-    }
-}
-
-- (IBAction)anterior:(id)sender {
-    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
-    if(index > 0){
-        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
-        [self carregarInfoIniciais];
     }
 }
 
