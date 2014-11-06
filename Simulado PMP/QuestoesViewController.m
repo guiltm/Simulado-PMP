@@ -14,7 +14,7 @@
 
 @implementation QuestoesViewController
 
-- (void)viewDidLoad
+- (void)viewDidLoad // adicionar todos os componentes via codigo
 {
     [super viewDidLoad];
     [self.navigationItem setTitle:[self.questaoSelecionada valueForKey:@"NUMEROQUESTAO"]];
@@ -106,7 +106,7 @@
     self.cronometro.text = [NSString stringWithFormat:@"%@:%@:%@" ,h ,m ,s];
 }
 
--(void)organizarItens{
+-(void)organizarItens {
     //
     float sangria = 20.0f;
     // conteudo
@@ -189,15 +189,17 @@
     index++;
     if(index < [[self listaQuestoes] count]){
         self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o anterior
+        UILabel* content = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+        UILabel* itemA = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 200)];
         
         QuestoesViewController *newView = [[QuestoesViewController alloc]init];
         newView.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
         newView.listaQuestoes = self.listaQuestoes;
-        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        aButton.frame = CGRectMake(10,20,200,30);
-        [aButton setTitle:@"botao A" forState:UIControlStateNormal];
-        [aButton addTarget:newView action:@selector(btmAClick:) forControlEvents:UIControlEventTouchUpInside];
-        [[newView view]addSubview:aButton];
+        content.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
+        itemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
+        
+        [newView.view addSubview:content];
+        [newView.view addSubview:itemA];
         
         [self.navigationController pushViewController:newView animated:YES];
     }
@@ -261,9 +263,9 @@
     }
     
     if([correto isEqual:[[self questaoSelecionada]objectForKey:@"RESPONDIDO"]])
-        [self.questaoSelecionada setValue:@"s" forKey:@"ACERTOU"];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"s" forKey:@"ACERTOU"];
     else
-        [self.questaoSelecionada setValue:@"n" forKey:@"ACERTOU"];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"n" forKey:@"ACERTOU"];
     [self desabilitar]; // desabilita os botoes
     return correto;
 }
