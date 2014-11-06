@@ -74,7 +74,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Stj-xf-azW" kind="push" identifier="simulado" id="flM-xm-5RA"/>
+                                    <segue destination="Stj-xf-azW" kind="modal" identifier="simulado" id="flM-xm-5RA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nWI-ba-f4R">
@@ -84,7 +84,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Stj-xf-azW" kind="push" identifier="simulado" id="kfE-3b-hnj"/>
+                                    <segue destination="Stj-xf-azW" kind="modal" identifier="simulado" id="kfE-3b-hnj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GX5-VQ-xYl">
@@ -94,7 +94,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Stj-xf-azW" kind="push" identifier="simulado" id="bPS-ci-3Fi"/>
+                                    <segue destination="Stj-xf-azW" kind="modal" identifier="simulado" id="bPS-ci-3Fi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -374,6 +374,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="u7Z-3g-9Tp"/>
+        <segue reference="flM-xm-5RA"/>
     </inferredMetricsTieBreakers>
 </document>
