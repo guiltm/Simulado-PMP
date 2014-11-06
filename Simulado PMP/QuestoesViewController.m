@@ -189,8 +189,8 @@
     index++;
     if(index < [[self listaQuestoes] count]){
         self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o anterior
-        UILabel* content = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-        UILabel* itemA = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 200)];
+        UILabel* content = [[UILabel alloc]initWithFrame:CGRectMake(24, 0, self.view.frame.size.width, 200)];
+        UILabel* itemA = [[UILabel alloc]initWithFrame:CGRectMake(24, 20, self.view.frame.size.width, 200)];
         
         QuestoesViewController *newView = [[QuestoesViewController alloc]init];
         newView.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
