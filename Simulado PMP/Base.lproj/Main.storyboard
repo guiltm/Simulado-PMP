@@ -74,7 +74,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2Pb-36-sgF" kind="push" identifier="simulado" id="flM-xm-5RA"/>
+                                    <segue destination="Stj-xf-azW" kind="push" identifier="simulado" id="flM-xm-5RA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nWI-ba-f4R">
@@ -84,7 +84,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2Pb-36-sgF" kind="push" identifier="simulado" id="kfE-3b-hnj"/>
+                                    <segue destination="Stj-xf-azW" kind="push" identifier="simulado" id="kfE-3b-hnj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GX5-VQ-xYl">
@@ -94,7 +94,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2Pb-36-sgF" kind="push" identifier="simulado" id="bPS-ci-3Fi"/>
+                                    <segue destination="Stj-xf-azW" kind="push" identifier="simulado" id="bPS-ci-3Fi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -167,7 +167,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="2Pb-36-sgF" kind="modal" identifier="QUESTOES" id="u7Z-3g-9Tp"/>
+                                    <segue destination="Stj-xf-azW" kind="modal" identifier="QUESTOES" id="u7Z-3g-9Tp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -187,25 +187,25 @@
             <objects>
                 <viewController id="2Pb-36-sgF" customClass="QuestoesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3zu-jS-hj9">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Timer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2DT-zl-hUW">
-                                <rect key="frame" x="119" y="536" width="148" height="21"/>
+                                <rect key="frame" x="119" y="479" width="148" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21/50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PVE-Rj-FDv">
-                                <rect key="frame" x="53" y="536" width="60" height="21"/>
+                                <rect key="frame" x="53" y="479" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbZ-8g-VkL">
-                                <rect key="frame" x="275" y="525" width="45" height="43"/>
+                                <rect key="frame" x="275" y="468" width="45" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title=">">
@@ -216,7 +216,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wwI-bW-UxS">
-                                <rect key="frame" x="0.0" y="525" width="45" height="43"/>
+                                <rect key="frame" x="0.0" y="468" width="45" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="&lt;">
@@ -227,7 +227,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="d9t-v2-IJe">
-                                <rect key="frame" x="0.0" y="68" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLZ-Wd-pfr">
@@ -315,7 +315,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Questões" id="M5G-V6-bOV"/>
+                    <navigationItem key="navigationItem" title="Questões" id="M5G-V6-bOV">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ORs-ya-fya">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cUH-Si-5C9">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fechar">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fechar:" destination="2Pb-36-sgF" eventType="touchUpInside" id="xsV-Gs-51P"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btmA" destination="x9f-4B-jN6" id="Pux-9A-OWZ"/>
                         <outlet property="btmB" destination="4YR-Og-yhr" id="4Zc-YL-8vO"/>
@@ -332,6 +345,25 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awx-mg-hDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2104" y="122"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IGZ-SJ-bxX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Stj-xf-azW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="EDQ-Ov-V65"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GZf-yj-VtX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Pb-36-sgF" kind="relationship" relationship="rootViewController" id="SU5-HE-eYx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UyY-O5-jcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1572" y="122"/>
         </scene>

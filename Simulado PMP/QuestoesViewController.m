@@ -17,10 +17,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationItem setTitle:[self.questaoSelecionada valueForKey:@"NUMEROQUESTAO"]];
+    
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
+    UIBarButtonItem *proximo = [[UIBarButtonItem alloc] initWithTitle:@"Proximo"
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(proximo:)];
+    [self.navigationItem setRightBarButtonItem:proximo];
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
+    
     [self carregarInfoIniciais];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    self.navigationController.toolbarHidden = YES;
+    [super viewWillAppear:animated];
 }
 
 -(void)carregarInfoIniciais{
@@ -172,8 +188,17 @@
     long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
     index++;
     if(index < [[self listaQuestoes] count]){
-        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o proximo
-        [self carregarInfoIniciais];
+        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o anterior
+        
+        QuestoesViewController *newView = [[QuestoesViewController alloc]init];
+        newView.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
+        newView.listaQuestoes = self.listaQuestoes;
+        UIButton *aButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        aButton.frame = CGRectMake(10,20,200,30);
+        [aButton setTitle:@"My BUTTON" forState:UIControlStateNormal];
+        [aButton addTarget:newView.view action:@selector(btmAClick:) forControlEvents:UIControlEventTouchUpInside];
+        [[newView view]addSubview:aButton];
+        [self.navigationController pushViewController:newView animated:YES];
     }
 }
 
@@ -181,8 +206,17 @@
     long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
     if(index > 0){
         self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
-        [self carregarInfoIniciais];
+        QuestoesViewController *controler = [[QuestoesViewController alloc]init];
+        controler.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
+        controler.listaQuestoes = self.listaQuestoes;
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (IBAction)fechar:(id)sender {
+    [timer invalidate];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)btmAClick:(id)sender {
@@ -224,6 +258,11 @@
     }else if([correto isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor greenColor];
     }
+    
+    if([correto isEqual:[[self questaoSelecionada]objectForKey:@"RESPONDIDO"]])
+        [self.questaoSelecionada setValue:@"s" forKey:@"ACERTOU"];
+    else
+        [self.questaoSelecionada setValue:@"n" forKey:@"ACERTOU"];
     [self desabilitar]; // desabilita os botoes
     return correto;
 }

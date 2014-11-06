@@ -98,16 +98,17 @@
         
     NSString*index = @""; // ver se isso eh realmente preciso
     NSString*respondido=@"";
+    NSString*acertou=@"";
 
         //
         
-    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",respondido,@"RESPONDIDO", nil];
+    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",respondido,@"RESPONDIDO",index,@"INDEX",acertou,@"ACERTOU", nil];
     [self.listaQuestoes addObject:dic];
         
     }
     NSSortDescriptor* brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"NUMEROQUESTAO" ascending:YES]; // ordena pelo numero da questao
     NSArray* sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
-    self.listaQuestoes = [self.listaQuestoes sortedArrayUsingDescriptors:sortDescriptors];
+    self.listaQuestoes = (NSMutableArray*)[self.listaQuestoes sortedArrayUsingDescriptors:sortDescriptors];
     
     // nao se se isso e preciso, ver isso DEPOIS !!! **************************
     for (int i=0; i<self.listaQuestoes.count; i++) {
@@ -195,11 +196,10 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"QUESTOES"]){
-        
-        QuestoesViewController* controler = [segue destinationViewController];
+        UINavigationController *nav = [segue destinationViewController];
+        QuestoesViewController *controler = (QuestoesViewController*)[nav topViewController];
         controler.questaoSelecionada = [self.listaQuestoes objectAtIndex:[self.tableView indexPathForCell:sender].row];
         controler.listaQuestoes = self.listaQuestoes;
-        
     }
 
 }

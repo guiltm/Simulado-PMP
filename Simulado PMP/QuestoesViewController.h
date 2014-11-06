@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *btmC;
 @property (strong, nonatomic) IBOutlet UIButton *btmD;
 
+- (IBAction)fechar:(id)sender;
+
 - (IBAction)btmAClick:(id)sender;
 
 - (IBAction)btmBClick:(id)sender;
