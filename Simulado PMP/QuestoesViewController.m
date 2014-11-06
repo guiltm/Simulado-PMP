@@ -167,6 +167,7 @@
     // Pass the selected object to the new view controller.
     
 }
+
 - (IBAction)proximo:(id)sender {
     long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
     index++;
