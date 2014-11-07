@@ -17,7 +17,7 @@
 - (void)viewDidLoad // adicionar todos os componentes via codigo
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:[self.questaoSelecionada valueForKey:@"NUMEROQUESTAO"]];
+    [self.navigationItem setTitle:[self.questaoSelecionada numero]];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     UIBarButtonItem *proximo = [[UIBarButtonItem alloc] initWithTitle:@"Proximo"
@@ -28,7 +28,6 @@
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
-    
     [self carregarInfoIniciais];
 }
 
@@ -46,7 +45,7 @@
         }
     }*/
     
-    if([[[self questaoSelecionada]objectForKey:@"RESPONDIDO"]isEqualToString:@""])
+    if([[self.questaoSelecionada respondido]isEqualToString:@""])
         [self habilitar];
     else
         [self desabilitar];
@@ -158,14 +157,14 @@
 
 - (void) carregarValores {
     // nao sei se isso e preciso
-    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]longLongValue];
+    long index = [[self.questaoSelecionada index]longLongValue];
     self.indiceQuestoes.text = [NSString stringWithFormat:@"%ld/%lu",++index,(unsigned long)self.listaQuestoes.count];
     
-    self.lblConteudo.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
-    self.lblItemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
-    self.lblItemB.text = [[self questaoSelecionada]objectForKey:@"ITEMB"];
-    self.lblItemC.text = [[self questaoSelecionada]objectForKey:@"ITEMC"];
-    self.lblItemD.text = [[self questaoSelecionada]objectForKey:@"ITEMD"];
+    self.lblConteudo.text =[[[self.questaoSelecionada numero]stringByAppendingString:@")"]stringByAppendingString:[self.questaoSelecionada descricao]];
+    self.lblItemA.text = self.questaoSelecionada.itemA;
+    self.lblItemB.text = self.questaoSelecionada.itemB;
+    self.lblItemC.text = self.questaoSelecionada.itemC;
+    self.lblItemD.text = self.questaoSelecionada.itemD;
     
 }
 
@@ -185,7 +184,7 @@
 }
 
 - (IBAction)proximo:(id)sender {
-    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
+    long index = [[self.questaoSelecionada index]integerValue];
     index++;
     if(index < [[self listaQuestoes] count]){
         self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o anterior
@@ -195,8 +194,9 @@
         QuestoesViewController *newView = [[QuestoesViewController alloc]init];
         newView.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
         newView.listaQuestoes = self.listaQuestoes;
-        content.text = [[[[self questaoSelecionada]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self questaoSelecionada]objectForKey:@"DESCRICAO"]];
-        itemA.text = [[self questaoSelecionada]objectForKey:@"ITEMA"];
+                         
+        content.text = [[[self.questaoSelecionada numero]stringByAppendingString:@")"]stringByAppendingString:[self.questaoSelecionada descricao]];
+        itemA.text = self.questaoSelecionada.itemA;
         
         [newView.view addSubview:content];
         [newView.view addSubview:itemA];
@@ -251,7 +251,7 @@
 }
 
 - (NSString*)marcarCorreto{ // marca a opcao correta
-    NSString*correto = [[self questaoSelecionada]objectForKey:@"CORRETO"];
+    NSString*correto = self.questaoSelecionada.correto;
     if([correto  isEqualToString: @"a"]){
         self.lblItemA.textColor = [UIColor greenColor];
     }else if([correto isEqualToString:@"b"]){
@@ -262,7 +262,7 @@
         self.lblItemD.textColor = [UIColor greenColor];
     }
     
-    if([correto isEqual:[[self questaoSelecionada]objectForKey:@"RESPONDIDO"]])
+    if([correto isEqual:[self.questaoSelecionada correto]])
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"s" forKey:@"ACERTOU"];
     else
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"n" forKey:@"ACERTOU"];

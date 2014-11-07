@@ -8,6 +8,7 @@
 
 #import "ResumoQuestoesTableViewController.h"
 #import "QuestoesViewController.h"
+#import "Questao.h"
 
 @interface ResumoQuestoesTableViewController ()
 @end
@@ -36,7 +37,6 @@
     
     //NSLog(@"%@",[firstWorkSheet rows]);
     struct QZLocation localizacao;
-    NSMutableDictionary* dic;
     
     //melhorar isso
     NSMutableArray* numeros = [[NSMutableArray alloc]init]; // numeros que ja sairam
@@ -46,74 +46,64 @@
     while(numRandom%20!=0 || [numeros containsObject:[NSNumber numberWithInteger:numRandom]]){ // %20 pois questoes sao de 20/20 linhas,e testa se ja saiu
         numRandom = arc4random()%(firstWorkSheet.rows.count);
     }
-        
+        Questao* questao = [[Questao alloc]init];
     [numeros addObject:[NSNumber numberWithInteger:numRandom]];
     
     localizacao.row = numRandom+1; // de 20 em 20, começando na linha 1
     
     localizacao.column = 0; // coluna que fica o numero da questao
 
-    NSString* numQuestao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue];
+    questao.numero = [[[firstWorkSheet cellAtPoint:localizacao]content]stringValue];
         
-        if([numQuestao length] == 1){
-            numQuestao = [@"0" stringByAppendingString:numQuestao]; // para ordenar certo
+        if([questao.numero length] == 1){
+            questao.numero = [@"0" stringByAppendingString:questao.numero]; // para ordenar certo
         }
         
     localizacao.column = 2; // coluna que fica a descricao da questao
-    NSString* descricao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        questao.descricao = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         
         //prrenchendo valores
         
-    NSString* correto;
-        
         localizacao.row ++; // linha item A
         localizacao.column=2;
-        if([[firstWorkSheet cellAtPoint:localizacao] content] != nil){correto = @"a";} // verifica o correto
+        if([[firstWorkSheet cellAtPoint:localizacao] content] != nil){questao.correto = @"a";} // verifica o correto
         localizacao.column=3; // coluna dos itens
         
-    NSString* itemA = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];//tirar quebra linha
+    questao.itemA = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];//tirar quebra linha
         
         localizacao.row+=2; // linha item B
-        if(correto==nil || [correto  isEqual:@""]){
+        if(questao.correto==nil || [questao.correto  isEqual:@""]){
             localizacao.column=2;
-            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"b";} // verifica o correto
+            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){questao.correto = @"b";} // verifica o correto
             localizacao.column=3;
         }
-    NSString* itemB = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    questao.itemB = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         localizacao.row+=2; // linha item C
-        if(correto==nil || [correto isEqualToString:@""]){
+        if(questao.correto==nil || [questao.correto isEqualToString:@""]){
             localizacao.column=2;
-            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"c";} // verifica o correto
+            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){questao.correto = @"c";} // verifica o correto
             localizacao.column=3;
         }
-    NSString* itemC = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    questao.itemC = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         localizacao.row+=2; // linha item D
-        if(correto==nil || [correto isEqualToString:@""]){
+        if(questao.correto==nil || [questao.correto isEqualToString:@""]){
             localizacao.column=2;
-            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){correto = @"d";} // verifica o correto
+            if([[firstWorkSheet cellAtPoint:localizacao]content]!=nil){questao.correto = @"d";} // verifica o correto
             localizacao.column=3;
         }
         
-    NSString* itemD = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        
-    NSString*index = @""; // ver se isso eh realmente preciso
-    NSString*respondido=@"";
-    NSString*acertou=@"";
-
-        //
-        
-    dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:numQuestao,@"NUMEROQUESTAO", descricao,@"DESCRICAO",itemA,@"ITEMA",itemB,@"ITEMB",itemC,@"ITEMC",itemD,@"ITEMD",correto,@"CORRETO",respondido,@"RESPONDIDO",index,@"INDEX",acertou,@"ACERTOU", nil];
-    [self.listaQuestoes addObject:dic];
+    questao.itemD = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+   
+    [self.listaQuestoes addObject:questao];
         
     }
-    NSSortDescriptor* brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"NUMEROQUESTAO" ascending:YES]; // ordena pelo numero da questao
+    NSSortDescriptor* brandDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numero" ascending:YES]; // ordena pelo numero da questao
     NSArray* sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
     self.listaQuestoes = (NSMutableArray*)[self.listaQuestoes sortedArrayUsingDescriptors:sortDescriptors];
     
-    // nao se se isso e preciso, ver isso DEPOIS !!! **************************
-    for (int i=0; i<self.listaQuestoes.count; i++) {
-        NSString*index = [[NSString alloc]initWithFormat:@"%d",i];
-        [[[self listaQuestoes]objectAtIndex:i]setValue:index forKey:@"INDEX"];
+    for (int i=0; i<_listaQuestoes.count; i++) {
+        NSString* index = [[NSString alloc]initWithFormat:@"%d",i];
+        [[self.listaQuestoes objectAtIndex:i]setIndex:index];
     }
 }
 
@@ -140,7 +130,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RESUMOS" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [[[[self.listaQuestoes objectAtIndex:indexPath.row]objectForKey:@"NUMEROQUESTAO"]stringByAppendingString:@") "]stringByAppendingString:[[self.listaQuestoes objectAtIndex:indexPath.row]objectForKey:@"DESCRICAO"]];
+    cell.textLabel.text = [[[[self.listaQuestoes objectAtIndex:indexPath.row]numero]stringByAppendingString:@") "]stringByAppendingString:[[self.listaQuestoes objectAtIndex:indexPath.row]descricao]];
     
     return cell;
 }

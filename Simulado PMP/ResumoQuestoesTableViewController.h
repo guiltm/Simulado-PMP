@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "QZXLSReader.h"
+#import "Questao.h"
 
 @interface ResumoQuestoesTableViewController : UITableViewController
 
 @property (strong,nonatomic) NSMutableArray* listaQuestoes;
-@property (strong,nonatomic) NSDictionary* questaoSelecionada;
+@property (strong,nonatomic) Questao* questaoSelecionada;
 
 @end

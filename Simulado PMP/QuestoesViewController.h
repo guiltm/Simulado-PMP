@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Questao.h"
 
 @interface QuestoesViewController : UIViewController{
     IBOutlet UIScrollView* scroller;
@@ -43,6 +44,6 @@
 - (IBAction)anterior:(id)sender;
 
 @property (strong,nonatomic)NSMutableArray* listaQuestoes; // todas questoes
-@property (strong,nonatomic)NSDictionary* questaoSelecionada; // questao selecionada
+@property (strong,nonatomic)Questao* questaoSelecionada; // questao selecionada
 
 @end

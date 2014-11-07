@@ -17,5 +17,7 @@
 @property (strong,nonatomic) NSString* itemB;
 @property (strong,nonatomic) NSString* itemC;
 @property (strong,nonatomic) NSString* itemD;
+@property (strong,nonatomic) NSString* respondido;
+@property (strong,nonatomic) NSString* index;
 
 @end
