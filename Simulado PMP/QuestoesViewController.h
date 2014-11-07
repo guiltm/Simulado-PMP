@@ -41,8 +41,6 @@
 
 - (IBAction)proximo:(id)sender;
 
-- (IBAction)anterior:(id)sender;
-
 @property (strong,nonatomic)NSMutableArray* listaQuestoes; // todas questoes
 @property (strong,nonatomic)Questao* questaoSelecionada; // questao selecionada
 

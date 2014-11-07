@@ -19,5 +19,6 @@
 @property (strong,nonatomic) NSString* itemD;
 @property (strong,nonatomic) NSString* respondido;
 @property (strong,nonatomic) NSString* index;
+@property (strong,nonatomic) NSString* acertou;
 
 @end

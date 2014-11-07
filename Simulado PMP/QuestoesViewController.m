@@ -17,14 +17,8 @@
 - (void)viewDidLoad // adicionar todos os componentes via codigo
 {
     [super viewDidLoad];
-    [self.navigationItem setTitle:[self.questaoSelecionada numero]];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    UIBarButtonItem *proximo = [[UIBarButtonItem alloc] initWithTitle:@"Proximo"
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(proximo:)];
-    [self.navigationItem setRightBarButtonItem:proximo];
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
@@ -33,8 +27,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    self.navigationController.toolbarHidden = YES;
     [super viewWillAppear:animated];
 }
 
@@ -45,10 +37,12 @@
         }
     }*/
     
-    if([[self.questaoSelecionada respondido]isEqualToString:@""])
+    if(![self.questaoSelecionada respondido])
         [self habilitar];
-    else
+    else {
+        [self marcarOldRespondido];
         [self desabilitar];
+    }
     
     [self carregarValores];
     [self organizarItens];
@@ -64,13 +58,25 @@
     }else if([tempo isEqualToString:@"200"]){ // 4 horas
         horas = 3;
     }
-    minutos = 0; // 59 (Alterar depois dos testes)
+    minutos = 59; // 59 (Alterar depois dos testes)
     segundos = 30; // 60
     [self startTime];
 }
 
 -(void)startTime {
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES]; // tick
+}
+
+-(void) countUp {
+    segundos++;
+    if(segundos==60){
+        segundos=0;
+        minutos++;
+    }
+    if(minutos==60){
+        minutos=0;
+        horas++;
+    }
 }
 
 -(void)countDown { // fazer ainda alguns testes
@@ -160,7 +166,7 @@
     long index = [[self.questaoSelecionada index]longLongValue];
     self.indiceQuestoes.text = [NSString stringWithFormat:@"%ld/%lu",++index,(unsigned long)self.listaQuestoes.count];
     
-    self.lblConteudo.text =[[[self.questaoSelecionada numero]stringByAppendingString:@")"]stringByAppendingString:[self.questaoSelecionada descricao]];
+    self.lblConteudo.text =[[[self.questaoSelecionada numero]stringByAppendingString:@") "]stringByAppendingString:[self.questaoSelecionada descricao]];
     self.lblItemA.text = self.questaoSelecionada.itemA;
     self.lblItemB.text = self.questaoSelecionada.itemB;
     self.lblItemC.text = self.questaoSelecionada.itemC;
@@ -184,37 +190,26 @@
 }
 
 - (IBAction)proximo:(id)sender {
+    
+    [UIView beginAnimations:@"Flip" context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    
     long index = [[self.questaoSelecionada index]integerValue];
-    index++;
-    if(index < [[self listaQuestoes] count]){
-        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index]; // pega o anterior
-        UILabel* content = [[UILabel alloc]initWithFrame:CGRectMake(24, 0, self.view.frame.size.width, 200)];
-        UILabel* itemA = [[UILabel alloc]initWithFrame:CGRectMake(24, 20, self.view.frame.size.width, 200)];
-        
-        QuestoesViewController *newView = [[QuestoesViewController alloc]init];
-        newView.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
-        newView.listaQuestoes = self.listaQuestoes;
-                         
-        content.text = [[[self.questaoSelecionada numero]stringByAppendingString:@")"]stringByAppendingString:[self.questaoSelecionada descricao]];
-        itemA.text = self.questaoSelecionada.itemA;
-        
-        [newView.view addSubview:content];
-        [newView.view addSubview:itemA];
-        
-        [self.navigationController pushViewController:newView animated:YES];
+    if([sender tag]==1){ // proximo
+        if(index < [[self listaQuestoes] count]){
+            self.questaoSelecionada = [self.listaQuestoes objectAtIndex:++index];
+            [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+        }
+    }else if([sender tag]==0){ // anterior
+        if(index > 0){
+            self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
+            [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];
+        }
     }
-}
+    [UIView commitAnimations];
+    [self viewDidLoad];
 
-- (IBAction)anterior:(id)sender {
-    long index = [[self.questaoSelecionada valueForKey:@"INDEX"]integerValue];
-    if(index > 0){
-        self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
-        QuestoesViewController *controler = [[QuestoesViewController alloc]init];
-        controler.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
-        controler.listaQuestoes = self.listaQuestoes;
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    }
 }
 
 - (IBAction)fechar:(id)sender {
@@ -223,28 +218,28 @@
 }
 
 - (IBAction)btmAClick:(id)sender {
-    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"a" forKey:@"RESPONDIDO"];
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"a"];
     if(![[self marcarCorreto] isEqualToString:@"a"]){
         self.lblItemA.textColor = [UIColor redColor];
     }
 }
 
 - (IBAction)btmBClick:(id)sender {
-    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"b" forKey:@"RESPONDIDO"];
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"b"];
     if(![[self marcarCorreto] isEqualToString:@"b"]){
         self.lblItemB.textColor = [UIColor redColor];
     }
 }
 
 - (IBAction)btmCClick:(id)sender {
-    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"c" forKey:@"RESPONDIDO"];
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"c"];
     if(![[self marcarCorreto] isEqualToString:@"c"]){
         self.lblItemC.textColor = [UIColor redColor];
     }
 }
 
 - (IBAction)btmDClick:(id)sender {
-    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"d" forKey:@"RESPONDIDO"];
+    [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"d"];
     if(![[self marcarCorreto] isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor redColor];
     }
@@ -263,11 +258,27 @@
     }
     
     if([correto isEqual:[self.questaoSelecionada correto]])
-        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"s" forKey:@"ACERTOU"];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"s"];
     else
-        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada valueForKey:@"INDEX"]integerValue]]setValue:@"n" forKey:@"ACERTOU"];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"n"];
     [self desabilitar]; // desabilita os botoes
     return correto;
+}
+
+- (void) marcarOldRespondido{
+    [self limparCores];
+    
+    if(self.questaoSelecionada.respondido){
+    
+    if([self.questaoSelecionada.respondido isEqualToString:@"a"])
+        [self.btmA sendActionsForControlEvents:UIControlEventTouchUpInside];
+    if([self.questaoSelecionada.respondido isEqualToString:@"b"])
+        [self.btmB sendActionsForControlEvents:UIControlEventTouchUpInside];
+    if([self.questaoSelecionada.respondido isEqualToString:@"c"])
+        [self.btmC sendActionsForControlEvents:UIControlEventTouchUpInside];
+    if([self.questaoSelecionada.respondido isEqualToString:@"d"])
+        [self.btmD sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void) desabilitar {
@@ -277,10 +288,18 @@
     self.btmD.enabled = false;
 }
 
+- (void) limparCores{
+    self.lblItemA.textColor = [UIColor blackColor];
+    self.lblItemB.textColor = [UIColor blackColor];
+    self.lblItemC.textColor = [UIColor blackColor];
+    self.lblItemD.textColor = [UIColor blackColor];
+}
+
 - (void) habilitar {
     self.btmA.enabled = true;
     self.btmB.enabled = true;
     self.btmC.enabled = true;
     self.btmD.enabled = true;
+    [self limparCores];
 }
 @end
