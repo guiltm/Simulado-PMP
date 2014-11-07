@@ -206,17 +206,6 @@
                                     <action selector="proximo:" destination="2Pb-36-sgF" eventType="touchUpInside" id="aUd-ko-AMW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wwI-bW-UxS">
-                                <rect key="frame" x="0.0" y="525" width="45" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="&lt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="proximo:" destination="2Pb-36-sgF" eventType="touchUpInside" id="eLx-hB-dSS"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="d9t-v2-IJe">
                                 <rect key="frame" x="0.0" y="54" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -306,6 +295,17 @@
                                     </label>
                                 </subviews>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wwI-bW-UxS">
+                                <rect key="frame" x="0.0" y="525" width="45" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="proximo:" destination="2Pb-36-sgF" eventType="touchUpInside" id="eLx-hB-dSS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -326,9 +326,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btmA" destination="x9f-4B-jN6" id="Pux-9A-OWZ"/>
+                        <outlet property="btmAnterior" destination="wwI-bW-UxS" id="q9H-sG-ZhP"/>
                         <outlet property="btmB" destination="4YR-Og-yhr" id="4Zc-YL-8vO"/>
                         <outlet property="btmC" destination="KS2-70-6c5" id="asT-Dp-lWD"/>
                         <outlet property="btmD" destination="DcB-FD-zhu" id="ORz-Ce-j2R"/>
+                        <outlet property="btmProximo" destination="lbZ-8g-VkL" id="DZY-4m-efD"/>
                         <outlet property="cronometro" destination="2DT-zl-hUW" id="9r5-nR-zTt"/>
                         <outlet property="indiceQuestoes" destination="PVE-Rj-FDv" id="pFi-C8-CbK"/>
                         <outlet property="lblConteudo" destination="Bf8-v3-Vja" id="64B-3m-Ba2"/>

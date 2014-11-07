@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *btmB;
 @property (strong, nonatomic) IBOutlet UIButton *btmC;
 @property (strong, nonatomic) IBOutlet UIButton *btmD;
+@property (weak, nonatomic) IBOutlet UIButton *btmAnterior;
+@property (weak, nonatomic) IBOutlet UIButton *btmProximo;
 
 - (IBAction)fechar:(id)sender;
 

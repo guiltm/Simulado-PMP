@@ -31,11 +31,6 @@
 }
 
 -(void)carregarInfoIniciais{
-    /*for (int i=0; i<self.listaQuestoes.count; i++) {
-        if([[[[self listaQuestoes]objectAtIndex:i]valueForKey:@"CORRETO"]isEqualToString:[[[self listaQuestoes]objectAtIndex:i]valueForKey:@"RESPONDIDO"]]){
-            NSLog(@"certo vetim");
-        }
-    }*/
     
     if(![self.questaoSelecionada respondido])
         [self habilitar];
@@ -44,11 +39,33 @@
         [self desabilitar];
     }
     
+    NSString* cont = [[NSString alloc]initWithFormat:@"%lu",(self.listaQuestoes.count-1)];
+    if([[self.questaoSelecionada index]isEqualToString:@"0"]) self.btmAnterior.hidden = YES;
+    if([[self.questaoSelecionada index]isEqualToString:cont]) self.btmProximo.hidden = YES;
+    
     [self carregarValores];
     [self organizarItens];
     if(![timer isValid])
-    [self setarTempo:@"50"]; // esse valor sera passado de uma tela anterior]
+    
+     [self startTime]; // checar aqui se eh timer crescente ou decrecente
+    //[self setarTempo:@"50"]; // esse valor sera passado de uma tela anterior]
 }
+
+
+- (void) carregarValores {
+    // nao sei se isso e preciso
+    long index = [[self.questaoSelecionada index]longLongValue];
+    self.indiceQuestoes.text = [NSString stringWithFormat:@"%ld/%lu",++index,(unsigned long)self.listaQuestoes.count];
+    
+    self.lblConteudo.text =[[[self.questaoSelecionada numero]stringByAppendingString:@") "]stringByAppendingString:[self.questaoSelecionada descricao]];
+    self.lblItemA.text = self.questaoSelecionada.itemA;
+    self.lblItemB.text = self.questaoSelecionada.itemB;
+    self.lblItemC.text = self.questaoSelecionada.itemC;
+    self.lblItemD.text = self.questaoSelecionada.itemD;
+    
+}
+
+#pragma mark - Timer
 
 -(void)setarTempo:(NSString*)tempo{
     if([tempo isEqualToString:@"50"]){ // 1 hora
@@ -59,13 +76,28 @@
         horas = 3;
     }
     minutos = 59; // 59 (Alterar depois dos testes)
-    segundos = 30; // 60
+    segundos = 60; // 60
     [self startTime];
 }
 
 -(void)startTime {
-    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES]; // tick
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countUp) userInfo:nil repeats:YES]; // tick
 }
+
+- (void) formatarHora{
+    
+    // formatando
+    
+    NSString*h = [NSString stringWithFormat:@"%d",horas];
+    if(h.length==1) h = [@"0" stringByAppendingString:h];
+    NSString*m = [NSString stringWithFormat:@"%d",minutos];
+    if(m.length==1) m = [@"0" stringByAppendingString:m];
+    NSString*s = [NSString stringWithFormat:@"%d",segundos];
+    if(s.length==1) s = [@"0" stringByAppendingString:s];
+    
+    self.cronometro.text = [NSString stringWithFormat:@"%@:%@:%@" ,h ,m ,s];
+}
+
 
 -(void) countUp {
     segundos++;
@@ -77,6 +109,7 @@
         minutos=0;
         horas++;
     }
+    [self formatarHora];
 }
 
 -(void)countDown { // fazer ainda alguns testes
@@ -99,17 +132,10 @@
         self.cronometro.textColor = [UIColor redColor];
     }
     
-    // formatando
-    
-    NSString*h = [NSString stringWithFormat:@"%d",horas];
-    if(h.length==1) h = [@"0" stringByAppendingString:h];
-    NSString*m = [NSString stringWithFormat:@"%d",minutos];
-    if(m.length==1) m = [@"0" stringByAppendingString:m];
-    NSString*s = [NSString stringWithFormat:@"%d",segundos];
-    if(s.length==1) s = [@"0" stringByAppendingString:s];
-    
-    self.cronometro.text = [NSString stringWithFormat:@"%@:%@:%@" ,h ,m ,s];
+    [self formatarHora];
 }
+
+#pragma mark - Layout
 
 -(void)organizarItens {
     //
@@ -161,19 +187,6 @@
     return frame.size;
 }
 
-- (void) carregarValores {
-    // nao sei se isso e preciso
-    long index = [[self.questaoSelecionada index]longLongValue];
-    self.indiceQuestoes.text = [NSString stringWithFormat:@"%ld/%lu",++index,(unsigned long)self.listaQuestoes.count];
-    
-    self.lblConteudo.text =[[[self.questaoSelecionada numero]stringByAppendingString:@") "]stringByAppendingString:[self.questaoSelecionada descricao]];
-    self.lblItemA.text = self.questaoSelecionada.itemA;
-    self.lblItemB.text = self.questaoSelecionada.itemB;
-    self.lblItemC.text = self.questaoSelecionada.itemC;
-    self.lblItemD.text = self.questaoSelecionada.itemD;
-    
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -197,14 +210,21 @@
     
     long index = [[self.questaoSelecionada index]integerValue];
     if([sender tag]==1){ // proximo
+        self.btmAnterior.hidden = NO;
+        index++;
         if(index < [[self listaQuestoes] count]){
-            self.questaoSelecionada = [self.listaQuestoes objectAtIndex:++index];
+            self.questaoSelecionada = [self.listaQuestoes objectAtIndex:index];
             [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+        }else{
+            self.btmProximo.hidden = YES;
         }
     }else if([sender tag]==0){ // anterior
+        self.btmProximo.hidden = NO;
         if(index > 0){
             self.questaoSelecionada = [self.listaQuestoes objectAtIndex:--index]; // pega o anterior
             [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];
+        }else{
+            self.btmAnterior.hidden = YES;
         }
     }
     [UIView commitAnimations];
@@ -212,10 +232,7 @@
 
 }
 
-- (IBAction)fechar:(id)sender {
-    [timer invalidate];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+#pragma mark - Actions
 
 - (IBAction)btmAClick:(id)sender {
     [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"a"];
@@ -265,6 +282,8 @@
     return correto;
 }
 
+#pragma mark - Util
+
 - (void) marcarOldRespondido{
     [self limparCores];
     
@@ -281,18 +300,18 @@
     }
 }
 
-- (void) desabilitar {
-    self.btmA.enabled = false;
-    self.btmB.enabled = false;
-    self.btmC.enabled = false;
-    self.btmD.enabled = false;
-}
-
 - (void) limparCores{
     self.lblItemA.textColor = [UIColor blackColor];
     self.lblItemB.textColor = [UIColor blackColor];
     self.lblItemC.textColor = [UIColor blackColor];
     self.lblItemD.textColor = [UIColor blackColor];
+}
+
+- (void) desabilitar {
+    self.btmA.enabled = false;
+    self.btmB.enabled = false;
+    self.btmC.enabled = false;
+    self.btmD.enabled = false;
 }
 
 - (void) habilitar {
@@ -301,5 +320,11 @@
     self.btmC.enabled = true;
     self.btmD.enabled = true;
     [self limparCores];
+}
+
+
+- (IBAction)fechar:(id)sender {
+    [timer invalidate];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
