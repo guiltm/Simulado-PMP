@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor lightGrayColor]];
+    //[self.view setBackgroundColor:[UIColor lightGrayColor]];
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
@@ -325,6 +325,10 @@
 
 - (IBAction)fechar:(id)sender {
     [timer invalidate];
+    for (Questao *q in _listaQuestoes) {
+        q.respondido = nil;
+        q.acertou = nil;
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

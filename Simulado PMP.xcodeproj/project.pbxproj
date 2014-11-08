@@ -34,6 +34,8 @@
 		5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C56519DA3D0900DDA8CA /* QZXLSReader-Info.plist */; };
 		5D44C57A19DA3EA400DDA8CA /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */; };
 		5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */; };
+		5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */; };
+		5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6E5FCD1A0DCB5100E034CA /* inicial.png */; };
 		5D8079311A0C3321000B1CC0 /* SharedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8079301A0C3321000B1CC0 /* SharedView.m */; };
 		5D8079351A0C415A000B1CC0 /* SharedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D8079341A0C415A000B1CC0 /* SharedView.xib */; };
 		5DA508EA19DA7DBC0038A97D /* QuestoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */; };
@@ -102,6 +104,8 @@
 		5D44C56719DA3D0900DDA8CA /* QZXLSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QZXLSReader.h; sourceTree = "<group>"; };
 		5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
 		5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImportITIL.xls; sourceTree = "<group>"; };
+		5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inicial-2.png"; sourceTree = "<group>"; };
+		5D6E5FCD1A0DCB5100E034CA /* inicial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inicial.png; sourceTree = "<group>"; };
 		5D80792F1A0C3321000B1CC0 /* SharedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedView.h; sourceTree = "<group>"; };
 		5D8079301A0C3321000B1CC0 /* SharedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedView.m; sourceTree = "<group>"; };
 		5D8079341A0C415A000B1CC0 /* SharedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedView.xib; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 		5D44C53619DA2F9300DDA8CA /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				5D6E5FCD1A0DCB5100E034CA /* inicial.png */,
+				5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */,
 				5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */,
 				5D2D8A5919E11D0E000B2545 /* inbox.png */,
 			);
@@ -404,12 +410,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */,
 				5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */,
 				5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */,
 				5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */,
 				5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */,
 				5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */,
 				5D8079351A0C415A000B1CC0 /* SharedView.xib in Resources */,
+				5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */,
 				5D44C52119DA1F6000DDA8CA /* LaunchScreen.xib in Resources */,
 				5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */,
 				5D44C56E19DA3D0900DDA8CA /* Licenses in Resources */,
@@ -612,6 +620,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Simulado PMP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -623,6 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Simulado PMP/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
