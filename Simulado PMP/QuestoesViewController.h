@@ -15,6 +15,7 @@
     int horas;
     int minutos;
     int segundos;
+    bool simulado;
 }
 @property (strong, nonatomic) IBOutlet UILabel *lblConteudo;
 @property (strong, nonatomic) IBOutlet UILabel *lblItemA;
@@ -42,6 +43,8 @@
 - (IBAction)btmDClick:(id)sender;
 
 - (IBAction)proximo:(id)sender;
+
+- (IBAction)finalizar:(id)sender;
 
 @property (strong,nonatomic)NSMutableArray* listaQuestoes; // todas questoes
 @property (strong,nonatomic)Questao* questaoSelecionada; // questao selecionada

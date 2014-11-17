@@ -9,9 +9,10 @@
             <objects>
                 <navigationController hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="nCh-Ci-xoq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="P4x-kj-f3B"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9IA-Hb-D8t">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="9IA-Hb-D8t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.01176470588" green="0.14901960780000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Af8-1J-r5i">
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +30,7 @@
             <objects>
                 <viewController id="iQH-Wb-2io" customClass="MenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i10-8G-99T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inicial.png" id="xs3-I5-ZQA">
@@ -68,12 +69,12 @@
             </objects>
             <point key="canvasLocation" x="772" y="-631"/>
         </scene>
-        <!--Resolver-->
+        <!--Quantidade questões-->
         <scene sceneID="FBC-Fn-gno">
             <objects>
-                <viewController id="iII-Da-bjZ" sceneMemberID="viewController">
+                <viewController id="iII-Da-bjZ" customClass="QuantidadeQuestoesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rh9-V0-1UL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nWI-ba-f4R">
@@ -82,42 +83,53 @@
                                 <state key="normal" title="200">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GX5-VQ-xYl">
-                                <rect key="frame" x="131" y="223" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="150">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <segue destination="2Pb-36-sgF" kind="modal" identifier="200questoes" id="2tx-Tg-Uin"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hpc-oI-Bvt">
-                                <rect key="frame" x="131" y="167" width="46" height="30"/>
+                                <rect key="frame" x="131" y="134" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="50">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="2Pb-36-sgF" kind="modal" identifier="50questoes" id="fky-cn-r8K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GX5-VQ-xYl">
+                                <rect key="frame" x="131" y="205" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="150">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2Pb-36-sgF" kind="modal" identifier="150questoes" id="1Cd-Xh-Ezm"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.011764705882352941" green="0.14901960784313725" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.01176470588" green="0.14901960780000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Resolver" id="Nqf-mY-4Bp"/>
+                    <navigationItem key="navigationItem" title="Quantidade questões" id="Nqf-mY-4Bp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GD-Lj-WQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="-631"/>
+            <point key="canvasLocation" x="1580" y="-631"/>
         </scene>
         <!--Tipos Questoes-->
         <scene sceneID="xC5-52-EWi">
             <objects>
                 <viewController id="pGu-cl-ri4" customClass="TiposQuestoesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dtq-dh-BnT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KgJ-8T-l0P">
                                 <rect key="frame" x="42" y="97" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Opcao">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -138,7 +150,7 @@
             <objects>
                 <tableViewController id="O3N-oY-KWf" customClass="ResumoQuestoesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SrX-Cm-AuN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" red="0.011764705882352941" green="0.14901960784313725" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,7 +163,7 @@
                             </state>
                         </button>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RESUMOS" textLabel="tob-qD-SwB" style="IBUITableViewCellStyleDefault" id="f6N-IZ-e4r">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RESUMOS" textLabel="tob-qD-SwB" imageView="1LV-yX-RyJ" style="IBUITableViewCellStyleDefault" id="f6N-IZ-e4r">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f6N-IZ-e4r" id="SK1-Dw-HNr">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -163,6 +175,9 @@
                                             <color key="textColor" red="0.0" green="0.14901960784313725" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="inbox.png" id="1LV-yX-RyJ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.81568627450980391" green="0.83921568627450982" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
@@ -227,6 +242,38 @@
                                     <action selector="proximo:" destination="2Pb-36-sgF" eventType="touchUpInside" id="eLx-hB-dSS"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" id="Lfo-6t-b1x">
+                                <rect key="frame" x="0.0" y="-15" width="320" height="74"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Questoes" prompt=" " id="M5G-V6-bOV">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="dlA-7V-GWp">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rmE-rA-WuP">
+                                                <rect key="frame" x="16" y="37" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Fechar">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="fechar:" destination="2Pb-36-sgF" eventType="touchUpInside" id="SAN-uj-MqG"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="cAe-Dx-Wfe">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ewa-ee-kq4">
+                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Finalizar">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="finalizar:" destination="2Pb-36-sgF" eventType="touchUpInside" id="qYE-AR-6eB"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="d9t-v2-IJe">
                                 <rect key="frame" x="0.0" y="59" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -316,35 +363,6 @@
                                     </label>
                                 </subviews>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" id="Lfo-6t-b1x">
-                                <rect key="frame" x="0.0" y="-15" width="320" height="74"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Questoes" prompt=" " id="M5G-V6-bOV">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="dlA-7V-GWp">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rmE-rA-WuP">
-                                                <rect key="frame" x="16" y="37" width="70" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Fechar">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="fechar:" destination="2Pb-36-sgF" eventType="touchUpInside" id="SAN-uj-MqG"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="cAe-Dx-Wfe">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ewa-ee-kq4">
-                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Finalizar">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -372,6 +390,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="inbox.png" width="32" height="21"/>
         <image name="inicial-2.png" width="241" height="103"/>
         <image name="inicial.png" width="96" height="216"/>
     </resources>
@@ -380,4 +399,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="2tx-Tg-Uin"/>
+    </inferredMetricsTieBreakers>
 </document>

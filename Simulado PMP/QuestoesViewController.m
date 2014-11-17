@@ -22,6 +22,10 @@
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
+    if(_listaQuestoes.count > 20)
+        simulado=true;
+    else
+        simulado=false;
     [self carregarInfoIniciais];
 }
 
@@ -36,6 +40,7 @@
         [self habilitar];
     else {
         [self marcarOldRespondido];
+        if(!simulado)
         [self desabilitar];
     }
     
@@ -46,9 +51,7 @@
     [self carregarValores];
     [self organizarItens];
     if(![timer isValid])
-    
-     [self startTime]; // checar aqui se eh timer crescente ou decrecente
-    //[self setarTempo:@"50"]; // esse valor sera passado de uma tela anterior]
+    [self startTime];
 }
 
 
@@ -77,16 +80,18 @@
     }
     minutos = 59; // 59 (Alterar depois dos testes)
     segundos = 60; // 60
-    [self startTime];
 }
 
 -(void)startTime {
+    if(!simulado)
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countUp) userInfo:nil repeats:YES]; // tick
+    else{
+    [self setarTempo:[NSString stringWithFormat:@"%lu",(unsigned long)self.listaQuestoes.count]];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES]; // tick}
+    }
 }
 
 - (void) formatarHora{
-    
-    // formatando
     
     NSString*h = [NSString stringWithFormat:@"%d",horas];
     if(h.length==1) h = [@"0" stringByAppendingString:h];
@@ -199,7 +204,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
 }
 
 - (IBAction)proximo:(id)sender {
@@ -232,12 +236,20 @@
 
 }
 
+- (IBAction)finalizar:(id)sender {
+    
+}
+
 #pragma mark - Actions
 
 - (IBAction)btmAClick:(id)sender {
     [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"a"];
-    if(![[self marcarCorreto] isEqualToString:@"a"]){
-        self.lblItemA.textColor = [UIColor redColor];
+        if(![[self marcarCorreto] isEqualToString:@"a"]){
+            self.lblItemA.textColor = [UIColor redColor];
+        }
+    if(simulado){
+        [self limparCores];
+        self.lblItemA.textColor = [UIColor blueColor];
     }
 }
 
@@ -246,12 +258,20 @@
     if(![[self marcarCorreto] isEqualToString:@"b"]){
         self.lblItemB.textColor = [UIColor redColor];
     }
+    if(simulado){
+        [self limparCores];
+        self.lblItemB.textColor = [UIColor blueColor];
+    }
 }
 
 - (IBAction)btmCClick:(id)sender {
     [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setRespondido:@"c"];
     if(![[self marcarCorreto] isEqualToString:@"c"]){
         self.lblItemC.textColor = [UIColor redColor];
+    }
+    if(simulado){
+        [self limparCores];
+        self.lblItemC.textColor = [UIColor blueColor];
     }
 }
 
@@ -260,25 +280,31 @@
     if(![[self marcarCorreto] isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor redColor];
     }
+    if(simulado){
+        [self limparCores];
+        self.lblItemD.textColor = [UIColor blueColor];
+    }
 }
 
 - (NSString*)marcarCorreto{ // marca a opcao correta
     NSString*correto = self.questaoSelecionada.correto;
-    if([correto  isEqualToString: @"a"]){
-        self.lblItemA.textColor = [UIColor greenColor];
-    }else if([correto isEqualToString:@"b"]){
-        self.lblItemB.textColor = [UIColor greenColor];
-    }else if([correto isEqualToString:@"c"]){
-        self.lblItemC.textColor = [UIColor greenColor];
-    }else if([correto isEqualToString:@"d"]){
-        self.lblItemD.textColor = [UIColor greenColor];
+    if(!simulado){
+        if([correto  isEqualToString: @"a"]){
+            self.lblItemA.textColor = [UIColor greenColor];
+        }else if([correto isEqualToString:@"b"]){
+            self.lblItemB.textColor = [UIColor greenColor];
+        }else if([correto isEqualToString:@"c"]){
+            self.lblItemC.textColor = [UIColor greenColor];
+        }else if([correto isEqualToString:@"d"]){
+            self.lblItemD.textColor = [UIColor greenColor];
+        }
+        [self desabilitar]; // desabilita os botoes
     }
     
-    if([correto isEqual:[self.questaoSelecionada correto]])
+    if([correto isEqual:[self.questaoSelecionada respondido]])
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"s"];
     else
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"n"];
-    [self desabilitar]; // desabilita os botoes
     return correto;
 }
 
@@ -286,8 +312,6 @@
 
 - (void) marcarOldRespondido{
     [self limparCores];
-    
-    if(self.questaoSelecionada.respondido){
     
     if([self.questaoSelecionada.respondido isEqualToString:@"a"])
         [self.btmA sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -297,7 +321,6 @@
         [self.btmC sendActionsForControlEvents:UIControlEventTouchUpInside];
     if([self.questaoSelecionada.respondido isEqualToString:@"d"])
         [self.btmD sendActionsForControlEvents:UIControlEventTouchUpInside];
-    }
 }
 
 - (void) limparCores{

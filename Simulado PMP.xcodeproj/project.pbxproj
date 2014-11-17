@@ -36,9 +36,9 @@
 		5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */ = {isa = PBXBuildFile; fileRef = 5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */; };
 		5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */; };
 		5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6E5FCD1A0DCB5100E034CA /* inicial.png */; };
-		5D8079311A0C3321000B1CC0 /* SharedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8079301A0C3321000B1CC0 /* SharedView.m */; };
-		5D8079351A0C415A000B1CC0 /* SharedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D8079341A0C415A000B1CC0 /* SharedView.xib */; };
 		5DA508EA19DA7DBC0038A97D /* QuestoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */; };
+		5DEEE9ED1A1914A8000FC30D /* QuantidadeQuestoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEEE9EC1A1914A8000FC30D /* QuantidadeQuestoesViewController.m */; };
+		5DEEE9F11A19294C000FC30D /* Utilidades.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEEE9F01A19294C000FC30D /* Utilidades.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,11 +106,12 @@
 		5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImportITIL.xls; sourceTree = "<group>"; };
 		5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inicial-2.png"; sourceTree = "<group>"; };
 		5D6E5FCD1A0DCB5100E034CA /* inicial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inicial.png; sourceTree = "<group>"; };
-		5D80792F1A0C3321000B1CC0 /* SharedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedView.h; sourceTree = "<group>"; };
-		5D8079301A0C3321000B1CC0 /* SharedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedView.m; sourceTree = "<group>"; };
-		5D8079341A0C415A000B1CC0 /* SharedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedView.xib; sourceTree = "<group>"; };
 		5DA508E819DA7DBC0038A97D /* QuestoesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestoesViewController.h; sourceTree = "<group>"; };
 		5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestoesViewController.m; sourceTree = "<group>"; };
+		5DEEE9EB1A1914A8000FC30D /* QuantidadeQuestoesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuantidadeQuestoesViewController.h; sourceTree = "<group>"; };
+		5DEEE9EC1A1914A8000FC30D /* QuantidadeQuestoesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuantidadeQuestoesViewController.m; sourceTree = "<group>"; };
+		5DEEE9EF1A19294C000FC30D /* Utilidades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilidades.h; sourceTree = "<group>"; };
+		5DEEE9F01A19294C000FC30D /* Utilidades.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilidades.m; sourceTree = "<group>"; };
 		F6853B81E4D78AE52269A3C6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +178,7 @@
 		5D44C50C19DA1F6000DDA8CA /* Simulado PMP */ = {
 			isa = PBXGroup;
 			children = (
+				5DEEE9EE1A191807000FC30D /* Util */,
 				5D44C53619DA2F9300DDA8CA /* Imagens */,
 				5D16AD2E19DB95F800313B10 /* Entidade */,
 				5D44C53719DA2F9800DDA8CA /* Views */,
@@ -185,7 +187,6 @@
 				5D44C51A19DA1F6000DDA8CA /* Main.storyboard */,
 				5D44C51D19DA1F6000DDA8CA /* Images.xcassets */,
 				5D44C51F19DA1F6000DDA8CA /* LaunchScreen.xib */,
-				5D44C51419DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld */,
 				5D44C50D19DA1F6000DDA8CA /* Supporting Files */,
 			);
 			path = "Simulado PMP";
@@ -196,6 +197,7 @@
 			children = (
 				5D44C57C19DA3F2F00DDA8CA /* ImportITIL.xls */,
 				5D44C50E19DA1F6000DDA8CA /* Info.plist */,
+				5D44C51419DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld */,
 				5D44C50F19DA1F6000DDA8CA /* main.m */,
 			);
 			name = "Supporting Files";
@@ -234,15 +236,14 @@
 			children = (
 				5D44C53819DA2FB500DDA8CA /* MenuViewController.h */,
 				5D44C53919DA2FB500DDA8CA /* MenuViewController.m */,
+				5DEEE9EB1A1914A8000FC30D /* QuantidadeQuestoesViewController.h */,
+				5DEEE9EC1A1914A8000FC30D /* QuantidadeQuestoesViewController.m */,
 				5D44C53E19DA31B500DDA8CA /* TiposQuestoesViewController.h */,
 				5D44C53F19DA31B500DDA8CA /* TiposQuestoesViewController.m */,
 				5D44C54119DA321600DDA8CA /* ResumoQuestoesTableViewController.h */,
 				5D44C54219DA321600DDA8CA /* ResumoQuestoesTableViewController.m */,
 				5DA508E819DA7DBC0038A97D /* QuestoesViewController.h */,
 				5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */,
-				5D80792F1A0C3321000B1CC0 /* SharedView.h */,
-				5D8079301A0C3321000B1CC0 /* SharedView.m */,
-				5D8079341A0C415A000B1CC0 /* SharedView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -318,6 +319,15 @@
 				5D44C57919DA3EA400DDA8CA /* libiconv.2.4.0.dylib */,
 			);
 			name = Externos;
+			sourceTree = "<group>";
+		};
+		5DEEE9EE1A191807000FC30D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5DEEE9EF1A19294C000FC30D /* Utilidades.h */,
+				5DEEE9F01A19294C000FC30D /* Utilidades.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		6123869D72847ECF9A5FFD7D /* Frameworks */ = {
@@ -416,7 +426,6 @@
 				5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */,
 				5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */,
 				5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */,
-				5D8079351A0C415A000B1CC0 /* SharedView.xib in Resources */,
 				5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */,
 				5D44C52119DA1F6000DDA8CA /* LaunchScreen.xib in Resources */,
 				5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */,
@@ -476,17 +485,18 @@
 				5DA508EA19DA7DBC0038A97D /* QuestoesViewController.m in Sources */,
 				5D44C56D19DA3D0900DDA8CA /* xlstool.c in Sources */,
 				5D44C56F19DA3D0900DDA8CA /* QZCell.m in Sources */,
-				5D8079311A0C3321000B1CC0 /* SharedView.m in Sources */,
 				5D44C51619DA1F6000DDA8CA /* Simulado_PMP.xcdatamodeld in Sources */,
 				5D44C54019DA31B500DDA8CA /* TiposQuestoesViewController.m in Sources */,
 				5D16AD3119DB962A00313B10 /* Questao.m in Sources */,
 				5D44C51319DA1F6000DDA8CA /* AppDelegate.m in Sources */,
+				5DEEE9ED1A1914A8000FC30D /* QuantidadeQuestoesViewController.m in Sources */,
 				5D44C51019DA1F6000DDA8CA /* main.m in Sources */,
 				5D44C56C19DA3D0900DDA8CA /* xls.c in Sources */,
 				5D44C53A19DA2FB500DDA8CA /* MenuViewController.m in Sources */,
 				5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */,
 				5D44C56B19DA3D0900DDA8CA /* ole.c in Sources */,
 				5D44C54319DA321600DDA8CA /* ResumoQuestoesTableViewController.m in Sources */,
+				5DEEE9F11A19294C000FC30D /* Utilidades.m in Sources */,
 				5D44C56919DA3D0900DDA8CA /* XlsReader.cpp in Sources */,
 				5D44C57119DA3D0900DDA8CA /* QZWorkSheet.m in Sources */,
 			);
