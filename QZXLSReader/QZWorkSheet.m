@@ -63,7 +63,7 @@
             xlsCell *cell = &row->cells.cell[cellCounter];
             QZCell *newCell = [[QZCell alloc] initWithContent:cell];
             
-            if(newCell.content && newCell.location.row == row->index)
+            //if(newCell.content && newCell.location.row == row->index) tirei isso pq ele n tava pegando todas as linhas, agora ta blz!
                 [cells addObject:newCell];
         }
         

@@ -25,10 +25,12 @@ static Utilidades* sharedInstance = nil;
     QZWorkSheet *firstWorkSheet = excelReader.workSheets.firstObject; // pega a primeira worksheet daquele workbook
     [firstWorkSheet open];
     
+    NSLog(@"%lu",firstWorkSheet.rows.count);
+    
     struct QZLocation localizacao;
     
     NSMutableArray* listaQuestoes = [[NSMutableArray alloc]init];
-    //melhorar isso
+    
     NSMutableArray* numeros = [[NSMutableArray alloc]init]; // numeros possiveis
     
     for (int i=1; i<=1582; i+=20) { // total linhas com questoes 1582
@@ -88,7 +90,9 @@ static Utilidades* sharedInstance = nil;
         }
         
         questao.itemD = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        localizacao.column +=3;
         
+        questao.comentario = [[firstWorkSheet cellAtPoint:localizacao]content];
         [listaQuestoes addObject:questao];
         
     }

@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [scroller setScrollEnabled:YES];
     
     // Do any additional setup after loading the view.
 }

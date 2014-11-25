@@ -34,36 +34,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inicial.png" id="xs3-I5-ZQA">
-                                <rect key="frame" x="0.0" y="63" width="320" height="439"/>
+                                <rect key="frame" x="0.0" y="63" width="320" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zij-Vb-MNT">
-                                <rect key="frame" x="47" y="220" width="108" height="30"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" id="ybP-9w-cf6">
+                                <rect key="frame" x="-7" y="63" width="327" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Questoes"/>
-                                <connections>
-                                    <segue destination="pGu-cl-ri4" kind="push" id="rIZ-MD-cvL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wb8-JS-bxs">
-                                <rect key="frame" x="163" y="220" width="111" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Simulado">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="iII-Da-bjZ" kind="push" id="D8e-2N-YhB"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inicial-2.png" id="Scc-xj-a5U">
-                                <rect key="frame" x="66" y="94" width="189" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zij-Vb-MNT">
+                                        <rect key="frame" x="50" y="165" width="108" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Questoes"/>
+                                        <connections>
+                                            <segue destination="pGu-cl-ri4" kind="push" id="rIZ-MD-cvL"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inicial-2.png" id="Scc-xj-a5U">
+                                        <rect key="frame" x="69" y="32" width="189" height="78"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wb8-JS-bxs">
+                                        <rect key="frame" x="176" y="165" width="111" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Simulado">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="iII-Da-bjZ" kind="push" id="D8e-2N-YhB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.011764705882352941" green="0.14901960784313725" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Gestão e capacitação" id="54h-Pm-LX2"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scroller" destination="ybP-9w-cf6" id="FUX-Eg-cmV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1G-in-0I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,7 +205,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgY-w5-xhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160" y="122"/>
+            <point key="canvasLocation" x="1172" y="122"/>
         </scene>
         <!--Questoes View Controller-->
         <scene sceneID="Dqc-oE-UxA">
@@ -242,51 +251,12 @@
                                     <action selector="proximo:" destination="2Pb-36-sgF" eventType="touchUpInside" id="eLx-hB-dSS"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" id="Lfo-6t-b1x">
-                                <rect key="frame" x="0.0" y="-15" width="320" height="74"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Questoes" prompt=" " id="M5G-V6-bOV">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="dlA-7V-GWp">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rmE-rA-WuP">
-                                                <rect key="frame" x="16" y="37" width="70" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Fechar">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="fechar:" destination="2Pb-36-sgF" eventType="touchUpInside" id="SAN-uj-MqG"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="cAe-Dx-Wfe">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ewa-ee-kq4">
-                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Finalizar">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="finalizar:" destination="2Pb-36-sgF" eventType="touchUpInside" id="qYE-AR-6eB"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="d9t-v2-IJe">
                                 <rect key="frame" x="0.0" y="59" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLZ-Wd-pfr">
                                         <rect key="frame" x="23" y="66" width="270" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nnK-r3-j8C">
-                                        <rect key="frame" x="23" y="95" width="270" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -361,8 +331,41 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="c" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nnK-r3-j8C">
+                                        <rect key="frame" x="23" y="95" width="270" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="14M-da-6dd">
+                                <rect key="frame" x="0.0" y="15" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Fechar" id="UBY-mb-0bl">
+                                        <connections>
+                                            <action selector="fechar:" destination="2Pb-36-sgF" id="1Qz-WI-owb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem enabled="NO" title="Questoes" id="rAZ-Ki-PEi">
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem image="favorito.png" id="1Bk-Bd-dHg">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="favoritarQuestao:" destination="2Pb-36-sgF" id="fod-hj-Kga"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="fina" id="gIh-t4-Bmj">
+                                        <connections>
+                                            <segue destination="wQH-HA-ei3" kind="modal" identifier="scrollPageView" modalTransitionStyle="crossDissolve" id="YST-vD-6JM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="coments" id="Zk1-US-pvr"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -375,12 +378,14 @@
                         <outlet property="btmD" destination="DcB-FD-zhu" id="ORz-Ce-j2R"/>
                         <outlet property="btmProximo" destination="lbZ-8g-VkL" id="DZY-4m-efD"/>
                         <outlet property="cronometro" destination="2DT-zl-hUW" id="9r5-nR-zTt"/>
+                        <outlet property="favorito" destination="1Bk-Bd-dHg" id="KP1-lO-6lp"/>
                         <outlet property="indiceQuestoes" destination="PVE-Rj-FDv" id="pFi-C8-CbK"/>
                         <outlet property="lblConteudo" destination="Bf8-v3-Vja" id="64B-3m-Ba2"/>
                         <outlet property="lblItemA" destination="mFW-Cb-g08" id="evr-97-ghQ"/>
                         <outlet property="lblItemB" destination="zLZ-Wd-pfr" id="B63-1f-La3"/>
                         <outlet property="lblItemC" destination="nnK-r3-j8C" id="0R6-VV-VBS"/>
                         <outlet property="lblItemD" destination="1Pj-4H-VZu" id="UsK-Nc-XXT"/>
+                        <outlet property="myToolBar" destination="14M-da-6dd" id="FF4-BF-M7g"/>
                         <outlet property="scroller" destination="d9t-v2-IJe" id="Abw-s3-exu"/>
                     </connections>
                 </viewController>
@@ -388,8 +393,42 @@
             </objects>
             <point key="canvasLocation" x="1580" y="122"/>
         </scene>
+        <!--Scroll Paging View Controller-->
+        <scene sceneID="3b9-d8-oVa">
+            <objects>
+                <viewController id="wQH-HA-ei3" customClass="ScrollPagingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uwa-xw-e6a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="PTp-h4-yDw">
+                                <rect key="frame" x="0.0" y="58" width="320" height="440"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="w2H-dt-gzi">
+                                <rect key="frame" x="136" y="488" width="48" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="pageControlClick:" destination="wQH-HA-ei3" eventType="valueChanged" id="xnu-W6-DZU"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vwc-x7-vvf"/>
+                    <connections>
+                        <outlet property="control" destination="w2H-dt-gzi" id="qSK-J7-6u9"/>
+                        <outlet property="scroller" destination="PTp-h4-yDw" id="nqo-xo-Xi6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CK0-DV-fns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="122"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="favorito.png" width="32" height="32"/>
         <image name="inbox.png" width="32" height="21"/>
         <image name="inicial-2.png" width="241" height="103"/>
         <image name="inicial.png" width="96" height="216"/>
@@ -400,6 +439,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2tx-Tg-Uin"/>
+        <segue reference="kMV-HH-xxk"/>
     </inferredMetricsTieBreakers>
 </document>

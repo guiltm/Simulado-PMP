@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E8CFE705801E2E9E44B6497 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A87ACE10A8659B80DABE2B /* libPods.a */; };
+		5D0CBE381A2131A900A21DF1 /* favorito.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0CBE351A2131A900A21DF1 /* favorito.png */; };
+		5D100DB11A242FF8005769A1 /* ScrollPagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */; };
 		5D16AD3119DB962A00313B10 /* Questao.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D16AD3019DB962A00313B10 /* Questao.m */; };
 		5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2D8A5919E11D0E000B2545 /* inbox.png */; };
 		5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */; };
@@ -54,6 +56,9 @@
 /* Begin PBXFileReference section */
 		16A87ACE10A8659B80DABE2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		28005FEF1AFC6092F1C6B54B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5D0CBE351A2131A900A21DF1 /* favorito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorito.png; sourceTree = "<group>"; };
+		5D100DAF1A242FF8005769A1 /* ScrollPagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPagingViewController.h; sourceTree = "<group>"; };
+		5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPagingViewController.m; sourceTree = "<group>"; };
 		5D16AD2F19DB962A00313B10 /* Questao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questao.h; sourceTree = "<group>"; };
 		5D16AD3019DB962A00313B10 /* Questao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questao.m; sourceTree = "<group>"; };
 		5D2D8A5919E11D0E000B2545 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
@@ -223,6 +228,7 @@
 		5D44C53619DA2F9300DDA8CA /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				5D0CBE351A2131A900A21DF1 /* favorito.png */,
 				5D6E5FCD1A0DCB5100E034CA /* inicial.png */,
 				5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */,
 				5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */,
@@ -244,6 +250,8 @@
 				5D44C54219DA321600DDA8CA /* ResumoQuestoesTableViewController.m */,
 				5DA508E819DA7DBC0038A97D /* QuestoesViewController.h */,
 				5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */,
+				5D100DAF1A242FF8005769A1 /* ScrollPagingViewController.h */,
+				5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -423,6 +431,7 @@
 				5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */,
 				5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */,
 				5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */,
+				5D0CBE381A2131A900A21DF1 /* favorito.png in Resources */,
 				5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */,
 				5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */,
 				5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */,
@@ -496,6 +505,7 @@
 				5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */,
 				5D44C56B19DA3D0900DDA8CA /* ole.c in Sources */,
 				5D44C54319DA321600DDA8CA /* ResumoQuestoesTableViewController.m in Sources */,
+				5D100DB11A242FF8005769A1 /* ScrollPagingViewController.m in Sources */,
 				5DEEE9F11A19294C000FC30D /* Utilidades.m in Sources */,
 				5D44C56919DA3D0900DDA8CA /* XlsReader.cpp in Sources */,
 				5D44C57119DA3D0900DDA8CA /* QZWorkSheet.m in Sources */,

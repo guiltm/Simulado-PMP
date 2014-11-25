@@ -7,6 +7,7 @@
 //
 
 #import "QuestoesViewController.h"
+#import "ScrollPagingViewController.h"
 
 @interface QuestoesViewController ()
 
@@ -17,8 +18,9 @@
 - (void)viewDidLoad // adicionar todos os componentes via codigo
 {
     [super viewDidLoad];
-    
-    //[self.view setBackgroundColor:[UIColor lightGrayColor]];
+    _myToolBar.frame = CGRectMake(0, 0, 320, 60);
+    _myToolBar.barTintColor = [UIColor colorWithRed:(3/255.f) green:(38/255.f) blue:(74/255.f) alpha:1.0f];
+    _favorito.tintColor = [UIColor whiteColor];
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
@@ -65,6 +67,10 @@
     self.lblItemB.text = self.questaoSelecionada.itemB;
     self.lblItemC.text = self.questaoSelecionada.itemC;
     self.lblItemD.text = self.questaoSelecionada.itemD;
+    if(_questaoSelecionada.favorita == YES)
+        _favorito.tintColor = [UIColor yellowColor];
+    else
+        _favorito.tintColor = [UIColor whiteColor];
     
 }
 
@@ -204,6 +210,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"scrollPageView"]){
+        ScrollPagingViewController* controler = [segue destinationViewController];
+        controler.listaQuestoes = self.listaQuestoes;
+    }
 }
 
 - (IBAction)proximo:(id)sender {
@@ -289,14 +299,17 @@
 - (NSString*)marcarCorreto{ // marca a opcao correta
     NSString*correto = self.questaoSelecionada.correto;
     if(!simulado){
+        float red = (35/255.f);
+        float green = (142/255.f);
+        float blue = (35/255.f) ;
         if([correto  isEqualToString: @"a"]){
-            self.lblItemA.textColor = [UIColor greenColor];
+            self.lblItemA.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
         }else if([correto isEqualToString:@"b"]){
-            self.lblItemB.textColor = [UIColor greenColor];
+            self.lblItemB.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
         }else if([correto isEqualToString:@"c"]){
-            self.lblItemC.textColor = [UIColor greenColor];
+            self.lblItemC.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
         }else if([correto isEqualToString:@"d"]){
-            self.lblItemD.textColor = [UIColor greenColor];
+            self.lblItemD.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
         }
         [self desabilitar]; // desabilita os botoes
     }
@@ -345,6 +358,19 @@
     [self limparCores];
 }
 
+- (IBAction)favoritarQuestao:(id)sender {
+    UIBarButtonItem* barbutton = sender;
+    
+    if(barbutton.tintColor == [UIColor whiteColor]){
+        barbutton.tintColor = [UIColor yellowColor];
+        [[self.listaQuestoes objectAtIndex:[[_questaoSelecionada index]integerValue]]setFavorita:YES];
+        // salvar no banco
+    }else{
+        barbutton.tintColor = [UIColor whiteColor];
+        [[self.listaQuestoes objectAtIndex:[[_questaoSelecionada index]integerValue]]setFavorita:NO];
+        // salvar no banco
+    }
+}
 
 - (IBAction)fechar:(id)sender {
     [timer invalidate];

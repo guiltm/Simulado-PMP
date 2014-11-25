@@ -31,6 +31,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *btmD;
 @property (weak, nonatomic) IBOutlet UIButton *btmAnterior;
 @property (weak, nonatomic) IBOutlet UIButton *btmProximo;
+@property (weak, nonatomic) IBOutlet UIToolbar *myToolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *favorito;
+
+- (IBAction)favoritarQuestao:(id)sender;
 
 - (IBAction)fechar:(id)sender;
 
