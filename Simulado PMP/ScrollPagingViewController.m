@@ -21,7 +21,7 @@ Questao* questaoSelecionada;
     
     [_scroller setScrollEnabled:YES];
     int roundedUp = ceil(_listaQuestoes.count / 25);
-    _scroller.contentSize = CGSizeMake(320*roundedUp, 480);
+    _scroller.contentSize = CGSizeMake(320*roundedUp, self.scroller.frame.size.height);
     [self.scroller setDelegate:self];//Set delegate
     [self ordenarQuestoes];
 }
@@ -65,14 +65,14 @@ Questao* questaoSelecionada;
 
 -(void)questaoSelecionada:(UIButton*)btn
 {
-    questaoSelecionada = [_listaQuestoes objectAtIndex:btn.tag];
+    [self.delegate setQuestao:[_listaQuestoes objectAtIndex:btn.tag]];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Navigation
 
@@ -89,10 +89,15 @@ Questao* questaoSelecionada;
         frame.origin.y=0;
         [_scroller scrollRectToVisible:frame animated:YES];
     }
+
+- (IBAction)fechar:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
     
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-    {
-        int page = scrollView.contentOffset.x/scrollView.frame.size.width;
-        _control.currentPage=page;
-    }
+{
+    int page = scrollView.contentOffset.x/scrollView.frame.size.width;
+    _control.currentPage=page;
+}
 @end

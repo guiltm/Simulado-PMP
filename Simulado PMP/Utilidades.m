@@ -25,7 +25,7 @@ static Utilidades* sharedInstance = nil;
     QZWorkSheet *firstWorkSheet = excelReader.workSheets.firstObject; // pega a primeira worksheet daquele workbook
     [firstWorkSheet open];
     
-    NSLog(@"%lu",firstWorkSheet.rows.count);
+    //NSLog(@"%lu",firstWorkSheet.rows.count);
     
     struct QZLocation localizacao;
     

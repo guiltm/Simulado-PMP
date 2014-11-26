@@ -24,6 +24,7 @@
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [scroller setScrollEnabled:YES];
+    
     if(_listaQuestoes.count > 20)
         simulado=true;
     else
@@ -34,6 +35,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+}
+
+- (void)setQuestao:(Questao *)qsl
+{
+    _questaoSelecionada = qsl;
+    [self viewDidLoad];
 }
 
 -(void)carregarInfoIniciais{
@@ -67,7 +74,7 @@
     self.lblItemB.text = self.questaoSelecionada.itemB;
     self.lblItemC.text = self.questaoSelecionada.itemC;
     self.lblItemD.text = self.questaoSelecionada.itemD;
-    if(_questaoSelecionada.favorita == YES)
+    if(self.questaoSelecionada.favorita == YES)
         _favorito.tintColor = [UIColor yellowColor];
     else
         _favorito.tintColor = [UIColor whiteColor];
@@ -137,12 +144,11 @@
         [timer invalidate]; // para tudo!
         UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"ACABOOOU!" message:@"Acabou o tempo patito!" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"OK", nil];
         [self desabilitar];
-        [alert show];// tomar alguma ação quando acabar!
+        [alert show];// tomar alguma ação quando acabar! ///////////////////////// TOMAR ACAO AQUI ///////////////////////////////
     }
     if(horas == 0 && minutos < 10){
         self.cronometro.textColor = [UIColor redColor];
     }
-    
     [self formatarHora];
 }
 
@@ -213,6 +219,9 @@
     if([[segue identifier] isEqualToString:@"scrollPageView"]){
         ScrollPagingViewController* controler = [segue destinationViewController];
         controler.listaQuestoes = self.listaQuestoes;
+        controler.delegate = self;
+        [self desabilitar];
+        [timer invalidate];
     }
 }
 
@@ -244,10 +253,6 @@
     [UIView commitAnimations];
     [self viewDidLoad];
 
-}
-
-- (IBAction)finalizar:(id)sender {
-    
 }
 
 #pragma mark - Actions
@@ -363,11 +368,11 @@
     
     if(barbutton.tintColor == [UIColor whiteColor]){
         barbutton.tintColor = [UIColor yellowColor];
-        [[self.listaQuestoes objectAtIndex:[[_questaoSelecionada index]integerValue]]setFavorita:YES];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:YES];
         // salvar no banco
     }else{
         barbutton.tintColor = [UIColor whiteColor];
-        [[self.listaQuestoes objectAtIndex:[[_questaoSelecionada index]integerValue]]setFavorita:NO];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:NO];
         // salvar no banco
     }
 }

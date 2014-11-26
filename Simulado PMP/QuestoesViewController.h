@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Questao.h"
 
-@interface QuestoesViewController : UIViewController{
+@protocol ViewQuestoesProtocol
+
+- (void)setQuestao:(Questao *)qsl;
+
+@end
+
+@interface QuestoesViewController : UIViewController <ViewQuestoesProtocol>{
     IBOutlet UIScrollView* scroller;
     NSTimer* timer;
     int horas;
@@ -47,8 +53,6 @@
 - (IBAction)btmDClick:(id)sender;
 
 - (IBAction)proximo:(id)sender;
-
-- (IBAction)finalizar:(id)sender;
 
 @property (strong,nonatomic)NSMutableArray* listaQuestoes; // todas questoes
 @property (strong,nonatomic)Questao* questaoSelecionada; // questao selecionada
