@@ -23,13 +23,31 @@
     _favorito.tintColor = [UIColor whiteColor];
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
-    [scroller setScrollEnabled:YES];
+    scroller.frame = CGRectMake(0, 25.f, self.view.frame.size.width, 467.0f);
     
     if(_listaQuestoes.count > 20)
         simulado=true;
-    else
+    else { // coloca acertos e erros
         simulado=false;
+        [self inserirAcertosEErros];
+    }
+       [scroller setScrollEnabled:YES];
+    
     [self carregarInfoIniciais];
+}
+
+-(void) inserirAcertosEErros {
+    scroller.frame = CGRectMake(0, 50.f, self.view.frame.size.width, 350.0f);
+    UILabel* acertos = [self gerarLabel:@"Acertos:" andPosition:CGRectMake(55.f, 75.f, 70.f, 21.f) andColor:[UIColor colorWithRed:35/255.f green:142/255.f blue:35/255.f alpha:1.f]];
+    [self.view addSubview:acertos];
+    
+}
+- (UILabel*) gerarLabel:(NSString*) titulo andPosition:(CGRect) posicao andColor:(UIColor*) color{
+    UILabel* labelCriado = [[UILabel alloc]initWithFrame:posicao];
+    labelCriado.text = titulo;
+    labelCriado.textColor = color;
+    [labelCriado setFont:[UIFont boldSystemFontOfSize:17]];
+    return labelCriado;
 }
 
 - (void)viewWillAppear:(BOOL)animated

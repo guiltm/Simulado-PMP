@@ -11,6 +11,8 @@
 		5D0CBE381A2131A900A21DF1 /* favorito.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0CBE351A2131A900A21DF1 /* favorito.png */; };
 		5D100DB11A242FF8005769A1 /* ScrollPagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */; };
 		5D16AD3119DB962A00313B10 /* Questao.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D16AD3019DB962A00313B10 /* Questao.m */; };
+		5D2A81301A26173C008846D4 /* setaesquerda24.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A812F1A26173C008846D4 /* setaesquerda24.png */; };
+		5D2A81321A26176C008846D4 /* setadireita24.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A81311A26176C008846D4 /* setadireita24.png */; };
 		5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2D8A5919E11D0E000B2545 /* inbox.png */; };
 		5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */; };
 		5D44C51019DA1F6000DDA8CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C50F19DA1F6000DDA8CA /* main.m */; };
@@ -61,6 +63,8 @@
 		5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPagingViewController.m; sourceTree = "<group>"; };
 		5D16AD2F19DB962A00313B10 /* Questao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questao.h; sourceTree = "<group>"; };
 		5D16AD3019DB962A00313B10 /* Questao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questao.m; sourceTree = "<group>"; };
+		5D2A812F1A26173C008846D4 /* setaesquerda24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setaesquerda24.png; sourceTree = "<group>"; };
+		5D2A81311A26176C008846D4 /* setadireita24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setadireita24.png; sourceTree = "<group>"; };
 		5D2D8A5919E11D0E000B2545 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
 		5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
 		5D44C50A19DA1F6000DDA8CA /* Simulado PMP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simulado PMP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +232,8 @@
 		5D44C53619DA2F9300DDA8CA /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				5D2A81311A26176C008846D4 /* setadireita24.png */,
+				5D2A812F1A26173C008846D4 /* setaesquerda24.png */,
 				5D0CBE351A2131A900A21DF1 /* favorito.png */,
 				5D6E5FCD1A0DCB5100E034CA /* inicial.png */,
 				5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */,
@@ -431,11 +437,13 @@
 				5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */,
 				5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */,
 				5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */,
+				5D2A81321A26176C008846D4 /* setadireita24.png in Resources */,
 				5D0CBE381A2131A900A21DF1 /* favorito.png in Resources */,
 				5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */,
 				5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */,
 				5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */,
 				5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */,
+				5D2A81301A26173C008846D4 /* setaesquerda24.png in Resources */,
 				5D44C52119DA1F6000DDA8CA /* LaunchScreen.xib in Resources */,
 				5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */,
 				5D44C56E19DA3D0900DDA8CA /* Licenses in Resources */,
@@ -639,10 +647,12 @@
 			baseConfigurationReference = 28005FEF1AFC6092F1C6B54B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Simulado PMP/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -651,10 +661,12 @@
 			baseConfigurationReference = F6853B81E4D78AE52269A3C6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Simulado PMP/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
