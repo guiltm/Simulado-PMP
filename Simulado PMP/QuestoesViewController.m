@@ -45,11 +45,11 @@
 
 -(void)carregarInfoIniciais{
     
-    if(![self.questaoSelecionada respondido])
+    if(![_questaoSelecionada respondido] && !_questaoSelecionada.desabilitada)
         [self habilitar];
     else {
         [self marcarOldRespondido];
-        if(!simulado)
+        if(!simulado || _questaoSelecionada.desabilitada)
         [self desabilitar];
     }
     
@@ -220,8 +220,10 @@
         ScrollPagingViewController* controler = [segue destinationViewController];
         controler.listaQuestoes = self.listaQuestoes;
         controler.delegate = self;
-        [self desabilitar];
         [timer invalidate];
+        for (Questao* q in _listaQuestoes) {
+            q.desabilitada = true;
+        }
     }
 }
 
@@ -262,7 +264,7 @@
         if(![[self marcarCorreto] isEqualToString:@"a"]){
             self.lblItemA.textColor = [UIColor redColor];
         }
-    if(simulado){
+    if(simulado && !_questaoSelecionada.desabilitada){
         [self limparCores];
         self.lblItemA.textColor = [UIColor blueColor];
     }
@@ -273,7 +275,7 @@
     if(![[self marcarCorreto] isEqualToString:@"b"]){
         self.lblItemB.textColor = [UIColor redColor];
     }
-    if(simulado){
+    if(simulado && !_questaoSelecionada.desabilitada){
         [self limparCores];
         self.lblItemB.textColor = [UIColor blueColor];
     }
@@ -284,7 +286,7 @@
     if(![[self marcarCorreto] isEqualToString:@"c"]){
         self.lblItemC.textColor = [UIColor redColor];
     }
-    if(simulado){
+    if(simulado && !_questaoSelecionada.desabilitada){
         [self limparCores];
         self.lblItemC.textColor = [UIColor blueColor];
     }
@@ -295,7 +297,7 @@
     if(![[self marcarCorreto] isEqualToString:@"d"]){
         self.lblItemD.textColor = [UIColor redColor];
     }
-    if(simulado){
+    if(simulado && !_questaoSelecionada.desabilitada){
         [self limparCores];
         self.lblItemD.textColor = [UIColor blueColor];
     }
@@ -303,7 +305,7 @@
 
 - (NSString*)marcarCorreto{ // marca a opcao correta
     NSString*correto = self.questaoSelecionada.correto;
-    if(!simulado){
+    if(!simulado || _questaoSelecionada.desabilitada){
         float red = (35/255.f);
         float green = (142/255.f);
         float blue = (35/255.f) ;
