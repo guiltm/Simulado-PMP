@@ -13,6 +13,7 @@
 		5D16AD3119DB962A00313B10 /* Questao.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D16AD3019DB962A00313B10 /* Questao.m */; };
 		5D2A81301A26173C008846D4 /* setaesquerda24.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A812F1A26173C008846D4 /* setaesquerda24.png */; };
 		5D2A81321A26176C008846D4 /* setadireita24.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A81311A26176C008846D4 /* setadireita24.png */; };
+		5D2A81341A263EB1008846D4 /* backquestao.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A81331A263EB1008846D4 /* backquestao.png */; };
 		5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2D8A5919E11D0E000B2545 /* inbox.png */; };
 		5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */; };
 		5D44C51019DA1F6000DDA8CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D44C50F19DA1F6000DDA8CA /* main.m */; };
@@ -65,6 +66,7 @@
 		5D16AD3019DB962A00313B10 /* Questao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questao.m; sourceTree = "<group>"; };
 		5D2A812F1A26173C008846D4 /* setaesquerda24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setaesquerda24.png; sourceTree = "<group>"; };
 		5D2A81311A26176C008846D4 /* setadireita24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setadireita24.png; sourceTree = "<group>"; };
+		5D2A81331A263EB1008846D4 /* backquestao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backquestao.png; sourceTree = "<group>"; };
 		5D2D8A5919E11D0E000B2545 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
 		5D2D8A5B19E11ED1000B2545 /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
 		5D44C50A19DA1F6000DDA8CA /* Simulado PMP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simulado PMP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +234,7 @@
 		5D44C53619DA2F9300DDA8CA /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				5D2A81331A263EB1008846D4 /* backquestao.png */,
 				5D2A81311A26176C008846D4 /* setadireita24.png */,
 				5D2A812F1A26173C008846D4 /* setaesquerda24.png */,
 				5D0CBE351A2131A900A21DF1 /* favorito.png */,
@@ -448,6 +451,7 @@
 				5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */,
 				5D44C56E19DA3D0900DDA8CA /* Licenses in Resources */,
 				5D44C51E19DA1F6000DDA8CA /* Images.xcassets in Resources */,
+				5D2A81341A263EB1008846D4 /* backquestao.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

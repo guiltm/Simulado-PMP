@@ -28,32 +28,47 @@ Questao* questaoSelecionada;
 
 - (void) ordenarQuestoes {
     
-    float x=16.0;
-    float y=16.0;
-    float larg=45.0;
+    float valorFixo = 11.6666667; // 6 x 11.66 = 70
+    
+    float x=valorFixo;
+    float y=valorFixo;
+    float inicio=valorFixo;
+    
+    float larg=50.0; // 5 x 50 = 250
     float alt=70.0;
-    float inicio = 16;
     
     for (int i=1; i<=_listaQuestoes.count; i++) {
         
         UIButton *bt =[UIButton buttonWithType:UIButtonTypeCustom];
         bt.frame = CGRectMake(x, y, larg, alt); // 16 espaco
-        [bt setTitle:[[NSString alloc]initWithFormat:@"%d",i] forState:UIControlStateNormal];
+        
+        i < 10 ?[bt setTitle:[[NSString alloc]initWithFormat:@"00%d",i] forState:UIControlStateNormal] : // colocar um zero antes
+        [bt setTitle:[[NSString alloc]initWithFormat:@"0%d",i] forState:UIControlStateNormal];
+        
+        [bt setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [[bt titleLabel]setFont:[UIFont boldSystemFontOfSize:12]];
+        [[bt layer]setBorderWidth:2.f];
+        [[bt layer]setBorderColor:[UIColor grayColor].CGColor];
         [bt addTarget:self action:@selector(questaoSelecionada:) forControlEvents:UIControlEventTouchUpInside];
-        bt.backgroundColor = [UIColor grayColor];
+        //bt.backgroundColor = [UIColor grayColor];
         [bt setTag:i-1];
         
-        [bt setBackgroundImage:[UIImage imageNamed:@"inicial.png"] forState:UIControlStateNormal];
+        bt.titleEdgeInsets = UIEdgeInsetsMake(0, 20.f, 47.f, 0); // top, left, botton, right
+        
+        //bt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        //bt.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+        
+        [bt setBackgroundImage:[UIImage imageNamed:@"backquestao.png"] forState:UIControlStateNormal];
         bt.titleLabel.textColor=[UIColor whiteColor];
-        x+=larg+16;
+        x+=larg+valorFixo;
         
         if(i%5==0){
             x=inicio;
-            y+=alt+16;
+            y+=alt+valorFixo;
         }
         
-        if(i%25==0){
-            y=16;
+        if(i%30==0){
+            y=valorFixo;
             x = inicio += 320; // esse inicio eh pra salvar o x para a proxima tela
         }
         
@@ -92,6 +107,7 @@ Questao* questaoSelecionada;
 
 - (IBAction)fechar:(id)sender
 {
+    [self.delegate setQuestao:[_listaQuestoes objectAtIndex:0]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
     

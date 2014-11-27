@@ -9,8 +9,12 @@
 #import "QuestoesViewController.h"
 #import "ScrollPagingViewController.h"
 
-@interface QuestoesViewController ()
-
+@interface QuestoesViewController () {
+    CGPoint startPosition;
+    long acertou, errou;
+    UILabel* acertos;
+    UILabel* erros;
+}
 @end
 
 @implementation QuestoesViewController
@@ -20,34 +24,20 @@
     [super viewDidLoad];
     _myToolBar.frame = CGRectMake(0, 0, 320, 60);
     _myToolBar.barTintColor = [UIColor colorWithRed:(3/255.f) green:(38/255.f) blue:(74/255.f) alpha:1.0f];
-    _favorito.tintColor = [UIColor whiteColor];
     
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
-    scroller.frame = CGRectMake(0, 25.f, self.view.frame.size.width, 467.0f);
+    scroller.frame = CGRectMake(0, 60.f, self.view.frame.size.width, 400.f);
     
     if(_listaQuestoes.count > 20)
         simulado=true;
     else { // coloca acertos e erros
         simulado=false;
-        [self inserirAcertosEErros];
+        [self inserirLabelAcertosEErros];
     }
        [scroller setScrollEnabled:YES];
     
+    [self reconhecedorDeGestos];
     [self carregarInfoIniciais];
-}
-
--(void) inserirAcertosEErros {
-    scroller.frame = CGRectMake(0, 50.f, self.view.frame.size.width, 350.0f);
-    UILabel* acertos = [self gerarLabel:@"Acertos:" andPosition:CGRectMake(55.f, 75.f, 70.f, 21.f) andColor:[UIColor colorWithRed:35/255.f green:142/255.f blue:35/255.f alpha:1.f]];
-    [self.view addSubview:acertos];
-    
-}
-- (UILabel*) gerarLabel:(NSString*) titulo andPosition:(CGRect) posicao andColor:(UIColor*) color{
-    UILabel* labelCriado = [[UILabel alloc]initWithFrame:posicao];
-    labelCriado.text = titulo;
-    labelCriado.textColor = color;
-    [labelCriado setFont:[UIFont boldSystemFontOfSize:17]];
-    return labelCriado;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -57,28 +47,32 @@
 
 - (void)setQuestao:(Questao *)qsl
 {
+    if (qsl.index.integerValue > 0 || qsl.index.integerValue < _listaQuestoes.count) {
+        self.btmAnterior.hidden = false;
+        self.btmProximo.hidden = false;
+    }
     _questaoSelecionada = qsl;
-    [self viewDidLoad];
+    [self carregarInfoIniciais];
 }
 
 -(void)carregarInfoIniciais{
     
-    if(![_questaoSelecionada respondido] && !_questaoSelecionada.desabilitada)
+    if(![_questaoSelecionada respondido] && !_questaoSelecionada.desabilitada) // se nao tiver sido respondida e nao tiver sido finalizado, habilita
         [self habilitar];
     else {
         [self marcarOldRespondido];
-        if(!simulado || _questaoSelecionada.desabilitada)
+        if(!simulado || _questaoSelecionada.desabilitada) // se nao for simulado, ou se nao tiver sido finalizado
         [self desabilitar];
     }
-    
     NSString* cont = [[NSString alloc]initWithFormat:@"%lu",(self.listaQuestoes.count-1)];
     if([[self.questaoSelecionada index]isEqualToString:@"0"]) self.btmAnterior.hidden = YES;
     if([[self.questaoSelecionada index]isEqualToString:cont]) self.btmProximo.hidden = YES;
     
     [self carregarValores];
     [self organizarItens];
-    if(![timer isValid])
+    if(![timer isValid] && !_questaoSelecionada.desabilitada)
     [self startTime];
+    
 }
 
 
@@ -271,7 +265,7 @@
         }
     }
     [UIView commitAnimations];
-    [self viewDidLoad];
+    [self carregarInfoIniciais];
 
 }
 
@@ -339,10 +333,13 @@
         [self desabilitar]; // desabilita os botoes
     }
     
-    if([correto isEqual:[self.questaoSelecionada respondido]])
+    if([correto isEqual:[self.questaoSelecionada respondido]]){
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"s"];
-    else
+        if(!simulado)acertou++;[self marcarAcertosEErros];
+    }else{
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"n"];
+        if(!simulado)errou++;[self marcarAcertosEErros];
+    }
     return correto;
 }
 
@@ -405,4 +402,79 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+/*
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    startPosition = [touch locationInView:self.view];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint endPosition = [touch locationInView:self.view];
+    
+    if (startPosition.x < endPosition.x) {
+        // Right swipe
+    } else {
+        // Left swipe
+    }
+}
+*/
+
+- (void) reconhecedorDeGestos {
+    
+    UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandle:)];
+    rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [rightRecognizer setNumberOfTouchesRequired:1];
+    
+    //add the your gestureRecognizer , where to detect the touch..
+    [self.view addGestureRecognizer:rightRecognizer];
+    
+    UISwipeGestureRecognizer *leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipeHandle:)];
+    leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [leftRecognizer setNumberOfTouchesRequired:1];
+    
+    [self.view addGestureRecognizer:leftRecognizer];
+}
+
+- (void)rightSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    UIButton* btm = [[UIButton alloc]init];
+    btm.tag = 0;
+    [self proximo:btm];
+}
+
+- (void)leftSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    UIButton* btm = [[UIButton alloc]init];
+    btm.tag = 1;
+    [self proximo:btm];
+}
+
+
+-(void) inserirLabelAcertosEErros {
+    scroller.frame = CGRectMake(0, 90.f, self.view.frame.size.width, 400.f);
+    acertos = [self gerarLabel:@"Acertos: 0" andPosition:CGRectMake(55.f, 62.f, 70.f, 21.f) andColor:[UIColor colorWithRed:35/255.f green:142/255.f blue:35/255.f alpha:1.f]];
+    [self.view addSubview:acertos];
+    
+    erros = [self gerarLabel:@"Erros: 0" andPosition:CGRectMake(190.f, 62.f, 70.f, 21.f) andColor:[UIColor redColor]];
+    [self.view addSubview:erros];
+}
+
+- (UILabel*) gerarLabel:(NSString*) titulo andPosition:(CGRect) posicao andColor:(UIColor*) color{
+    UILabel* labelCriado = [[UILabel alloc]initWithFrame:posicao];
+    labelCriado.text = titulo;
+    labelCriado.textColor = color;
+    [labelCriado setFont:[UIFont boldSystemFontOfSize:14]];
+    return labelCriado;
+}
+
+
+- (void) marcarAcertosEErros {
+    acertos.text = [NSString stringWithFormat:@"Acertos: %lu",acertou];
+    erros.text = [NSString stringWithFormat:@"Erros: %lu",errou];
+}
+
 @end
