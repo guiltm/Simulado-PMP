@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 @property (weak, nonatomic) IBOutlet UIPageControl *control;
 @property (weak, nonatomic) NSMutableArray* listaQuestoes;
+@property (weak, nonatomic) IBOutlet UILabel* totalPontos;
+@property (weak, nonatomic) IBOutlet NSString* pontos;
+
 - (IBAction)pageControlClick:(id)sender;
 - (IBAction)fechar:(id)sender;
 

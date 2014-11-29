@@ -14,4 +14,8 @@
 
 +(id)sharedManager;
 - (NSMutableArray*)carregarValores:(int) numQuestoes;
+- (NSMutableArray*) getAllFavoritas;
+- (void) adicionarFavorita:(Questao*) questao;
+- (void) removerFavorita:(Questao*) questao;
+
 @end

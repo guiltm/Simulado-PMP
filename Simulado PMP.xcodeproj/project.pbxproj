@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		2E8CFE705801E2E9E44B6497 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A87ACE10A8659B80DABE2B /* libPods.a */; };
 		5D0CBE381A2131A900A21DF1 /* favorito.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0CBE351A2131A900A21DF1 /* favorito.png */; };
+		5D0F98ED1A28F9CE00D65A91 /* star16.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98EC1A28F9CE00D65A91 /* star16.png */; };
+		5D0F98EF1A28FA0100D65A91 /* star32.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98EE1A28FA0100D65A91 /* star32.png */; };
+		5D0F98F71A291A1400D65A91 /* certoefav.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98F11A291A1400D65A91 /* certoefav.png */; };
+		5D0F98F81A291A1400D65A91 /* certo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98F21A291A1400D65A91 /* certo.png */; };
+		5D0F98F91A291A1400D65A91 /* erradoefav.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98F31A291A1400D65A91 /* erradoefav.png */; };
+		5D0F98FA1A291A1400D65A91 /* errado.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98F41A291A1400D65A91 /* errado.png */; };
+		5D0F98FB1A291A1400D65A91 /* fav.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98F51A291A1400D65A91 /* fav.png */; };
+		5D0F98FC1A291A1400D65A91 /* semnada.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D0F98F61A291A1400D65A91 /* semnada.png */; };
 		5D100DB11A242FF8005769A1 /* ScrollPagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */; };
 		5D16AD3119DB962A00313B10 /* Questao.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D16AD3019DB962A00313B10 /* Questao.m */; };
 		5D2A81301A26173C008846D4 /* setaesquerda24.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A812F1A26173C008846D4 /* setaesquerda24.png */; };
@@ -60,6 +68,14 @@
 		16A87ACE10A8659B80DABE2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		28005FEF1AFC6092F1C6B54B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5D0CBE351A2131A900A21DF1 /* favorito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorito.png; sourceTree = "<group>"; };
+		5D0F98EC1A28F9CE00D65A91 /* star16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star16.png; sourceTree = "<group>"; };
+		5D0F98EE1A28FA0100D65A91 /* star32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star32.png; sourceTree = "<group>"; };
+		5D0F98F11A291A1400D65A91 /* certoefav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = certoefav.png; path = images/certoefav.png; sourceTree = "<group>"; };
+		5D0F98F21A291A1400D65A91 /* certo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = certo.png; path = images/certo.png; sourceTree = "<group>"; };
+		5D0F98F31A291A1400D65A91 /* erradoefav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = erradoefav.png; path = images/erradoefav.png; sourceTree = "<group>"; };
+		5D0F98F41A291A1400D65A91 /* errado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = errado.png; path = images/errado.png; sourceTree = "<group>"; };
+		5D0F98F51A291A1400D65A91 /* fav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fav.png; path = images/fav.png; sourceTree = "<group>"; };
+		5D0F98F61A291A1400D65A91 /* semnada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = semnada.png; path = images/semnada.png; sourceTree = "<group>"; };
 		5D100DAF1A242FF8005769A1 /* ScrollPagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPagingViewController.h; sourceTree = "<group>"; };
 		5D100DB01A242FF8005769A1 /* ScrollPagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPagingViewController.m; sourceTree = "<group>"; };
 		5D16AD2F19DB962A00313B10 /* Questao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Questao.h; sourceTree = "<group>"; };
@@ -234,6 +250,14 @@
 		5D44C53619DA2F9300DDA8CA /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				5D0F98F11A291A1400D65A91 /* certoefav.png */,
+				5D0F98F21A291A1400D65A91 /* certo.png */,
+				5D0F98F31A291A1400D65A91 /* erradoefav.png */,
+				5D0F98F41A291A1400D65A91 /* errado.png */,
+				5D0F98F51A291A1400D65A91 /* fav.png */,
+				5D0F98F61A291A1400D65A91 /* semnada.png */,
+				5D0F98EE1A28FA0100D65A91 /* star32.png */,
+				5D0F98EC1A28F9CE00D65A91 /* star16.png */,
 				5D2A81331A263EB1008846D4 /* backquestao.png */,
 				5D2A81311A26176C008846D4 /* setadireita24.png */,
 				5D2A812F1A26173C008846D4 /* setaesquerda24.png */,
@@ -437,20 +461,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0F98FC1A291A1400D65A91 /* semnada.png in Resources */,
 				5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */,
 				5D2D8A5C19E11ED1000B2545 /* inbox@2x.png in Resources */,
+				5D0F98FA1A291A1400D65A91 /* errado.png in Resources */,
+				5D0F98F91A291A1400D65A91 /* erradoefav.png in Resources */,
 				5D44C57219DA3D0900DDA8CA /* QZXLSReader-Info.plist in Resources */,
 				5D2A81321A26176C008846D4 /* setadireita24.png in Resources */,
 				5D0CBE381A2131A900A21DF1 /* favorito.png in Resources */,
 				5D44C57D19DA3F2F00DDA8CA /* ImportITIL.xls in Resources */,
 				5D44C51C19DA1F6000DDA8CA /* Main.storyboard in Resources */,
+				5D0F98F71A291A1400D65A91 /* certoefav.png in Resources */,
 				5D44C56819DA3D0900DDA8CA /* InfoPlist.strings in Resources */,
 				5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */,
+				5D0F98F81A291A1400D65A91 /* certo.png in Resources */,
+				5D0F98FB1A291A1400D65A91 /* fav.png in Resources */,
 				5D2A81301A26173C008846D4 /* setaesquerda24.png in Resources */,
 				5D44C52119DA1F6000DDA8CA /* LaunchScreen.xib in Resources */,
+				5D0F98EF1A28FA0100D65A91 /* star32.png in Resources */,
 				5D2D8A5A19E11D0E000B2545 /* inbox.png in Resources */,
 				5D44C56E19DA3D0900DDA8CA /* Licenses in Resources */,
 				5D44C51E19DA1F6000DDA8CA /* Images.xcassets in Resources */,
+				5D0F98ED1A28F9CE00D65A91 /* star16.png in Resources */,
 				5D2A81341A263EB1008846D4 /* backquestao.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,9 +8,9 @@
 
 #import "QuestoesViewController.h"
 #import "ScrollPagingViewController.h"
+#import "Utilidades.h"
 
 @interface QuestoesViewController () {
-    CGPoint startPosition;
     long acertou, errou;
     UILabel* acertos;
     UILabel* erros;
@@ -28,7 +28,7 @@
     [scroller setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     scroller.frame = CGRectMake(0, 60.f, self.view.frame.size.width, 400.f);
     
-    if(_listaQuestoes.count > 20)
+    if(_listaQuestoes.count > 20) // isso vai quebrar nos favoritos, criar nova propriedade pra dizer se eh simulado
         simulado=true;
     else { // coloca acertos e erros
         simulado=false;
@@ -232,19 +232,19 @@
         ScrollPagingViewController* controler = [segue destinationViewController];
         controler.listaQuestoes = self.listaQuestoes;
         controler.delegate = self;
+        controler.pontos = [NSString stringWithFormat:@"%lu",acertou - errou < 0 ? 0 : acertou - errou];
         [timer invalidate];
         for (Questao* q in _listaQuestoes) {
             q.desabilitada = true;
         }
     }
+    
 }
 
 - (IBAction)proximo:(id)sender {
     
-    [UIView beginAnimations:@"Flip" context:nil];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    
+    [UIView animateWithDuration:1.0
+                     animations:^{
     long index = [[self.questaoSelecionada index]integerValue];
     if([sender tag]==1){ // proximo
         self.btmAnterior.hidden = NO;
@@ -264,7 +264,7 @@
             self.btmAnterior.hidden = YES;
         }
     }
-    [UIView commitAnimations];
+                     }];
     [self carregarInfoIniciais];
 
 }
@@ -317,7 +317,7 @@
 
 - (NSString*)marcarCorreto{ // marca a opcao correta
     NSString*correto = self.questaoSelecionada.correto;
-    if(!simulado || _questaoSelecionada.desabilitada){
+    if(!simulado || _questaoSelecionada.desabilitada){ // se nao for simulado ou se a questao tiver desabilitada (foi pq ja foi finalizado)
         float red = (35/255.f);
         float green = (142/255.f);
         float blue = (35/255.f) ;
@@ -335,10 +335,10 @@
     
     if([correto isEqual:[self.questaoSelecionada respondido]]){
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"s"];
-        if(!simulado)acertou++;[self marcarAcertosEErros];
+        if(!simulado && !_questaoSelecionada.desabilitada)acertou++;[self marcarAcertosEErros];
     }else{
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"n"];
-        if(!simulado)errou++;[self marcarAcertosEErros];
+        if(!simulado && !_questaoSelecionada.desabilitada)errou++;[self marcarAcertosEErros];
     }
     return correto;
 }
@@ -381,15 +381,18 @@
 }
 
 - (IBAction)favoritarQuestao:(id)sender {
+    Utilidades * util = [Utilidades sharedManager];
     UIBarButtonItem* barbutton = sender;
     
     if(barbutton.tintColor == [UIColor whiteColor]){
         barbutton.tintColor = [UIColor yellowColor];
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:YES];
+        [util adicionarFavorita:_questaoSelecionada];
         // salvar no banco
     }else{
         barbutton.tintColor = [UIColor whiteColor];
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:NO];
+        [util removerFavorita:_questaoSelecionada];
         // salvar no banco
     }
 }
@@ -399,8 +402,18 @@
     for (Questao *q in _listaQuestoes) {
         q.respondido = nil;
         q.acertou = nil;
+        q.desabilitada = nil;
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    /*[UIView transitionWithView:self.view
+                      duration:1.00
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        [self dismissViewControllerAnimated:NO completion:nil ];
+                    }
+                    completion:nil];*/
+    
+    [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil ];
 }
 
 /*

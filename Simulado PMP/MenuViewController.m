@@ -7,6 +7,8 @@
 //
 
 #import "MenuViewController.h"
+#import "QuestoesViewController.h"
+#import "Utilidades.h"
 
 @interface MenuViewController ()
 
@@ -36,14 +38,24 @@
     [super viewWillDisappear:animated];
 }
 
-/*
+
 #pragma mark - Navigation
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"questoesFavoritas"]){
+        Utilidades* util = [Utilidades sharedManager];
+        QuestoesViewController* questoes = [segue destinationViewController];
+        questoes.listaQuestoes = [util getAllFavoritas];
+        if(questoes.listaQuestoes.count > 0){
+        questoes.questaoSelecionada = [questoes.listaQuestoes objectAtIndex:0];
+        }
+    }
 }
-*/
+
+
 
 @end

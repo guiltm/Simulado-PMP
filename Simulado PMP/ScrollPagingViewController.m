@@ -20,6 +20,7 @@ Questao* questaoSelecionada;
     // Do any additional setup after loading the view.
     
     [_scroller setScrollEnabled:YES];
+    self.totalPontos.text = _pontos;
     int roundedUp = ceil(_listaQuestoes.count / 25);
     _scroller.contentSize = CGSizeMake(320*roundedUp, self.scroller.frame.size.height);
     [self.scroller setDelegate:self];//Set delegate
@@ -39,6 +40,8 @@ Questao* questaoSelecionada;
     
     for (int i=1; i<=_listaQuestoes.count; i++) {
         
+        Questao* q = [_listaQuestoes objectAtIndex:i-1];
+        
         UIButton *bt =[UIButton buttonWithType:UIButtonTypeCustom];
         bt.frame = CGRectMake(x, y, larg, alt); // 16 espaco
         
@@ -57,9 +60,28 @@ Questao* questaoSelecionada;
         
         //bt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         //bt.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+        if(!q.favorita && !q.acertou)
+            [bt setBackgroundImage:[UIImage imageNamed:@"semnada.png"] forState:UIControlStateNormal];
         
-        [bt setBackgroundImage:[UIImage imageNamed:@"backquestao.png"] forState:UIControlStateNormal];
+        if(q.favorita && !q.acertou)
+            [bt setBackgroundImage:[UIImage imageNamed:@"fav.png"] forState:UIControlStateNormal];
+        
+        if([q.acertou isEqualToString:@"s"]&& !q.favorita)
+            [bt setBackgroundImage:[UIImage imageNamed:@"certo.png"] forState:UIControlStateNormal];
+        
+        if([q.acertou isEqualToString:@"s"] && q.favorita)
+            [bt setBackgroundImage:[UIImage imageNamed:@"certoefav.png"] forState:UIControlStateNormal];
+        
+        if([q.acertou isEqualToString:@"n"] && !q.favorita)
+            [bt setBackgroundImage:[UIImage imageNamed:@"errado.png"] forState:UIControlStateNormal];
+        
+        if([q.acertou isEqualToString:@"n"] && q.favorita)
+            [bt setBackgroundImage:[UIImage imageNamed:@"erradoefav.png"] forState:UIControlStateNormal];
+
+        
+        
         bt.titleLabel.textColor=[UIColor whiteColor];
+        
         x+=larg+valorFixo;
         
         if(i%5==0){
