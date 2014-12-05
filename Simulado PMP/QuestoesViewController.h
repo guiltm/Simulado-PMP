@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblItemD;
 @property (strong, nonatomic) IBOutlet UILabel *cronometro;
 @property (strong, nonatomic) IBOutlet UILabel *indiceQuestoes;
+@property (weak, nonatomic) IBOutlet UILabel *lblComentario;
 
 @property (strong, nonatomic) IBOutlet UIButton *btmA;
 @property (strong, nonatomic) IBOutlet UIButton *btmB;
@@ -37,12 +38,19 @@
 @property (strong, nonatomic) IBOutlet UIButton *btmD;
 @property (weak, nonatomic) IBOutlet UIButton *btmAnterior;
 @property (weak, nonatomic) IBOutlet UIButton *btmProximo;
+
 @property (weak, nonatomic) IBOutlet UIToolbar *myToolBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *favorito;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *finalizar;
+@property (weak, nonatomic) IBOutlet UIButton *buttonPopUp;
+
+- (IBAction)finalizar:(id)sender;
+
+- (IBAction)mostrarOpcoes:(id)sender;
+
+- (IBAction)mostrarComentario:(id)sender;
 
 - (IBAction)favoritarQuestao:(id)sender;
-
-- (IBAction)fechar:(id)sender;
 
 - (IBAction)btmAClick:(id)sender;
 

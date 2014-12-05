@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+    <entity name="Questao" representedClassName="" syncable="YES">
+        <attribute name="comentario" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="correto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favorita" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="itemA" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemC" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemD" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numero" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Questao" positionX="-1028" positionY="-1078" width="128" height="180"/>
+    </elements>
 </model>

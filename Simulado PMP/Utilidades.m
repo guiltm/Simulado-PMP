@@ -7,6 +7,7 @@
 //
 
 #import "Utilidades.h"
+#import "AppDelegate.h"
 
 @implementation Utilidades
 
@@ -15,12 +16,10 @@ static Utilidades* sharedInstance = nil;
 NSURL* url = nil;
 QZWorkbook *excelReader = nil;
 QZWorkSheet *firstWorkSheet = nil;
-static NSMutableArray* favoritas = nil;
 
 + (id)sharedManager{
     if (!sharedInstance){
         sharedInstance = [[super alloc] init];
-        favoritas = [[NSMutableArray alloc]init];
     }
 
     return sharedInstance;
@@ -61,11 +60,76 @@ static NSMutableArray* favoritas = nil;
     NSArray* sortDescriptors = [NSArray arrayWithObject:brandDescriptor];
     listaQuestoes = (NSMutableArray*)[listaQuestoes sortedArrayUsingDescriptors:sortDescriptors];
     
+    NSMutableArray* favoritas = [[NSMutableArray alloc]init];
+    favoritas = self.getAllFavoritas;
+    
     for (int i=0; i<listaQuestoes.count; i++) {
         NSString* index = [[NSString alloc]initWithFormat:@"%d",i];
         [[listaQuestoes objectAtIndex:i]setIndex:index];
+        for(int j=0; j<favoritas.count; j++) {
+            if([[[listaQuestoes objectAtIndex:i]descricao]isEqualToString:[[favoritas objectAtIndex:j]descricao]])
+            {
+                [[listaQuestoes objectAtIndex:i]setFavorita:YES];
+            }
+
+        }
     }
     return listaQuestoes;
+}
+
+
+-(NSMutableArray*) getAllFavoritas {
+    NSMutableArray* todasQuestoes = [[NSMutableArray alloc]init];
+    
+    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+    NSManagedObjectContext* context = [appDelegate managedObjectContext];
+    NSEntityDescription* entityDesc = [NSEntityDescription entityForName:@"Questao" inManagedObjectContext:context];
+    NSFetchRequest* request = [[NSFetchRequest alloc]init];
+    [request setEntity:entityDesc];
+    NSError * error = nil;
+    NSArray* array = [context executeFetchRequest:request error:&error];
+    
+    Questao* questao = nil;
+    int count = 0;
+    for (Questao *q in array) {
+        questao = [[Questao alloc]init];
+        questao.numero = q.numero;
+        questao.descricao = q.descricao;
+        questao.comentario = q.comentario;
+        questao.correto = q.correto;
+        questao.favorita = [NSNumber numberWithBool:q.favorita];
+        questao.itemA = q.itemA;
+        questao.itemB = q.itemB;
+        questao.itemC = q.itemC;
+        questao.itemD = q.itemD;
+        questao.index = [NSString stringWithFormat:@"%d",count];
+        count++;
+        [todasQuestoes addObject:questao];
+    }
+    return todasQuestoes;
+}
+
+- (void) adicionarFavorita:(Questao*) questao {
+    
+    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext* context = [appDelegate managedObjectContext];
+    NSManagedObject* novaQuestao = [NSEntityDescription insertNewObjectForEntityForName:@"Questao" inManagedObjectContext:context];
+
+    [novaQuestao setValue:questao.numero forKey:@"numero"];
+    [novaQuestao setValue:questao.descricao forKey:@"descricao"];
+    [novaQuestao setValue:questao.comentario forKey:@"comentario"];
+    [novaQuestao setValue:questao.correto forKey:@"correto"];
+    [novaQuestao setValue:questao.itemA forKey:@"itemA"];
+    [novaQuestao setValue:questao.itemB forKey:@"itemB"];
+    [novaQuestao setValue:questao.itemC forKey:@"itemC"];
+    [novaQuestao setValue:questao.itemD forKey:@"itemD"];
+    [novaQuestao setValue:[NSNumber numberWithBool:questao.favorita] forKey:@"favorita"];
+    NSError * error;
+    [context save:&error];
+}
+
+- (void) removerFavorita:(Questao*) questao {
+    // adicionar
 }
 
 -(Questao*) criarQuestao:(id) numRandom{
@@ -121,22 +185,9 @@ static NSMutableArray* favoritas = nil;
     questao.itemD = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     localizacao.column +=3;
     
-    questao.comentario = [[firstWorkSheet cellAtPoint:localizacao]content];
+    questao.comentario = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     
     return questao;
-}
-
--(NSMutableArray*) getAllFavoritas {
-    
-    return favoritas;
-}
-
-- (void) adicionarFavorita:(Questao*) questao {
-    [favoritas addObject:questao];
-}
-
-- (void) removerFavorita:(Questao*) questao {
-    [favoritas removeObject:questao];
 }
 
 

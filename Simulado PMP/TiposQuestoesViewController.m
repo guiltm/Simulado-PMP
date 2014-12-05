@@ -16,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_scroller setScrollEnabled:YES];
+    _scroller.contentSize = CGSizeMake(320*2, 300);
+    _control.numberOfPages = 2;
+    [_scroller setDelegate:self];
     // Do any additional setup after loading the view.
 }
 
@@ -33,5 +37,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)pageControlClick:(id)sender {
+    NSInteger page=_control.currentPage;
+    CGRect frame=_scroller.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y=0;
+    [_scroller scrollRectToVisible:frame animated:YES];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    int page = scrollView.contentOffset.x/scrollView.frame.size.width;
+    _control.currentPage=page;
+}
 
 @end

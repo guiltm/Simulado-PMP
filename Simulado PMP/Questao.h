@@ -21,6 +21,7 @@
 @property (strong,nonatomic) NSString* index;
 @property (strong,nonatomic) NSString* acertou;
 @property (strong,nonatomic) NSString* comentario;
+@property (assign,nonatomic) BOOL reset;
 @property (assign,nonatomic) BOOL favorita;
 @property (assign,nonatomic) BOOL desabilitada;
 

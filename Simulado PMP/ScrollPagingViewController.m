@@ -24,6 +24,7 @@ Questao* questaoSelecionada;
     int roundedUp = ceil(_listaQuestoes.count / 25);
     _scroller.contentSize = CGSizeMake(320*roundedUp, self.scroller.frame.size.height);
     [self.scroller setDelegate:self];//Set delegate
+    _control.numberOfPages = roundedUp;
     [self ordenarQuestoes];
 }
 
@@ -125,7 +126,7 @@ Questao* questaoSelecionada;
         frame.origin.x = frame.size.width * page;
         frame.origin.y=0;
         [_scroller scrollRectToVisible:frame animated:YES];
-    }
+}
 
 - (IBAction)fechar:(id)sender
 {

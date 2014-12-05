@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TiposQuestoesViewController : UIViewController
+@interface TiposQuestoesViewController : UIViewController <UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIPageControl *control;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
+- (IBAction)pageControlClick:(id)sender;
 
 @end

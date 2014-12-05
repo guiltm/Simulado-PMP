@@ -12,8 +12,10 @@
 
 @interface QuestoesViewController () {
     long acertou, errou;
+    int pontuacao;
     UILabel* acertos;
     UILabel* erros;
+    UILabel* pontos;
 }
 @end
 
@@ -36,6 +38,7 @@
     }
        [scroller setScrollEnabled:YES];
     
+
     [self reconhecedorDeGestos];
     [self carregarInfoIniciais];
 }
@@ -86,7 +89,8 @@
     self.lblItemB.text = self.questaoSelecionada.itemB;
     self.lblItemC.text = self.questaoSelecionada.itemC;
     self.lblItemD.text = self.questaoSelecionada.itemD;
-    if(self.questaoSelecionada.favorita == YES)
+    self.lblComentario.text = self.questaoSelecionada.comentario;
+    if(_questaoSelecionada.favorita)
         _favorito.tintColor = [UIColor yellowColor];
     else
         _favorito.tintColor = [UIColor whiteColor];
@@ -154,9 +158,11 @@
         segundos=59;
     }else{
         [timer invalidate]; // para tudo!
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"ACABOOOU!" message:@"Acabou o tempo patito!" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"OK", nil];
+        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"TERMINOU!" message:@"Acabou o seu tempo!" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"OK", nil];
         [self desabilitar];
+        [self finalizar:nil];
         [alert show];// tomar alguma ação quando acabar! ///////////////////////// TOMAR ACAO AQUI ///////////////////////////////
+        
     }
     if(horas == 0 && minutos < 10){
         self.cronometro.textColor = [UIColor redColor];
@@ -172,6 +178,9 @@
     // conteudo
     CGSize sizeContent = [self getSize:self.lblConteudo];
     self.lblConteudo.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeContent.width, sizeContent.height);
+    
+    CGSize sizeComentario = [self getSize:self.lblComentario];
+    self.lblComentario.frame = CGRectMake(self.lblConteudo.frame.origin.x, self.lblConteudo.frame.origin.y, sizeComentario.width, sizeComentario.height);
     
     //a
     CGSize sizeA = [self getSize:self.lblItemA];
@@ -232,13 +241,17 @@
         ScrollPagingViewController* controler = [segue destinationViewController];
         controler.listaQuestoes = self.listaQuestoes;
         controler.delegate = self;
-        controler.pontos = [NSString stringWithFormat:@"%lu",acertou - errou < 0 ? 0 : acertou - errou];
+        controler.pontos = [NSString stringWithFormat:@"%d",pontuacao];
         [timer invalidate];
         for (Questao* q in _listaQuestoes) {
             q.desabilitada = true;
         }
     }
-    
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    [self finalizar:self];
+    return NO;
 }
 
 - (IBAction)proximo:(id)sender {
@@ -268,6 +281,38 @@
     [self carregarInfoIniciais];
 
 }
+
+- (IBAction)finalizar:(id)sender {
+    if(![[_finalizar title]isEqualToString:@"Voltar"]){
+
+        if([_finalizar.title isEqualToString:@"Gabarito"])
+            [self performSegueWithIdentifier:@"scrollPageView" sender:self];
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirmação" message:@"Você tem certeza que deseja finalizar?"
+                                                    delegate:self       cancelButtonTitle:@"Cancelar"       otherButtonTitles:@"Sim", nil];
+            [alert show];
+        }
+        
+    }else{
+        _lblConteudo.hidden = NO;
+        _lblComentario.hidden = YES;
+        _lblItemA.hidden = NO;
+        _lblItemB.hidden = NO;
+        _lblItemC.hidden = NO;
+        _lblItemD.hidden = NO;
+        [_finalizar setTitle:@"Finalizar"];
+        if(!_questaoSelecionada.respondido)
+        [self habilitar];
+    }
+}
+
+-(void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        _finalizar.title = @"Gabarito";
+        [self performSegueWithIdentifier:@"scrollPageView" sender:self];
+    }
+}
+
 
 #pragma mark - Actions
 
@@ -330,15 +375,24 @@
         }else if([correto isEqualToString:@"d"]){
             self.lblItemD.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
         }
+        
         [self desabilitar]; // desabilita os botoes
     }
     
     if([correto isEqual:[self.questaoSelecionada respondido]]){
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"s"];
-        if(!simulado && !_questaoSelecionada.desabilitada)acertou++;[self marcarAcertosEErros];
+        if(!simulado && !_questaoSelecionada.desabilitada && ![_questaoSelecionada reset]){
+            acertou++;pontuacao += 10;
+            _questaoSelecionada.desabilitada = true;
+            [self marcarAcertosEErros];
+        }
     }else{
         [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setAcertou:@"n"];
-        if(!simulado && !_questaoSelecionada.desabilitada)errou++;[self marcarAcertosEErros];
+        if(!simulado && !_questaoSelecionada.desabilitada && ![_questaoSelecionada reset]){
+            errou++;pontuacao-=5;
+            _questaoSelecionada.desabilitada = true;
+            [self marcarAcertosEErros];
+        }
     }
     return correto;
 }
@@ -380,30 +434,107 @@
     [self limparCores];
 }
 
+- (IBAction)mostrarOpcoes:(id)sender {
+    UIActionSheet *actionSheet = nil;
+    if(!simulado){
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                  delegate:self
+                                                cancelButtonTitle:@"Cancelar"
+                                                    destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Resetar questao",@"Fechar",  nil];
+        
+        actionSheet.tag = 1;
+    }else{
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                    destructiveButtonTitle:nil
+                                         otherButtonTitles:@"Fechar", nil];
+        
+        actionSheet.tag = 2;
+
+    }
+    //actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    //[actionSheet showInView:[self view]];
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+        
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (actionSheet.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                    [self resetarQuestao];
+                    break;
+                case 1:
+                    [self fechar];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        case 2: {
+            switch (buttonIndex) {
+                case 0:
+                    [self fechar];
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        default:
+            break;
+    }
+}
+
+- (void) resetarQuestao {
+    [self limparCores];
+    _questaoSelecionada.respondido = nil;
+    _questaoSelecionada.acertou = nil;
+    _questaoSelecionada.reset = YES;
+    _questaoSelecionada.desabilitada = false;
+    [self habilitar];
+}
+
+- (IBAction)mostrarComentario:(id)sender {
+        _lblConteudo.hidden = YES;
+        _lblComentario.hidden = NO;
+        _lblItemA.hidden = YES;
+        _lblItemB.hidden = YES;
+        _lblItemC.hidden = YES;
+        _lblItemD.hidden = YES;
+        [self desabilitar];
+        [_finalizar setTitle:@"Voltar"];
+}
+
 - (IBAction)favoritarQuestao:(id)sender {
     Utilidades * util = [Utilidades sharedManager];
     UIBarButtonItem* barbutton = sender;
-    
     if(barbutton.tintColor == [UIColor whiteColor]){
         barbutton.tintColor = [UIColor yellowColor];
-        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:YES];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:[NSNumber numberWithBool:YES]];
+        [_questaoSelecionada setFavorita:[NSNumber numberWithBool:YES]];
         [util adicionarFavorita:_questaoSelecionada];
         // salvar no banco
     }else{
         barbutton.tintColor = [UIColor whiteColor];
-        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:NO];
+        [[self.listaQuestoes objectAtIndex:[[self.questaoSelecionada index]integerValue]]setFavorita:[NSNumber numberWithBool:NO]];
+        [_questaoSelecionada setFavorita:[NSNumber numberWithBool:NO]];
         [util removerFavorita:_questaoSelecionada];
         // salvar no banco
     }
 }
 
-- (IBAction)fechar:(id)sender {
-    [timer invalidate];
-    for (Questao *q in _listaQuestoes) {
-        q.respondido = nil;
-        q.acertou = nil;
-        q.desabilitada = nil;
-    }
+- (void)fechar {
+        [timer invalidate];
+        for (Questao *q in _listaQuestoes) {
+            q.respondido = nil;
+            q.acertou = nil;
+            q.desabilitada = nil;
+        }
     /*[UIView transitionWithView:self.view
                       duration:1.00
                        options:UIViewAnimationOptionTransitionCrossDissolve
@@ -411,9 +542,9 @@
                         [self dismissViewControllerAnimated:NO completion:nil ];
                     }
                     completion:nil];*/
-    
-    [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-    //[self dismissViewControllerAnimated:YES completion:nil ];
+        
+        //[self dismissViewControllerAnimated:YES completion:nil ];
+        [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
@@ -468,12 +599,15 @@
 
 
 -(void) inserirLabelAcertosEErros {
-    scroller.frame = CGRectMake(0, 90.f, self.view.frame.size.width, 400.f);
-    acertos = [self gerarLabel:@"Acertos: 0" andPosition:CGRectMake(55.f, 62.f, 70.f, 21.f) andColor:[UIColor colorWithRed:35/255.f green:142/255.f blue:35/255.f alpha:1.f]];
+    scroller.frame = CGRectMake(0, 85.f, self.view.frame.size.width, 400.f);
+    acertos = [self gerarLabel:@"Acertos: 0" andPosition:CGRectMake(30.f, 64.f, 70.f, 21.f) andColor:[UIColor colorWithRed:35/255.f green:142/255.f blue:35/255.f alpha:1.f]];
     [self.view addSubview:acertos];
     
-    erros = [self gerarLabel:@"Erros: 0" andPosition:CGRectMake(190.f, 62.f, 70.f, 21.f) andColor:[UIColor redColor]];
+    erros = [self gerarLabel:@"Erros: 0" andPosition:CGRectMake(120.f, 64.f, 70.f, 21.f) andColor:[UIColor redColor]];
     [self.view addSubview:erros];
+    
+    pontos = [self gerarLabel:@"Pontos: 0" andPosition:CGRectMake(200.f, 64.f, 70.f, 21.f) andColor:[UIColor blueColor]];
+    [self.view addSubview:pontos];
 }
 
 - (UILabel*) gerarLabel:(NSString*) titulo andPosition:(CGRect) posicao andColor:(UIColor*) color{
@@ -488,6 +622,8 @@
 - (void) marcarAcertosEErros {
     acertos.text = [NSString stringWithFormat:@"Acertos: %lu",acertou];
     erros.text = [NSString stringWithFormat:@"Erros: %lu",errou];
+    pontos.text = [NSString stringWithFormat:@"Pontos: %d",pontuacao];
+    NSLog(@"%@",pontos.text);
 }
 
 @end

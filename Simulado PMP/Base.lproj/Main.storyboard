@@ -23,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QrS-uh-cho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="242" y="-631"/>
+            <point key="canvasLocation" x="299" y="-631"/>
         </scene>
         <!--Gestão e capacitação-->
         <scene sceneID="m52-nf-yoN">
@@ -45,16 +45,6 @@
                                         <rect key="frame" x="69" y="32" width="189" height="78"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wb8-JS-bxs">
-                                        <rect key="frame" x="99" y="192" width="111" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Simulado">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="iII-Da-bjZ" kind="push" id="D8e-2N-YhB"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YRf-XR-7qB">
                                         <rect key="frame" x="78" y="230" width="152" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,25 +56,48 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lbp-v3-PTA">
-                                        <rect key="frame" x="131" y="268" width="46" height="30"/>
+                                        <rect key="frame" x="131" y="306" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Sobre">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Ivh-37-P0h" kind="push" id="GuH-rT-vN9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zij-Vb-MNT">
+                                        <rect key="frame" x="19" y="154" width="108" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Questoes"/>
+                                        <connections>
+                                            <segue destination="pGu-cl-ri4" kind="push" id="rIZ-MD-cvL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ler-BS-3qk">
+                                        <rect key="frame" x="85" y="268" width="139" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Comprar Questoes">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="oV5-qi-g6J" kind="push" id="QhB-Wq-u2r"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="piN-4g-IQM">
-                                        <rect key="frame" x="112" y="358" width="84" height="30"/>
+                                        <rect key="frame" x="112" y="404" width="84" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Opções">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zij-Vb-MNT">
-                                        <rect key="frame" x="100" y="154" width="108" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wb8-JS-bxs">
+                                        <rect key="frame" x="191" y="154" width="111" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Questoes"/>
+                                        <state key="normal" title="Simulado">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
-                                            <segue destination="pGu-cl-ri4" kind="push" id="rIZ-MD-cvL"/>
+                                            <segue destination="iII-Da-bjZ" kind="push" id="D8e-2N-YhB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -103,6 +116,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1G-in-0I7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="-631"/>
+        </scene>
+        <!--Comprar Questoes-->
+        <scene sceneID="JyB-sx-Pz3">
+            <objects>
+                <viewController id="oV5-qi-g6J" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O1h-V3-KR2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Comprar Questoes" id="2X3-yH-dZn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O2m-xx-Xpw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10" y="122"/>
+        </scene>
+        <!--Sobre-->
+        <scene sceneID="XG0-wY-K31">
+            <objects>
+                <viewController id="Ivh-37-P0h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0o9-Gv-hA8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sobre" id="zSM-bV-5Pv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJq-JD-aGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="122"/>
         </scene>
         <!--Quantidade questões-->
         <scene sceneID="FBC-Fn-gno">
@@ -165,22 +208,43 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KgJ-8T-l0P">
-                                <rect key="frame" x="42" y="97" width="46" height="30"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="XGJ-RD-Ysc">
+                                <rect key="frame" x="0.0" y="537" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Opcao">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="O3N-oY-KWf" kind="push" id="GM2-Gm-16e"/>
+                                    <action selector="pageControlClick:" destination="pGu-cl-ri4" eventType="valueChanged" id="RXg-Nd-YiU"/>
                                 </connections>
-                            </button>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="G5B-mf-vm7">
+                                <rect key="frame" x="0.0" y="62" width="320" height="481"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" id="KgJ-8T-l0P">
+                                        <rect key="frame" x="45" y="37" width="96" height="127"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="RH" backgroundImage="inicial.png">
+                                            <color key="titleColor" red="1" green="0.082407369189999996" blue="0.16963527880000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="O3N-oY-KWf" kind="push" id="GM2-Gm-16e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.81568627449999997" green="0.83921568629999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tipos Questoes" id="nAG-Ro-6Q0">
                         <barButtonItem key="backBarButtonItem" title="Temas" id="tZq-vz-e3a"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="control" destination="XGJ-RD-Ysc" id="ee0-Pp-jXb"/>
+                        <outlet property="scroller" destination="G5B-mf-vm7" id="bZq-yL-00K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVV-YZ-wgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,14 +314,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Timer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2DT-zl-hUW">
-                                <rect key="frame" x="119" y="536" width="148" height="21"/>
+                                <rect key="frame" x="106" y="537" width="108" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PVE-Rj-FDv">
-                                <rect key="frame" x="53" y="536" width="60" height="21"/>
+                                <rect key="frame" x="48" y="536" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -287,7 +351,7 @@
                                 <rect key="frame" x="0.0" y="61" width="320" height="467"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLZ-Wd-pfr">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLZ-Wd-pfr">
                                         <rect key="frame" x="18" y="62" width="270" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -370,31 +434,50 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comentario" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f67-RD-5WN">
+                                        <rect key="frame" x="106" y="8" width="97" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hBp-Ab-fig">
+                                <rect key="frame" x="212" y="531" width="38" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dica">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="mostrarComentario:" destination="2Pb-36-sgF" eventType="touchUpInside" id="EoW-VE-3Sw"/>
+                                </connections>
+                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="14M-da-6dd">
                                 <rect key="frame" x="0.0" y="17" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                 <items>
                                     <barButtonItem title="Finalizar" id="gIh-t4-Bmj">
                                         <connections>
-                                            <segue destination="wQH-HA-ei3" kind="modal" identifier="scrollPageView" modalTransitionStyle="crossDissolve" id="YST-vD-6JM"/>
+                                            <action selector="finalizar:" destination="2Pb-36-sgF" id="37X-cu-TAD"/>
+                                            <segue destination="wQH-HA-ei3" kind="modal" identifier="scrollPageView" modalTransitionStyle="crossDissolve" id="P4l-yu-Mdl"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem enabled="NO" title="Questoes" width="108" id="rAZ-Ki-PEi">
+                                    <barButtonItem enabled="NO" title="Questoes" width="130" id="rAZ-Ki-PEi">
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </barButtonItem>
-                                    <barButtonItem title="Fechar" width="68" id="UBY-mb-0bl">
-                                        <connections>
-                                            <action selector="fechar:" destination="2Pb-36-sgF" id="1Qz-WI-owb"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="star32.png" style="plain" id="1Bk-Bd-dHg">
+                                    <barButtonItem image="star32.png" width="54" style="plain" id="1Bk-Bd-dHg">
                                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-13"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="favoritarQuestao:" destination="2Pb-36-sgF" id="fod-hj-Kga"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="compose" id="fNU-Pr-hNs">
+                                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-13"/>
+                                        <connections>
+                                            <action selector="mostrarOpcoes:" destination="2Pb-36-sgF" id="98t-n0-I0y"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -411,9 +494,12 @@
                         <outlet property="btmC" destination="KS2-70-6c5" id="asT-Dp-lWD"/>
                         <outlet property="btmD" destination="DcB-FD-zhu" id="ORz-Ce-j2R"/>
                         <outlet property="btmProximo" destination="lbZ-8g-VkL" id="DZY-4m-efD"/>
+                        <outlet property="buttonPopUp" destination="hBp-Ab-fig" id="z2z-qM-ix2"/>
                         <outlet property="cronometro" destination="2DT-zl-hUW" id="9r5-nR-zTt"/>
                         <outlet property="favorito" destination="1Bk-Bd-dHg" id="KP1-lO-6lp"/>
+                        <outlet property="finalizar" destination="gIh-t4-Bmj" id="kq2-X5-lcl"/>
                         <outlet property="indiceQuestoes" destination="PVE-Rj-FDv" id="pFi-C8-CbK"/>
+                        <outlet property="lblComentario" destination="f67-RD-5WN" id="hTV-MW-4Cd"/>
                         <outlet property="lblConteudo" destination="Bf8-v3-Vja" id="64B-3m-Ba2"/>
                         <outlet property="lblItemA" destination="mFW-Cb-g08" id="evr-97-ghQ"/>
                         <outlet property="lblItemB" destination="zLZ-Wd-pfr" id="B63-1f-La3"/>
@@ -435,14 +521,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="PTp-h4-yDw">
-                                <rect key="frame" x="0.0" y="44" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="w2H-dt-gzi">
                                 <rect key="frame" x="0.0" y="539" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="pageControlClick:" destination="wQH-HA-ei3" eventType="valueChanged" id="xnu-W6-DZU"/>
                                 </connections>
@@ -465,12 +547,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FQx-hF-kjj">
-                                <rect key="frame" x="213" y="18" width="42" height="21"/>
+                                <rect key="frame" x="213" y="18" width="99" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="PTp-h4-yDw">
+                                <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
