@@ -58,7 +58,7 @@
                                                                       options:0
                                                                         error:NULL];
          }
-     }];*/
+     }];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://localhost:8080/WSServer/services/Server?wsdl" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -66,7 +66,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:@"http://localhost:8080/WSServer/services/Server" parameters:nil error:nil];
+    [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:@"http://localhost:8080/WSServer/services/Server" parameters:nil error:nil];*/
 
     
     
