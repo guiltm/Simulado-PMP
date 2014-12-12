@@ -8,10 +8,11 @@
 
 #import "Utilidades.h"
 #import "AppDelegate.h"
+#import "AFNetworking.h"
 
 @implementation Utilidades
 
-
+static NSString * const BaseURLString = @"http://localhost:8080/RestFullWebService/rest/business/";
 static Utilidades* sharedInstance = nil;
 NSURL* url = nil;
 QZWorkbook *excelReader = nil;
@@ -188,6 +189,66 @@ QZWorkSheet *firstWorkSheet = nil;
     questao.comentario = [[[firstWorkSheet cellAtPoint:localizacao]content]stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     
     return questao;
+}
+
+
+#pragma mark - AFNetworking
+
+- (void)consultarFavoritosRede{ // @"http://localhost:8080/RestFullWebService/rest/business/";
+
+    // 1
+    //NSString *string = [NSString stringWithFormat:@"%@weather.php?format=json", BaseURLString];
+    NSURL *url = [NSURL URLWithString:BaseURLString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    // 2
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        // 3
+        NSDictionary* dic = (NSDictionary*)responseObject;
+        NSLog(@"JSON: %@",dic);
+        Questao* qfavoritas = [[Questao alloc]init];
+        
+        for (NSDictionary* dics in dic) {
+            qfavoritas.numero = [dics objectForKey:@"numero"];
+            qfavoritas.descricao = [dics objectForKey:@"descricao"];
+            qfavoritas.favorita = [dics objectForKey:@"favorito"];
+            qfavoritas.idQuestao = [dics objectForKey:@"id"];
+            qfavoritas.itemA = [dics objectForKey:@"itemA"];
+            qfavoritas.itemB = [dics objectForKey:@"itemB"];
+            qfavoritas.itemC = [dics objectForKey:@"itemC"];
+            qfavoritas.itemD = [dics objectForKey:@"itemD"];
+            qfavoritas.Usuario = [dics objectForKey:@"usuario"];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        // 4
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    // 5
+    [operation start];
+ 
+    
+    /*
+     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+     [manager GET:@"http://localhost:8080/RestFullWebService/rest/business/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSArray* ns = (NSArray*)responseObject;
+         NSLog(@"JSON: %@",ns);
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     NSLog(@"Error: %@", error);
+     }];
+     [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:@"http://localhost:8080/RestFullWebService/rest/business/" parameters:nil error:nil];
+    */
 }
 
 

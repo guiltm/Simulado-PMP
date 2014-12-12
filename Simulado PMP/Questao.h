@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Usuario.h"
 
 @interface Questao : NSObject
 
+@property (strong,nonatomic) NSNumber* idQuestao;
 @property (strong,nonatomic) NSString* numero;
 @property (strong,nonatomic) NSString* descricao;
 @property (strong,nonatomic) NSString* correto;
@@ -24,5 +26,6 @@
 @property (assign,nonatomic) BOOL reset;
 @property (assign,nonatomic) BOOL favorita;
 @property (assign,nonatomic) BOOL desabilitada;
+@property (strong,nonatomic) Usuario* Usuario;
 
 @end

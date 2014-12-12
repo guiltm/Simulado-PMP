@@ -11,5 +11,6 @@
 @interface MenuViewController : UIViewController {
     IBOutlet UIScrollView* scroller;
 }
+- (IBAction)apertarBotao:(id)sender;
 
 @end

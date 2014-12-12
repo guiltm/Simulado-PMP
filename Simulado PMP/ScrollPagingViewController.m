@@ -80,7 +80,6 @@ Questao* questaoSelecionada;
             [bt setBackgroundImage:[UIImage imageNamed:@"erradoefav.png"] forState:UIControlStateNormal];
 
         
-        
         bt.titleLabel.textColor=[UIColor whiteColor];
         
         x+=larg+valorFixo;

@@ -17,5 +17,5 @@
 - (NSMutableArray*) getAllFavoritas;
 - (void) adicionarFavorita:(Questao*) questao;
 - (void) removerFavorita:(Questao*) questao;
-
+- (void)consultarFavoritosRede;
 @end
