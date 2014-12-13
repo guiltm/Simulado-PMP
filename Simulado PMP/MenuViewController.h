@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Questao.h"
 
 @interface MenuViewController : UIViewController {
     IBOutlet UIScrollView* scroller;
 }
-- (IBAction)apertarBotao:(id)sender;
 
 @end

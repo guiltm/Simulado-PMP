@@ -13,9 +13,14 @@
 
 @interface MenuViewController ()
 
+
 @end
 
 @implementation MenuViewController
+
+static NSString * const BaseURLString = @"http://localhost:8080/RestFullWebService/rest/business/questoes/";
+NSMutableArray* listaFavoritasRede = nil;
+Questao* qfavoritas = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +44,10 @@
     [super viewWillDisappear:animated];
 }
 
-
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    [self carregarQuestoesDoWS];
+    return NO;
+}
 #pragma mark - Navigation
 
 
@@ -50,17 +58,39 @@
     if([[segue identifier] isEqualToString:@"questoesFavoritas"]){
         Utilidades* util = [Utilidades sharedManager];
         QuestoesViewController* questoes = [segue destinationViewController];
-        questoes.listaQuestoes = [util getAllFavoritas];
+        questoes.listaQuestoes = listaFavoritasRede;
         if(questoes.listaQuestoes.count > 0){
         questoes.questaoSelecionada = [questoes.listaQuestoes objectAtIndex:0];
         }
     }
 }
 
+- (void) carregarQuestoesDoWS{
+    NSMutableArray* array = [[NSMutableArray alloc]init];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:BaseURLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     NSDictionary* dic = (NSDictionary*)responseObject;
+     NSLog(@"JSON: %@",dic);
+        listaFavoritasRede = [[NSMutableArray alloc]init];
+         for (NSDictionary* dics in dic) {
+             qfavoritas = [[Questao alloc]init];
+             qfavoritas.numero = [[dics objectForKey:@"numero"] stringValue];
+             qfavoritas.descricao = [dics objectForKey:@"descricao"];
+             qfavoritas.favorita = [dics objectForKey:@"favorito"];
+             qfavoritas.idQuestao = [dics objectForKey:@"id"];
+             qfavoritas.itemA = [dics objectForKey:@"itemA"];
+             qfavoritas.itemB = [dics objectForKey:@"itemB"];
+             qfavoritas.itemC = [dics objectForKey:@"itemC"];
+             qfavoritas.itemD = [dics objectForKey:@"itemD"];
+             qfavoritas.Usuario = [dics objectForKey:@"usuario"];
+             [listaFavoritasRede addObject:qfavoritas];
+         }
+        [self performSegueWithIdentifier:@"questoesFavoritas" sender:nil];
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+     NSLog
+     (@"Error: %@", error);
+     }];
 
-
-- (IBAction)apertarBotao:(id)sender {
-    Utilidades* util = [Utilidades sharedManager];
-    [util consultarFavoritosRede];
 }
+
 @end

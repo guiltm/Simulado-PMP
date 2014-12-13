@@ -50,6 +50,7 @@
 		5D6E5FCC1A0DCAC000E034CA /* inicial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6E5FCB1A0DCAC000E034CA /* inicial-2.png */; };
 		5D6E5FCE1A0DCB5100E034CA /* inicial.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6E5FCD1A0DCB5100E034CA /* inicial.png */; };
 		5D8660B41A3B49210089D739 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8660B31A3B49210089D739 /* Usuario.m */; };
+		5D8660B71A3BB0360089D739 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8660B61A3BB0360089D739 /* AFAppDotNetAPIClient.m */; };
 		5DA508EA19DA7DBC0038A97D /* QuestoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */; };
 		5DEEE9ED1A1914A8000FC30D /* QuantidadeQuestoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEEE9EC1A1914A8000FC30D /* QuantidadeQuestoesViewController.m */; };
 		5DEEE9F11A19294C000FC30D /* Utilidades.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEEE9F01A19294C000FC30D /* Utilidades.m */; };
@@ -137,6 +138,8 @@
 		5D8071C01A324BAF00199BF1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5D8660B21A3B49210089D739 /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
 		5D8660B31A3B49210089D739 /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
+		5D8660B51A3BB0360089D739 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
+		5D8660B61A3BB0360089D739 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		5DA508E819DA7DBC0038A97D /* QuestoesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestoesViewController.h; sourceTree = "<group>"; };
 		5DA508E919DA7DBC0038A97D /* QuestoesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestoesViewController.m; sourceTree = "<group>"; };
 		5DEEE9EB1A1914A8000FC30D /* QuantidadeQuestoesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuantidadeQuestoesViewController.h; sourceTree = "<group>"; };
@@ -373,6 +376,8 @@
 			children = (
 				5DEEE9EF1A19294C000FC30D /* Utilidades.h */,
 				5DEEE9F01A19294C000FC30D /* Utilidades.m */,
+				5D8660B51A3BB0360089D739 /* AFAppDotNetAPIClient.h */,
+				5D8660B61A3BB0360089D739 /* AFAppDotNetAPIClient.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				5D44C51019DA1F6000DDA8CA /* main.m in Sources */,
 				5D44C56C19DA3D0900DDA8CA /* xls.c in Sources */,
 				5D44C53A19DA2FB500DDA8CA /* MenuViewController.m in Sources */,
+				5D8660B71A3BB0360089D739 /* AFAppDotNetAPIClient.m in Sources */,
 				5D44C57019DA3D0900DDA8CA /* QZWorkbook.m in Sources */,
 				5D44C56B19DA3D0900DDA8CA /* ole.c in Sources */,
 				5D44C54319DA321600DDA8CA /* ResumoQuestoesTableViewController.m in Sources */,

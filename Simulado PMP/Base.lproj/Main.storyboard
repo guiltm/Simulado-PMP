@@ -93,16 +93,6 @@
                                             <segue destination="oV5-qi-g6J" kind="push" id="QhB-Wq-u2r"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4Dk-c6-H6S">
-                                        <rect key="frame" x="131" y="435" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="apertarBotao:" destination="iQH-Wb-2io" eventType="touchUpInside" id="Ahp-pY-udQ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
