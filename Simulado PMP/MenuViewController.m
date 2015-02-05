@@ -77,8 +77,7 @@ Questao* qfavoritas = nil;
     [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:@"http://localhost:8080/WSServer/services/Server" parameters:nil error:nil];*/
 
     
-    
->>>>>>> FETCH_HEAD
+
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"questoesFavoritas"]){
